@@ -7,7 +7,7 @@ A helm chart for [Sorry Cypress](https://github.com/sorry-cypress/sorry-cypress)
 Install the chart using:
 
 ```bash
-$ helm repo add sorry-cypress https://sorry-cypress.github.io/sorry-cypress/charts
+$ helm repo add sorry-cypress https://sorry-cypress.github.io/charts
 $ helm install my-release sorry-cypress/sorry-cypress
 ```
 

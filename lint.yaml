@@ -2,4 +2,5 @@
 target-branch: main
 chart-dirs:
   - helm-charts/charts
-all: true
+all:
+debug:

@@ -41,13 +41,10 @@ jobs:
         run: ct lint --all --debug --config lint.yaml
 
       - name: Create kind cluster
-        uses: helm/kind-action@v1.0.0
+        uses: helm/kind-action@v1.1.0
         with:
           install_local_path_provisioner: true
         if: steps.list-changed.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
-        uses: helm/chart-testing-action@v1.0.0
-        with:
-          command: install
-          config: test.yaml
+        run: ct install --debug --config test.yaml

@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  sorry-cypress:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-01-06T09:39:24.30985982Z"
+    description: A Helm chart for Sorry Cypress
+    digest: 0afc432d5b3b333aa4a5a6a1d34999e1a313447950d7db10176fb655c83f4b93
+    name: sorry-cypress
+    type: application
+    urls:
+    - https://github.com/sorry-cypress/charts/releases/download/sorry-cypress-0.1.2/sorry-cypress-0.1.2.tgz
+    version: 0.1.2
+generated: "2021-01-06T09:39:24.07846316Z"

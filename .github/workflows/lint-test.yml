@@ -32,7 +32,11 @@ jobs:
       #     fi
 
       - name: Run chart-testing (lint)
-        run: ct lint --chart_dirs=helm-charts/charts
+        id: lint
+        uses: helm/chart-testing-action@v2.0.1
+        with:
+          command: ct lint --debug
+          config: helm-charts/lint.yaml
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.0.0

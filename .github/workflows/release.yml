@@ -11,9 +11,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Fetch history
-        run: git fetch --prune --unshallow
+        with:
+          fetch-depth: 0
 
       - name: Configure Git
         run: |
@@ -27,7 +26,5 @@ jobs:
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.1.0
-        with:
-          charts_dir: helm-charts
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

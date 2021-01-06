@@ -2,4 +2,4 @@
 remote: origin
 target-branch: main
 chart-dirs:
-  - helm-charts/charts
+  - charts

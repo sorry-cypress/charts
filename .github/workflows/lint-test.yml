@@ -32,9 +32,7 @@ jobs:
       #     fi
 
       - name: Run chart-testing (lint)
-        run: ct lint
-        with:
-          chart_dirs: helm-charts/charts
+        run: ct lint --chart_dirs=helm-charts/charts
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.0.0

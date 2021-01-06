@@ -7,7 +7,7 @@ api:
     repository: agoldis/sorry-cypress-api
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
-    #tag: "latest"
+    # tag: "latest"
 
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious
@@ -41,7 +41,7 @@ dashboard:
     repository: agoldis/sorry-cypress-dashboard
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
-    #tag: "latest"
+    # tag: "latest"
 
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious
@@ -81,7 +81,7 @@ director:
     repository: agoldis/sorry-cypress-director
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
-    #tag: "latest"
+    # tag: "latest"
 
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious

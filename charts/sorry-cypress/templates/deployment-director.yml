@@ -19,6 +19,10 @@ spec:
         - name: director_URL
           value: {{ .host }}
         {{- end }}
+        {{- range .Values.dashboard.ingress.hosts }}
+        - name: DASHBOARD_URL
+          value: {{ .host }}
+        {{- end }}
         - name: ALLOWED_KEYS
           value: {{ .Values.director.environmentVariables.allowedKeys }}
         - name: EXECUTION_DRIVER

@@ -17,11 +17,11 @@ spec:
       - env:
         {{- range .Values.director.ingress.hosts }}
         - name: director_URL
-          value: {{ .host }}
+          value: http://{{ .host }}
         {{- end }}
         {{- range .Values.dashboard.ingress.hosts }}
         - name: DASHBOARD_URL
-          value: {{ .host }}
+          value: http://{{ .host }}
         {{- end }}
         - name: ALLOWED_KEYS
           value: {{ .Values.director.environmentVariables.allowedKeys }}

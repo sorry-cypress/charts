@@ -35,7 +35,6 @@ api:
     #    hosts:
     #      - chart-example.local
 
-
 dashboard:
   image:
     repository: agoldis/sorry-cypress-dashboard
@@ -75,7 +74,6 @@ dashboard:
     #    hosts:
     #      - chart-example.local
 
-
 director:
   image:
     repository: agoldis/sorry-cypress-director
@@ -97,18 +95,18 @@ director:
 
   environmentVariables:
     # In memory, or Mongo.
-      # Valid options are:
-      # "../execution/in-memory"
-      # "../execution/mongo/driver"
+    # Valid options are:
+    # "../execution/in-memory"
+    # "../execution/mongo/driver"
     executionDriver: "../execution/in-memory"
 
     # Ignored if mongo.environmentVariables.executionDriver is set to "../execution/in-memory"
     mongodbDatabase: sorry-cypress
 
     # Dummy or S3
-      # Valid options are:
-      # "../screenshots/dummy.driver"
-      # "../screenshots/s3.driver"
+    # Valid options are:
+    # "../screenshots/dummy.driver"
+    # "../screenshots/s3.driver"
     screenshotsDriver: "../screenshots/dummy.driver"
 
     # https://sorry-cypress.dev/director/configuration
@@ -140,6 +138,10 @@ director:
 mongo:
   # You need to ensure that mongo.environmentVariables.executionDriver is set to "../execution/mongo/driver" if you want mongo.enabled to be true.
   enabled: false
+
+  # To use an external MongoDB instance, set enabled to false and uncomment
+  # the line below:
+  # mongoServer: ""
 
   image:
     repository: mongo

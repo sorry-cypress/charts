@@ -95,6 +95,9 @@ director:
     #   memory: 128Mi
 
   environmentVariables:
+    # The "Run URL" in the Cypress client
+    dashboardUrl: ""
+
     # In memory, or Mongo.
     # Valid options are:
     # "../execution/in-memory"

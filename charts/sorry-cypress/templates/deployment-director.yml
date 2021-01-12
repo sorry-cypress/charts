@@ -15,10 +15,8 @@ spec:
     spec:
       containers:
       - env:
-        {{- range .Values.dashboard.ingress.hosts }}
         - name: DASHBOARD_URL
-          value: http://{{ .host }}
-        {{- end }}
+          value: {{ .Values.director.environmentVariables.dashboardUrl | quote }}
         - name: ALLOWED_KEYS
           value: {{ .Values.director.environmentVariables.allowedKeys }}
         - name: EXECUTION_DRIVER

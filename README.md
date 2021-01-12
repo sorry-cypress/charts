@@ -11,8 +11,6 @@
 
 ## Get Repo Info
 
-Install the chart using:
-
 ```console
 $ helm repo add sorry-cypress https://sorry-cypress.github.io/charts
 $ helm repo update

@@ -1,4 +1,4 @@
-# Sorry Cypress
+# Sorry Cypress (Helm Chart)
 
 <div align="center">
 <div><img src="https://sorry-cypress.dev/public/octolumbercat.png" width="256" /></div>
@@ -7,8 +7,6 @@
 
 <br />
 
-![Update Dockerhub Images](https://github.com/agoldis/sorry-cypress/workflows/Update%20Dockerhub%20Images/badge.svg?event=push)
-![Update Dockerhub Images](https://github.com/agoldis/sorry-cypress/workflows/Lint%20and%20test/badge.svg)
 <a href="https://join.slack.com/t/sorry-cypress/shared_invite/zt-eis1h6jl-tJELaD7q9UGEhMP8WHJOaw" target="_blank">![Join slack](https://img.shields.io/badge/join-slack-orange?logo=slack)<a/>
 
 ## Get Repo Info

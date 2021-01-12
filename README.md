@@ -64,6 +64,7 @@ https://sorry-cypress.dev/api#configuration
 | `api.image.pullPolicy`      | Image pull policy                     | `Always`                    |
 | `api.resources`             | Resources to initialize the container | `{}`                        |
 | `api.service.port`          | Kubernetes service port               | `4000`                      |
+| `api.ingress.labels`        | Ingress labels                        | `{}`                        |
 | `api.ingress.annotations`   | Ingress annotations                   | `{}`                        |
 | `api.ingress.hosts[0].host` | Hostname to the service installation  | `api.chart-example.local`   |
 | `api.ingress.tls`           | Ingress secrets for TLS certificates  | `[]`                        |
@@ -82,6 +83,7 @@ https://sorry-cypress.dev/dashboard#configuration
 | `dashboard.environmentVariables.graphQlSchemaUrl` | Set the environment variable `GRAPHQL_SCHEMA_URL` with the URL of API service. | `""`                              |
 | `dashboard.service.port`                          | Kubernetes service port                                                        | `4000`                            |
 | `dashboard.ingress.enabled`                       | Flag to define if the dashboard service ingress is enabled                     | `true`                            |
+| `dashboard.ingress.labels`                        | Ingress labels                                                                 | `{}`                              |
 | `dashboard.ingress.annotations`                   | Ingress annotations                                                            | `{}`                              |
 | `dashboard.ingress.hosts[0].host`                 | Hostname to the service installation                                           | `dashboard.chart-example.local`   |
 | `dashboard.ingress.tls`                           | Ingress secrets for TLS certificates                                           | `[]`                              |
@@ -107,6 +109,7 @@ https://sorry-cypress.dev/director/configuration
 | `director.s3.secretAccessKey`                     | The `AWS_SECRET_ACCESS_KEY` environment variable to configure AWS credentials, if the screenshots driver is set to `"../screenshots/s3.driver"`                              | `zyx`                            |
 | `director.service.port`                           | Kubernetes service port                                                                                                                                                      | `4000`                           |
 | `director.ingress.enabled`                        | Flag to define if the director service ingress is enabled                                                                                                                    | `true`                           |
+| `director.ingress.labels`                         | Ingress labels                                                                                                                                                               | `{}`                             |
 | `director.ingress.annotations`                    | Ingress annotations                                                                                                                                                          | `{}`                             |
 | `director.ingress.hosts[0].host`                  | Hostname to the service installation                                                                                                                                         | `director.chart-example.local`   |
 | `director.ingress.tls`                            | Ingress secrets for TLS certificates                                                                                                                                         | `[]`                             |

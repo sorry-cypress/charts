@@ -104,9 +104,6 @@ director:
     # "../execution/mongo/driver"
     executionDriver: "../execution/in-memory"
 
-    # Ignored if mongo.environmentVariables.executionDriver is set to "../execution/in-memory"
-    mongodbDatabase: sorry-cypress
-
     # Dummy or S3
     # Valid options are:
     # "../screenshots/dummy.driver"
@@ -141,11 +138,11 @@ director:
 
 mongo:
   # You need to ensure that mongo.environmentVariables.executionDriver is set to "../execution/mongo/driver" if you want mongo.enabled to be true.
-  enabled: false
 
-  # To use an external MongoDB instance, set enabled to false and uncomment
-  # the line below:
-  # mongoServer: ""
+  mongoDatabase: "sorry-cypress"
+
+  # Ignored if mongo.enabled is set to true
+  mongoServer: ""
 
   image:
     repository: mongo

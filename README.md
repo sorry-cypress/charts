@@ -99,7 +99,6 @@ https://sorry-cypress.dev/director/configuration
 | `director.environmentVariables.allowedKeys`       | Define the list of comma delimited record keys (provided to the Cypress Runner using `--key` option). Empty or not provided variable means that all record keys are allowed. | `""`                             |
 | `dashboard.environmentVariables.dashboardUrl`     | The "Run URL" in the Cypress client                                                                                                                                          | `""`                             |
 | `director.environmentVariables.executionDriver`   | Set the execution driver. Valid options are `"../execution/in-memory"` and `"../execution/mongo/driver"`                                                                     | `"../execution/in-memory"`       |
-| `director.environmentVariables.mongodbDatabase`   | Set the MongoDB database, if the execution driver is set to `"../execution/mongo/driver"`                                                                                    | `sorry-cypress`                  |
 | `director.environmentVariables.screenshotsDriver` | Set the screenshots driver. Valid options are `"../screenshots/dummy.driver"` and `"../screenshots/s3.driver"`                                                               | `"../screenshots/dummy.driver"`  |
 | `director.s3.bucketName`                          | Set the screenshots storage bucket name, if the screenshots driver is set to `"../screenshots/s3.driver"`                                                                    | `example-bucket`                 |
 | `director.s3.region`                              | Set the screenshots storage bucket region, if the screenshots driver is set to `"../screenshots/s3.driver"`                                                                  | `us-east-1`                      |
@@ -113,11 +112,12 @@ https://sorry-cypress.dev/director/configuration
 
 ### Mongo service
 
-If the execution driver is set to `"../execution/mongo/driver"`, you may enable to MongoDB service deploy or provide an external one. Ignore this configuration when using other execution drivers.
+If the execution driver is set to `"../execution/mongo/driver"`, you may enable the internal MongoDB service deploy or provide an external one. Ignore this configuration when using other execution drivers.
 
 | Parameter                      | Description                                                                        | Default         |
 | ------------------------------ | ---------------------------------------------------------------------------------- | --------------- |
 | `mongo.enabled`                | If enabled, it will deploy the internal MongoDB service.                           | `false`         |
+| `mongo.mongoDatabase`          | The mongo database                                                                 | `sorry-cypress` |
 | `mongo.mongoServer`            | The mongo server when providing an external one. Use it with `mongo.enabled=false` | `""`            |
 | `mongo.image.repository`       | Image repository                                                                   | `mongo`         |
 | `mongo.image.tag`              | Image tag                                                                          | `"4.0"`         |

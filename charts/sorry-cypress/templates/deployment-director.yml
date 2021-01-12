@@ -23,7 +23,7 @@ spec:
           value: {{ .Values.director.environmentVariables.executionDriver }}
         {{- if eq .Values.director.environmentVariables.executionDriver "../execution/mongo/driver" }}
         - name: MONGODB_DATABASE
-          value: {{ .Values.director.environmentVariables.mongodbDatabase }}
+          value: {{ .Values.mongo.mongoDatabase }}
         - name: MONGODB_URI
           value: mongodb://{{ include "mongo.hostname" . }}:{{ .Values.mongo.service.port }}
         {{- end }}

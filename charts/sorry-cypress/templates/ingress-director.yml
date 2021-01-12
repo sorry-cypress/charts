@@ -1,5 +1,5 @@
 {{- if .Values.director.ingress.enabled -}}
-{{- $v1Networking := .Capabilities.APIVersions.Has "networking.k8s.io/v1" -}}
+{{- $v1Networking := .Capabilities.APIVersions.Has "networking.k8s.io/v1/Ingress" -}}
 {{- $fullName := include "sorry-cypress-helm.fullname" . -}}
 {{- $servicePort := .Values.director.service.port -}}
 {{- if $v1Networking }}

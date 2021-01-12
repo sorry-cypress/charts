@@ -25,6 +25,7 @@ api:
     port: 4000
 
   ingress:
+    labels: {}
     annotations: {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
@@ -64,6 +65,7 @@ dashboard:
 
   ingress:
     enabled: true
+    labels: {}
     annotations: {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
@@ -125,6 +127,7 @@ director:
 
   ingress:
     enabled: true
+    labels: {}
     annotations: {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"

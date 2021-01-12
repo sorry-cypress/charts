@@ -15,10 +15,6 @@ spec:
     spec:
       containers:
       - env:
-        {{- range .Values.director.ingress.hosts }}
-        - name: director_URL
-          value: http://{{ .host }}
-        {{- end }}
         {{- range .Values.dashboard.ingress.hosts }}
         - name: DASHBOARD_URL
           value: http://{{ .host }}

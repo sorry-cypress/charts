@@ -9,9 +9,16 @@ spec:
       app: {{ include "sorry-cypress-helm.fullname" . }}-director
   template:
     metadata:
+      name: {{ include "sorry-cypress-helm.fullname" . }}-director
       labels:
         app: {{ include "sorry-cypress-helm.fullname" . }}-director
-      name: {{ include "sorry-cypress-helm.fullname" . }}-director
+        {{- with .Values.director.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end}}
+      {{- with .Values.director.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
     spec:
       containers:
       - env:

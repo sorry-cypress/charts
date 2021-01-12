@@ -113,14 +113,15 @@ https://sorry-cypress.dev/director/configuration
 
 If the execution driver is set to `"../execution/mongo/driver"`, you may enable to MongoDB service deploy or provide an external one. Ignore this configuration when using other execution drivers.
 
-| Parameter                      | Description                                             | Default         |
-| ------------------------------ | ------------------------------------------------------- | --------------- |
-| `mongo.enabled`                | If enabled, it will deploy the internal MongoDB service | `false`         |
-| `mongo.image.repository`       | Image repository                                        | `mongo`         |
-| `mongo.image.tag`              | Image tag                                               | `"4.0"`         |
-| `mongo.image.pullPolicy`       | Image pull policy                                       | `Always`        |
-| `mongo.persistence.enabled`    | Flag for enabling persistent storage                    | `false`         |
-| `mongo.persistence.accessMode` | Volumes access mode to be set                           | `ReadWriteOnce` |
-| `mongo.persistence.size`       | Size of the volume                                      | `1Gi`           |
-| `mongo.resources`              | Resources to initialize the container                   | `{}`            |
-| `mongo.service.port`           | Kubernetes service port                                 | `4000`          |
+| Parameter                      | Description                                                                        | Default         |
+| ------------------------------ | ---------------------------------------------------------------------------------- | --------------- |
+| `mongo.enabled`                | If enabled, it will deploy the internal MongoDB service.                           | `false`         |
+| `mongo.mongoServer`            | The mongo server when providing an external one. Use it with `mongo.enabled=false` | `""`            |
+| `mongo.image.repository`       | Image repository                                                                   | `mongo`         |
+| `mongo.image.tag`              | Image tag                                                                          | `"4.0"`         |
+| `mongo.image.pullPolicy`       | Image pull policy                                                                  | `Always`        |
+| `mongo.persistence.enabled`    | Flag for enabling persistent storage                                               | `false`         |
+| `mongo.persistence.accessMode` | Volumes access mode to be set                                                      | `ReadWriteOnce` |
+| `mongo.persistence.size`       | Size of the volume                                                                 | `1Gi`           |
+| `mongo.resources`              | Resources to initialize the container                                              | `{}`            |
+| `mongo.service.port`           | Kubernetes service port                                                            | `4000`          |

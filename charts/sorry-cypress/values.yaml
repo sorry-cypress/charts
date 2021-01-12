@@ -35,7 +35,6 @@ api:
     #    hosts:
     #      - chart-example.local
 
-
 dashboard:
   image:
     repository: agoldis/sorry-cypress-dashboard
@@ -55,8 +54,9 @@ dashboard:
     #   cpu: 100m
     #   memory: 128Mi
 
+  # https://sorry-cypress.dev/dashboard#configuration
   environmentVariables:
-    # https://sorry-cypress.dev/dashboard#configuration
+    graphQlSchemaUrl: ""
     ciUrl: ""
 
   service:
@@ -74,7 +74,6 @@ dashboard:
     #  - secretName: chart-example-tls
     #    hosts:
     #      - chart-example.local
-
 
 director:
   image:
@@ -97,18 +96,18 @@ director:
 
   environmentVariables:
     # In memory, or Mongo.
-      # Valid options are:
-      # "../execution/in-memory"
-      # "../execution/mongo/driver"
+    # Valid options are:
+    # "../execution/in-memory"
+    # "../execution/mongo/driver"
     executionDriver: "../execution/in-memory"
 
     # Ignored if mongo.environmentVariables.executionDriver is set to "../execution/in-memory"
     mongodbDatabase: sorry-cypress
 
     # Dummy or S3
-      # Valid options are:
-      # "../screenshots/dummy.driver"
-      # "../screenshots/s3.driver"
+    # Valid options are:
+    # "../screenshots/dummy.driver"
+    # "../screenshots/s3.driver"
     screenshotsDriver: "../screenshots/dummy.driver"
 
     # https://sorry-cypress.dev/director/configuration

@@ -72,18 +72,19 @@ https://sorry-cypress.dev/api#configuration
 
 https://sorry-cypress.dev/dashboard#configuration
 
-| Parameter                              | Description                                                              | Default                           |
-| -------------------------------------- | ------------------------------------------------------------------------ | --------------------------------- |
-| `dashboard.image.repository`           | Image repository                                                         | `agoldis/sorry-cypress-dashboard` |
-| `dashboard.image.tag`                  | Image tag                                                                | `latest`                          |
-| `dashboard.image.pullPolicy`           | Image pull policy                                                        | `Always`                          |
-| `dashboard.resources`                  | Resources to initialize the container                                    | `{}`                              |
-| `dashboard.environmentVariables.ciUrl` | Set optional environment variable `CI_URL` to add a link to your CI tool | `""`                              |
-| `dashboard.service.port`               | Kubernetes service port                                                  | `4000`                            |
-| `dashboard.ingress.enabled`            | Flag to define if the dashboard service ingress is enabled               | `true`                            |
-| `dashboard.ingress.annotations`        | Ingress annotations                                                      | `{}`                              |
-| `dashboard.ingress.hosts[0].host`      | Hostname to the service installation                                     | `dashboard.chart-example.local`   |
-| `dashboard.ingress.tls`                | Ingress secrets for TLS certificates                                     | `[]`                              |
+| Parameter                                         | Description                                                                    | Default                           |
+| ------------------------------------------------- | ------------------------------------------------------------------------------ | --------------------------------- |
+| `dashboard.image.repository`                      | Image repository                                                               | `agoldis/sorry-cypress-dashboard` |
+| `dashboard.image.tag`                             | Image tag                                                                      | `latest`                          |
+| `dashboard.image.pullPolicy`                      | Image pull policy                                                              | `Always`                          |
+| `dashboard.resources`                             | Resources to initialize the container                                          | `{}`                              |
+| `dashboard.environmentVariables.ciUrl`            | Set optional environment variable `CI_URL` to add a link to your CI tool       | `""`                              |
+| `dashboard.environmentVariables.graphQlSchemaUrl` | Set the environment variable `GRAPHQL_SCHEMA_URL` with the URL of API service. | `""`                              |
+| `dashboard.service.port`                          | Kubernetes service port                                                        | `4000`                            |
+| `dashboard.ingress.enabled`                       | Flag to define if the dashboard service ingress is enabled                     | `true`                            |
+| `dashboard.ingress.annotations`                   | Ingress annotations                                                            | `{}`                              |
+| `dashboard.ingress.hosts[0].host`                 | Hostname to the service installation                                           | `dashboard.chart-example.local`   |
+| `dashboard.ingress.tls`                           | Ingress secrets for TLS certificates                                           | `[]`                              |
 
 ### Director service
 
@@ -96,6 +97,7 @@ https://sorry-cypress.dev/director/configuration
 | `director.image.pullPolicy`                       | Image pull policy                                                                                                                                                            | `Always`                         |
 | `director.resources`                              | Resources to initialize the container                                                                                                                                        | `{}`                             |
 | `director.environmentVariables.allowedKeys`       | Define the list of comma delimited record keys (provided to the Cypress Runner using `--key` option). Empty or not provided variable means that all record keys are allowed. | `""`                             |
+| `dashboard.environmentVariables.dashboardUrl`     | The "Run URL" in the Cypress client                                                                                                                                          | `""`                             |
 | `director.environmentVariables.executionDriver`   | Set the execution driver. Valid options are `"../execution/in-memory"` and `"../execution/mongo/driver"`                                                                     | `"../execution/in-memory"`       |
 | `director.environmentVariables.mongodbDatabase`   | Set the MongoDB database, if the execution driver is set to `"../execution/mongo/driver"`                                                                                    | `sorry-cypress`                  |
 | `director.environmentVariables.screenshotsDriver` | Set the screenshots driver. Valid options are `"../screenshots/dummy.driver"` and `"../screenshots/s3.driver"`                                                               | `"../screenshots/dummy.driver"`  |

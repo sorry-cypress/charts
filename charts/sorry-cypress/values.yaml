@@ -54,8 +54,9 @@ dashboard:
     #   cpu: 100m
     #   memory: 128Mi
 
+  # https://sorry-cypress.dev/dashboard#configuration
   environmentVariables:
-    # https://sorry-cypress.dev/dashboard#configuration
+    graphQlSchemaUrl: ""
     ciUrl: ""
 
   service:
@@ -94,6 +95,9 @@ director:
     #   memory: 128Mi
 
   environmentVariables:
+    # The "Run URL" in the Cypress client
+    dashboardUrl: ""
+
     # In memory, or Mongo.
     # Valid options are:
     # "../execution/in-memory"

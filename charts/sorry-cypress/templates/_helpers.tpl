@@ -69,3 +69,14 @@ Create the s3 secret
 {{- printf .secretAccessKey | b64enc -}}
 {{- end }}
 {{- end }}
+
+{{/*
+  Determine the MongoDB hostname.
+*/}}
+{{- define "mongo.hostname" -}}
+{{- if .Values.mongo.enabled }}
+{{- printf "%s-%s" (include "sorry-cypress-helm.fullname" .) "mongo" -}}
+{{- else }}
+{{- printf "%s" .Values.mongo.mongoServer -}}
+{{- end }}
+{{- end }}

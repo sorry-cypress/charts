@@ -27,7 +27,7 @@ spec:
         - name: MONGODB_DATABASE
           value: {{ .Values.director.environmentVariables.mongodbDatabase }}
         - name: MONGODB_URI
-          value: mongodb://{{ include "sorry-cypress-helm.fullname" . }}-mongo:{{ .Values.mongo.service.port }}
+          value: mongodb://{{ include "mongo.hostname" . }}:{{ .Values.mongo.service.port }}
         {{- end }}
         - name: SCREENSHOTS_DRIVER
           value: {{ .Values.director.environmentVariables.screenshotsDriver }}

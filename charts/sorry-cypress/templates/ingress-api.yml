@@ -1,7 +1,10 @@
 {{- if .Values.api.ingress.hosts -}}
+{{- $v1Networking := .Capabilities.APIVersions.Has "networking.k8s.io/v1" -}}
 {{- $fullName := include "sorry-cypress-helm.fullname" . -}}
-{{- $svcPort := .Values.api.service.port -}}
-{{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
+{{- $servicePort := .Values.api.service.port -}}
+{{- if $v1Networking }}
+apiVersion: networking.k8s.io/v1
+{{- else if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
 apiVersion: networking.k8s.io/v1beta1
 {{- else -}}
 apiVersion: extensions/v1beta1
@@ -31,8 +34,18 @@ spec:
     - host: {{ .host | quote }}
       http:
         paths:
+          {{- if $v1Networking }}
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $fullName }}-api
+                port:
+                  number: {{ $servicePort }}
+          {{- else -}}
           - backend:
               serviceName: {{ $fullName }}-api
-              servicePort: {{ $svcPort }}
+              servicePort: {{ $servicePort }}
+          {{- end }}
     {{- end }}
   {{- end }}

@@ -17,10 +17,8 @@ spec:
     spec:
       containers:
       - env:
-        {{- range .Values.api.ingress.hosts }}
         - name: GRAPHQL_SCHEMA_URL
-          value: {{ .host }}
-        {{- end }}
+          value: {{ .Values.dashboard.environmentVariables.graphQlSchemaUrl | quote }}
         {{- if .Values.dashboard.environmentVariables.ciUrl }}
         - name: CI_URL
           value: {{ .Values.dashboard.environmentVariables.ciUrl | quote }}

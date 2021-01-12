@@ -24,6 +24,12 @@ api:
   service:
     port: 4000
 
+  # Set annotations for pods
+  podAnnotations: {}
+
+  # Additional pod labels
+  podLabels: {}
+
   ingress:
     labels: {}
     annotations: {}
@@ -62,6 +68,12 @@ dashboard:
 
   service:
     port: 8080
+
+  # Set annotations for pods
+  podAnnotations: {}
+
+  # Additional pod labels
+  podLabels: {}
 
   ingress:
     enabled: true
@@ -125,6 +137,12 @@ director:
     accessKeyId: abc
     secretAccessKey: zyx
 
+  # Set annotations for pods
+  podAnnotations: {}
+
+  # Additional pod labels
+  podLabels: {}
+
   service:
     port: 1234
 
@@ -171,6 +189,12 @@ mongo:
     # requests:
     #   cpu: 100m
     #   memory: 128Mi
+
+  # Set annotations for pods
+  podAnnotations: {}
+
+  # Additional pod labels
+  podLabels: {}
 
   service:
     port: 27017

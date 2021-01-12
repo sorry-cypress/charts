@@ -11,9 +11,16 @@ spec:
       app: {{ include "sorry-cypress-helm.fullname" . }}-dashboard
   template:
     metadata:
+      name: {{ include "sorry-cypress-helm.fullname" . }}-dashboard
       labels:
         app: {{ include "sorry-cypress-helm.fullname" . }}-dashboard
-      name: {{ include "sorry-cypress-helm.fullname" . }}-dashboard
+        {{- with .Values.dashboard.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end}}
+      {{- with .Values.dashboard.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
     spec:
       containers:
       - env:

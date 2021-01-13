@@ -131,8 +131,8 @@ director:
   s3:
     bucketName: example-bucket
     region: us-east-1
-    accessKeyId: abc
-    secretAccessKey: zyx
+    accessKeyId: ""
+    secretAccessKey: ""
 
   # Set annotations for pods
   podAnnotations: {}

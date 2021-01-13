@@ -41,13 +41,17 @@ spec:
           value: {{ .Values.director.s3.bucketName }}
         - name: S3_REGION
           value: {{ .Values.director.s3.region }}
+        {{- with .Values.director.s3.accessKeyId }}
         - name: AWS_ACCESS_KEY_ID
-          value: {{ .Values.director.s3.accessKeyId }}
+          value: {{ . }}
+        {{- end }}
+        {{- if .Values.director.s3.secretAccessKey }}
         - name: AWS_SECRET_ACCESS_KEY
           valueFrom:
             secretKeyRef:
               name: {{ include "sorry-cypress-helm.fullname" . }}-s3Secrets
               key: AWS_SECRET_ACCESS_KEY
+        {{- end }}
         {{- end }}
         image: "{{ .Values.director.image.repository }}:{{ .Values.director.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.director.image.pullPolicy }}

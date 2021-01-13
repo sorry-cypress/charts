@@ -63,6 +63,8 @@ https://sorry-cypress.dev/api#configuration
 | `api.image.tag`             | Image tag                             | `latest`                    |
 | `api.image.pullPolicy`      | Image pull policy                     | `Always`                    |
 | `api.resources`             | Resources to initialize the container | `{}`                        |
+| `api.podAnnotations`        | Set annotations for pods              | `{}`                        |
+| `api.podLabels`             | Set additional labels for pods        | `{}`                        |
 | `api.service.port`          | Kubernetes service port               | `4000`                      |
 | `api.ingress.labels`        | Ingress labels                        | `{}`                        |
 | `api.ingress.annotations`   | Ingress annotations                   | `{}`                        |
@@ -81,6 +83,8 @@ https://sorry-cypress.dev/dashboard#configuration
 | `dashboard.resources`                             | Resources to initialize the container                                          | `{}`                              |
 | `dashboard.environmentVariables.ciUrl`            | Set optional environment variable `CI_URL` to add a link to your CI tool       | `""`                              |
 | `dashboard.environmentVariables.graphQlSchemaUrl` | Set the environment variable `GRAPHQL_SCHEMA_URL` with the URL of API service. | `""`                              |
+| `dashboard.podAnnotations`                        | Set annotations for pods                                                       | `{}`                              |
+| `dashboard.podLabels`                             | Set additional labels for pods                                                 | `{}`                              |
 | `dashboard.service.port`                          | Kubernetes service port                                                        | `4000`                            |
 | `dashboard.ingress.enabled`                       | Flag to define if the dashboard service ingress is enabled                     | `true`                            |
 | `dashboard.ingress.labels`                        | Ingress labels                                                                 | `{}`                              |
@@ -106,6 +110,8 @@ https://sorry-cypress.dev/director/configuration
 | `director.s3.region`                              | Set the screenshots storage bucket region, if the screenshots driver is set to `"../screenshots/s3.driver"`                                                                  | `us-east-1`                      |
 | `director.s3.accessKey`                           | The `AWS_ACCESS_KEY_ID` environment variable to configure AWS credentials, if the screenshots driver is set to `"../screenshots/s3.driver"`                                  | `abc`                            |
 | `director.s3.secretAccessKey`                     | The `AWS_SECRET_ACCESS_KEY` environment variable to configure AWS credentials, if the screenshots driver is set to `"../screenshots/s3.driver"`                              | `zyx`                            |
+| `director.podAnnotations`                         | Set annotations for pods                                                                                                                                                     | `{}`                             |
+| `director.podLabels`                              | Set additional labels for pods                                                                                                                                               | `{}`                             |
 | `director.service.port`                           | Kubernetes service port                                                                                                                                                      | `4000`                           |
 | `director.ingress.enabled`                        | Flag to define if the director service ingress is enabled                                                                                                                    | `true`                           |
 | `director.ingress.labels`                         | Ingress labels                                                                                                                                                               | `{}`                             |
@@ -129,4 +135,6 @@ If the execution driver is set to `"../execution/mongo/driver"`, you may enable 
 | `mongo.persistence.accessMode` | Volumes access mode to be set                                                      | `ReadWriteOnce` |
 | `mongo.persistence.size`       | Size of the volume                                                                 | `1Gi`           |
 | `mongo.resources`              | Resources to initialize the container                                              | `{}`            |
+| `mongo.podAnnotations`         | Set annotations for pods                                                           | `{}`            |
+| `mongo.podLabels`              | Set additional labels for pods                                                     | `{}`            |
 | `mongo.service.port`           | Kubernetes service port                                                            | `4000`          |

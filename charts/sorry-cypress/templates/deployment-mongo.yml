@@ -10,9 +10,16 @@ spec:
       app: {{ include "sorry-cypress-helm.fullname" . }}-mongo
   template:
     metadata:
+      name: {{ include "sorry-cypress-helm.fullname" . }}-mongo
       labels:
         app: {{ include "sorry-cypress-helm.fullname" . }}-mongo
-      name: {{ include "sorry-cypress-helm.fullname" . }}-mongo
+        {{- with .Values.mongo.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end}}
+      {{- with .Values.mongo.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
     spec:
       containers:
       - image: "{{ .Values.mongo.image.repository }}:{{ .Values.mongo.image.tag | default .Chart.AppVersion }}"

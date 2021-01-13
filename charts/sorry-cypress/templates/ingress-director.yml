@@ -47,7 +47,7 @@ spec:
                   number: {{ $servicePort }}
           {{- else }}
           - backend:
-              serviceName: {{ $fullName }}-api
+              serviceName: {{ $fullName }}-director
               servicePort: {{ $servicePort }}
           {{- end }}
     {{- end }}

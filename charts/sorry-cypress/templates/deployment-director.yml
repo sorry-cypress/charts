@@ -9,16 +9,21 @@ spec:
       app: {{ include "sorry-cypress-helm.fullname" . }}-director
   template:
     metadata:
+      name: {{ include "sorry-cypress-helm.fullname" . }}-director
       labels:
         app: {{ include "sorry-cypress-helm.fullname" . }}-director
-      name: {{ include "sorry-cypress-helm.fullname" . }}-director
+        {{- with .Values.director.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end}}
+      {{- with .Values.director.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
     spec:
       containers:
       - env:
-        {{- range .Values.director.ingress.hosts }}
-        - name: director_URL
-          value: {{ .host }}
-        {{- end }}
+        - name: DASHBOARD_URL
+          value: {{ .Values.director.environmentVariables.dashboardUrl | quote }}
         - name: ALLOWED_KEYS
           value: {{ .Values.director.environmentVariables.allowedKeys }}
         - name: EXECUTION_DRIVER
@@ -27,7 +32,7 @@ spec:
         - name: MONGODB_DATABASE
           value: {{ .Values.director.environmentVariables.mongodbDatabase }}
         - name: MONGODB_URI
-          value: mongodb://{{ include "sorry-cypress-helm.fullname" . }}-mongo:{{ .Values.mongo.service.port }}
+          value: mongodb://{{ include "mongo.hostname" . }}:{{ .Values.mongo.service.port }}
         {{- end }}
         - name: SCREENSHOTS_DRIVER
           value: {{ .Values.director.environmentVariables.screenshotsDriver }}

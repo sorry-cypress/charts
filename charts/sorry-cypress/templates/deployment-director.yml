@@ -47,7 +47,7 @@ spec:
         {{- end }}
         {{- with .Values.director.s3.readUrlPrefix }}
         - name: S3_READ_URL_PREFIX
-          value: {{ . }}
+          value: {{ . | quote }}
         {{- end }}
         {{- with .Values.director.s3.accessKeyId }}
         - name: AWS_ACCESS_KEY_ID

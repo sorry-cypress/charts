@@ -133,6 +133,8 @@ director:
     region: us-east-1
     accessKeyId: ""
     secretAccessKey: ""
+    acl: "public-read"
+    readUrlPrefix: ""
 
   # Set annotations for pods
   podAnnotations: {}

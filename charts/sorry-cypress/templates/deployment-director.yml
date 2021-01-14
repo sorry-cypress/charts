@@ -41,6 +41,14 @@ spec:
           value: {{ .Values.director.s3.bucketName }}
         - name: S3_REGION
           value: {{ .Values.director.s3.region }}
+        {{- with .Values.director.s3.acl }}
+        - name: S3_ACL
+          value: {{ . }}
+        {{- end }}
+        {{- with .Values.director.s3.readUrlPrefix }}
+        - name: S3_READ_URL_PREFIX
+          value: {{ . }}
+        {{- end }}
         {{- with .Values.director.s3.accessKeyId }}
         - name: AWS_ACCESS_KEY_ID
           value: {{ . }}

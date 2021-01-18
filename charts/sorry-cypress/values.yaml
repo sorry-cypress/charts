@@ -191,9 +191,6 @@ mongo:
     port: 27017
 
 s3:
-  # You need to ensure that mongo.environmentVariables.screenshotsDriver is set to "../screenshots/s3.driver" if you want s3.enabled to be true.
-  enabled: true
-
   bucketName: example-bucket
   region: us-east-1
   accessKeyId: ""

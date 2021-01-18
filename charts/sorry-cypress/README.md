@@ -138,14 +138,18 @@ If the execution driver is set to `"../execution/mongo/driver"`, you may enable 
 
 ### S3
 
-If the screenshots driver is set to `"../screenshots/s3.driver"`, you must configure the bucket settings. You may also enable an external host to it by enabling its ingress.
-Ignore this configuration when using other screenshots drivers.
+If the screenshots driver is set to `"../screenshots/s3.driver"`, you must configure the bucket settings. Ignore this configuration when using other screenshots drivers.
 
-| `s3.bucketName` | Set the screenshots storage bucket name | `example-bucket` |
-| `s3.region` | Set the screenshots storage bucket region | `us-east-1` |
-| `s3.acl` | The uploaded video/screenshot object ACL | `"public-read"` |
-| `s3.readUrlPrefix` | The host to load the video/screenshot in the dashboard (defaults to the bucket URL) | `""` |
-| `s3.accessKey` | The `AWS_ACCESS_KEY_ID` environment variable to configure AWS credentials | `""` |
-| `s3.secretAccessKey` | The `AWS_SECRET_ACCESS_KEY` environment variable to configure AWS credentials | `""` |
-
-> Note: enabling Ingress will also enable an ExternalName service.
+| Parameter                  | Description                                                                                                       | Default                      |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `s3.bucketName`            | Set the screenshots storage bucket name                                                                           | `example-bucket`             |
+| `s3.region`                | Set the screenshots storage bucket region                                                                         | `us-east-1`                  |
+| `s3.acl`                   | The uploaded video/screenshot object ACL                                                                          | `"public-read"`              |
+| `s3.readUrlPrefix`         | The host to load the video/screenshot in the dashboard (defaults to the bucket URL)                               | `""`                         |
+| `s3.accessKey`             | The `AWS_ACCESS_KEY_ID` environment variable to configure AWS credentials                                         | `""`                         |
+| `s3.secretAccessKey`       | The `AWS_SECRET_ACCESS_KEY` environment variable to configure AWS credentials                                     | `""`                         |
+| `s3.ingress.enabled`       | Flag to define if the S3 ingress is enabled. **It will also enable an ExternalName service to expose the bucket** | `true`                       |
+| `s3.ingress.labels`        | Ingress labels                                                                                                    | `{}`                         |
+| `s3.ingress.annotations`   | Ingress annotations                                                                                               | `{}`                         |
+| `s3.ingress.hosts[0].host` | Hostname to the service installation                                                                              | `static.chart-example.local` |
+| `s3.ingress.tls`           | Ingress secrets for TLS certificates                                                                              | `[]`                         |

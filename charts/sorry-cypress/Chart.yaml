@@ -2,7 +2,7 @@ apiVersion: v2
 name: sorry-cypress
 description: A Helm chart for Sorry Cypress
 type: application
-version: 0.1.19
+version: 0.1.20
 appVersion: 0.6.1
 home: https://sorry-cypress.dev/
 sources:

@@ -6,7 +6,7 @@ metadata:
   namespace: sorry-cypress
 spec:
   type: ExternalName
-  externalName: {{ .Values.s3.bucketName }}.s3-website-{{ .Values.s3.region }}.amazonaws.com
+  externalName: {{ include "s3Host" . }}
   ports:
   - name: http
     port: 80

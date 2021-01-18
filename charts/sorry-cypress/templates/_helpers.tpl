@@ -80,3 +80,12 @@ Create the s3 secret
 {{- printf "%s" .Values.mongo.mongoServer -}}
 {{- end }}
 {{- end }}
+
+{{/*
+Determine the S3 http host
+*/}}
+{{- define "s3Host" }}
+{{- with .Values.s3 }}
+{{- printf "%s.s3-website-%s.amazonaws.com" .bucketName .region -}}
+{{- end }}
+{{- end }}

@@ -42,7 +42,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ $fullName }}-api
+                name: {{ $fullName }}-director
                 port:
                   number: {{ $servicePort }}
           {{- else }}

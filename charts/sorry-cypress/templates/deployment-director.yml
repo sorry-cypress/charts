@@ -38,22 +38,22 @@ spec:
           value: {{ .Values.director.environmentVariables.screenshotsDriver }}
         {{- if eq .Values.director.environmentVariables.screenshotsDriver "../screenshots/s3.driver" }}
         - name: S3_BUCKET
-          value: {{ .Values.director.s3.bucketName }}
+          value: {{ .Values.s3.bucketName }}
         - name: S3_REGION
-          value: {{ .Values.director.s3.region }}
-        {{- with .Values.director.s3.acl }}
+          value: {{ .Values.s3.region }}
+        {{- with .Values.s3.acl }}
         - name: S3_ACL
           value: {{ . }}
         {{- end }}
-        {{- with .Values.director.s3.readUrlPrefix }}
+        {{- with .Values.s3.readUrlPrefix }}
         - name: S3_READ_URL_PREFIX
           value: {{ . | quote }}
         {{- end }}
-        {{- with .Values.director.s3.accessKeyId }}
+        {{- with .Values.s3.accessKeyId }}
         - name: AWS_ACCESS_KEY_ID
           value: {{ . }}
         {{- end }}
-        {{- if .Values.director.s3.secretAccessKey }}
+        {{- if .Values.s3.secretAccessKey }}
         - name: AWS_SECRET_ACCESS_KEY
           valueFrom:
             secretKeyRef:

@@ -10,7 +10,6 @@
 <a href="https://join.slack.com/t/sorry-cypress/shared_invite/zt-eis1h6jl-tJELaD7q9UGEhMP8WHJOaw" target="_blank">![Join slack](https://img.shields.io/badge/join-slack-orange?logo=slack)<a/><br />
 <a href="https://artifacthub.io/packages/search?repo=sorry-cypress" target="_blank">![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/sorry-cypress)<a/><br />
 
-
 ## Get Repo Info
 
 ```console
@@ -108,12 +107,6 @@ https://sorry-cypress.dev/director/configuration
 | `dashboard.environmentVariables.dashboardUrl`     | The "Run URL" in the Cypress client                                                                                                                                          | `""`                             |
 | `director.environmentVariables.executionDriver`   | Set the execution driver. Valid options are `"../execution/in-memory"` and `"../execution/mongo/driver"`                                                                     | `"../execution/in-memory"`       |
 | `director.environmentVariables.screenshotsDriver` | Set the screenshots driver. Valid options are `"../screenshots/dummy.driver"` and `"../screenshots/s3.driver"`                                                               | `"../screenshots/dummy.driver"`  |
-| `director.s3.bucketName`                          | Set the screenshots storage bucket name, if the screenshots driver is set to `"../screenshots/s3.driver"`                                                                    | `example-bucket`                 |
-| `director.s3.region`                              | Set the screenshots storage bucket region, if the screenshots driver is set to `"../screenshots/s3.driver"`                                                                  | `us-east-1`                      |
-| `director.s3.acl`                                 | The uploaded video/screenshot object ACL, if the screenshots driver is set to `"../screenshots/s3.driver"`                                                                   | `"public-read"`                  |
-| `director.s3.readUrlPrefix`                       | The host to load the video/screenshot in the dashboard (defaults to the bucket URL), if the screenshots driver is set to `"../screenshots/s3.driver"`                        | `""`                             |
-| `director.s3.accessKey`                           | The `AWS_ACCESS_KEY_ID` environment variable to configure AWS credentials, if the screenshots driver is set to `"../screenshots/s3.driver"`                                  | `""`                             |
-| `director.s3.secretAccessKey`                     | The `AWS_SECRET_ACCESS_KEY` environment variable to configure AWS credentials, if the screenshots driver is set to `"../screenshots/s3.driver"`                              | `""`                             |
 | `director.podAnnotations`                         | Set annotations for pods                                                                                                                                                     | `{}`                             |
 | `director.podLabels`                              | Set additional labels for pods                                                                                                                                               | `{}`                             |
 | `director.service.port`                           | Kubernetes service port                                                                                                                                                      | `4000`                           |
@@ -142,3 +135,17 @@ If the execution driver is set to `"../execution/mongo/driver"`, you may enable 
 | `mongo.podAnnotations`         | Set annotations for pods                                                           | `{}`            |
 | `mongo.podLabels`              | Set additional labels for pods                                                     | `{}`            |
 | `mongo.service.port`           | Kubernetes service port                                                            | `4000`          |
+
+### S3
+
+If the screenshots driver is set to `"../screenshots/s3.driver"`, you must configure the bucket settings. You may also enable an external host to it by enabling its ingress.
+Ignore this configuration when using other screenshots drivers.
+
+| `s3.bucketName` | Set the screenshots storage bucket name | `example-bucket` |
+| `s3.region` | Set the screenshots storage bucket region | `us-east-1` |
+| `s3.acl` | The uploaded video/screenshot object ACL | `"public-read"` |
+| `s3.readUrlPrefix` | The host to load the video/screenshot in the dashboard (defaults to the bucket URL) | `""` |
+| `s3.accessKey` | The `AWS_ACCESS_KEY_ID` environment variable to configure AWS credentials | `""` |
+| `s3.secretAccessKey` | The `AWS_SECRET_ACCESS_KEY` environment variable to configure AWS credentials | `""` |
+
+> Note: enabling Ingress will also enable an ExternalName service.

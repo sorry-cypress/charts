@@ -3,6 +3,23 @@ entries:
   sorry-cypress:
   - apiVersion: v2
     appVersion: 0.6.1
+    created: "2021-01-19T01:27:24.621802467Z"
+    description: A Helm chart for Sorry Cypress
+    digest: 6fd886f632370113cf6c8b9dc9ddd1dfb9f8b644361ffdc7d836f3a382569fcb
+    home: https://sorry-cypress.dev/
+    icon: https://sorry-cypress.dev/public/octolumbercat.png
+    maintainers:
+    - name: tico24
+      url: https://crumbhole.com
+    name: sorry-cypress
+    sources:
+    - https://github.com/sorry-cypress/sorry-cypress
+    type: application
+    urls:
+    - https://github.com/sorry-cypress/charts/releases/download/sorry-cypress-0.1.21/sorry-cypress-0.1.21.tgz
+    version: 0.1.21
+  - apiVersion: v2
+    appVersion: 0.6.1
     created: "2021-01-18T16:04:11.292466357Z"
     description: A Helm chart for Sorry Cypress
     digest: 96420254739e8ec67f9ab3edb0c7f159c660cced359683b53a37b90dbe26805c

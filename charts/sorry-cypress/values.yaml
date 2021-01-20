@@ -63,6 +63,7 @@ dashboard:
 
   # https://sorry-cypress.dev/dashboard#configuration
   environmentVariables:
+    graphQlClientCredentials: ""
     graphQlSchemaUrl: ""
     ciUrl: ""
 

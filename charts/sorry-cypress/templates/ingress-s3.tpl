@@ -17,10 +17,6 @@ metadata:
     {{- toYaml . | nindent 4 }}
     {{- end}}
   annotations:
-    nginx.ingress.kubernetes.io/upstream-vhost: {{ include "s3Host" . }}
-    nginx.ingress.kubernetes.io/enable-cors: "true"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
-    nginx.ingress.kubernetes.io/cors-allow-methods: "POST, GET, PUT, DELETE, HEAD"
     {{- with .Values.s3.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
     {{- end }}

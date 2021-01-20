@@ -206,6 +206,10 @@ s3:
     annotations: {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
+      # nginx.ingress.kubernetes.io/upstream-vhost: <bucket>.s3-website-<region>.amazonaws.com
+      # nginx.ingress.kubernetes.io/enable-cors: "true"
+      # nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+      # nginx.ingress.kubernetes.io/cors-allow-methods: "POST, GET, PUT, DELETE, HEAD"
     hosts:
       - host: static.chart-example.local
         paths: /

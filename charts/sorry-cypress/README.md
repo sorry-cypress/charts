@@ -10,7 +10,6 @@
 <a href="https://join.slack.com/t/sorry-cypress/shared_invite/zt-eis1h6jl-tJELaD7q9UGEhMP8WHJOaw" target="_blank">![Join slack](https://img.shields.io/badge/join-slack-orange?logo=slack)<a/><br />
 <a href="https://artifacthub.io/packages/search?repo=sorry-cypress" target="_blank">![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/sorry-cypress)<a/><br />
 
-
 ## Get Repo Info
 
 ```console
@@ -77,22 +76,23 @@ https://sorry-cypress.dev/api#configuration
 
 https://sorry-cypress.dev/dashboard#configuration
 
-| Parameter                                         | Description                                                                    | Default                           |
-| ------------------------------------------------- | ------------------------------------------------------------------------------ | --------------------------------- |
-| `dashboard.image.repository`                      | Image repository                                                               | `agoldis/sorry-cypress-dashboard` |
-| `dashboard.image.tag`                             | Image tag                                                                      | `latest`                          |
-| `dashboard.image.pullPolicy`                      | Image pull policy                                                              | `Always`                          |
-| `dashboard.resources`                             | Resources to initialize the container                                          | `{}`                              |
-| `dashboard.environmentVariables.ciUrl`            | Set optional environment variable `CI_URL` to add a link to your CI tool       | `""`                              |
-| `dashboard.environmentVariables.graphQlSchemaUrl` | Set the environment variable `GRAPHQL_SCHEMA_URL` with the URL of API service. | `""`                              |
-| `dashboard.podAnnotations`                        | Set annotations for pods                                                       | `{}`                              |
-| `dashboard.podLabels`                             | Set additional labels for pods                                                 | `{}`                              |
-| `dashboard.service.port`                          | Kubernetes service port                                                        | `4000`                            |
-| `dashboard.ingress.enabled`                       | Flag to define if the dashboard service ingress is enabled                     | `true`                            |
-| `dashboard.ingress.labels`                        | Ingress labels                                                                 | `{}`                              |
-| `dashboard.ingress.annotations`                   | Ingress annotations                                                            | `{}`                              |
-| `dashboard.ingress.hosts[0].host`                 | Hostname to the service installation                                           | `dashboard.chart-example.local`   |
-| `dashboard.ingress.tls`                           | Ingress secrets for TLS certificates                                           | `[]`                              |
+| Parameter                                                 | Description                                                                                                | Default                           |
+| --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| `dashboard.image.repository`                              | Image repository                                                                                           | `agoldis/sorry-cypress-dashboard` |
+| `dashboard.image.tag`                                     | Image tag                                                                                                  | `latest`                          |
+| `dashboard.image.pullPolicy`                              | Image pull policy                                                                                          | `Always`                          |
+| `dashboard.resources`                                     | Resources to initialize the container                                                                      | `{}`                              |
+| `dashboard.environmentVariables.ciUrl`                    | Set the `CI_URL` optional environment variable to add a link to your CI tool                               | `""`                              |
+| `dashboard.environmentVariables.graphQlClientCredentials` | Set the `GRAPHQL_CLIENT_CREDENTIALS` environment variable to configure the API service client credentials. | `""`                              |
+| `dashboard.environmentVariables.graphQlSchemaUrl`         | Set the `GRAPHQL_SCHEMA_URL` environment variable to configure the URL of API service.                     | `""`                              |
+| `dashboard.podAnnotations`                                | Set annotations for pods                                                                                   | `{}`                              |
+| `dashboard.podLabels`                                     | Set additional labels for pods                                                                             | `{}`                              |
+| `dashboard.service.port`                                  | Kubernetes service port                                                                                    | `4000`                            |
+| `dashboard.ingress.enabled`                               | Flag to define if the dashboard service ingress is enabled                                                 | `true`                            |
+| `dashboard.ingress.labels`                                | Ingress labels                                                                                             | `{}`                              |
+| `dashboard.ingress.annotations`                           | Ingress annotations                                                                                        | `{}`                              |
+| `dashboard.ingress.hosts[0].host`                         | Hostname to the service installation                                                                       | `dashboard.chart-example.local`   |
+| `dashboard.ingress.tls`                                   | Ingress secrets for TLS certificates                                                                       | `[]`                              |
 
 ### Director service
 

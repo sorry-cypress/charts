@@ -128,15 +128,6 @@ director:
     # https://sorry-cypress.dev/director/configuration
     allowedKeys: ""
 
-  # Ignored if mongo.environmentVariables.screenshotsDriver is set to "../screenshots/dummy.driver"
-  s3:
-    bucketName: example-bucket
-    region: us-east-1
-    accessKeyId: ""
-    secretAccessKey: ""
-    acl: "public-read"
-    readUrlPrefix: ""
-
   # Set annotations for pods
   podAnnotations: {}
 
@@ -199,3 +190,30 @@ mongo:
 
   service:
     port: 27017
+
+s3:
+  bucketName: example-bucket
+  region: us-east-1
+  accessKeyId: ""
+  secretAccessKey: ""
+  acl: "public-read"
+  readUrlPrefix: ""
+
+  ingress:
+    # When enabling ingress, an ExternalName service will be also created to expose the bucket.
+    enabled: false
+    labels: {}
+    annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+      # nginx.ingress.kubernetes.io/upstream-vhost: <bucket>.s3-website-<region>.amazonaws.com
+      # nginx.ingress.kubernetes.io/enable-cors: "true"
+      # nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+      # nginx.ingress.kubernetes.io/cors-allow-methods: "POST, GET, PUT, DELETE, HEAD"
+    hosts:
+      - host: static.chart-example.local
+        paths: /
+    tls: []
+    #  - secretName: chart-example-tls
+    #    hosts:
+    #      - chart-example.local

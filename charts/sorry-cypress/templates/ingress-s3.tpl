@@ -1,7 +1,6 @@
-{{- if .Values.director.ingress.enabled -}}
+{{- if .Values.s3.ingress.enabled -}}
 {{- $v1Networking := .Capabilities.APIVersions.Has "networking.k8s.io/v1/Ingress" -}}
 {{- $fullName := include "sorry-cypress-helm.fullname" . -}}
-{{- $servicePort := .Values.director.service.port -}}
 {{- if $v1Networking }}
 apiVersion: networking.k8s.io/v1
 {{- else if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
@@ -11,20 +10,20 @@ apiVersion: extensions/v1beta1
 {{- end }}
 kind: Ingress
 metadata:
-  name: {{ $fullName }}-director
+  name: {{ $fullName }}-s3
   labels:
     {{- include "sorry-cypress-helm.labels" . | nindent 4 }}
-    {{- with .Values.director.ingress.labels }}
+    {{- with .Values.s3.ingress.labels }}
     {{- toYaml . | nindent 4 }}
     {{- end}}
-  {{- with .Values.director.ingress.annotations }}
   annotations:
+    {{- with .Values.s3.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
-  {{- end }}
+    {{- end }}
 spec:
-  {{- if .Values.director.ingress.tls }}
+  {{- if .Values.s3.ingress.tls }}
   tls:
-    {{- range .Values.director.ingress.tls }}
+    {{- range .Values.s3.ingress.tls }}
     - hosts:
         {{- range .hosts }}
         - {{ . | quote }}
@@ -33,7 +32,7 @@ spec:
     {{- end }}
   {{- end }}
   rules:
-    {{- range .Values.director.ingress.hosts }}
+    {{- range .Values.s3.ingress.hosts }}
     - host: {{ .host | quote }}
       http:
         paths:
@@ -42,13 +41,13 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ $fullName }}-director
+                name: {{ $fullName }}-s3
                 port:
-                  number: {{ $servicePort }}
+                  number: 80
           {{- else }}
           - backend:
-              serviceName: {{ $fullName }}-director
-              servicePort: {{ $servicePort }}
+              serviceName: {{ $fullName }}-s3
+              servicePort: 80
           {{- end }}
     {{- end }}
   {{- end }}

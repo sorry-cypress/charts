@@ -65,7 +65,7 @@ Create the name of the service account to use
 Create the s3 secret
 */}}
 {{- define "s3SecretAccessKey" }}
-{{- with .Values.director.s3 }}
+{{- with .Values.s3 }}
 {{- printf .secretAccessKey | b64enc -}}
 {{- end }}
 {{- end }}
@@ -78,5 +78,14 @@ Create the s3 secret
 {{- printf "%s-%s" (include "sorry-cypress-helm.fullname" .) "mongo" -}}
 {{- else }}
 {{- printf "%s" .Values.mongo.mongoServer -}}
+{{- end }}
+{{- end }}
+
+{{/*
+Determine the S3 http host
+*/}}
+{{- define "s3Host" }}
+{{- with .Values.s3 }}
+{{- printf "%s.s3-website-%s.amazonaws.com" .bucketName .region -}}
 {{- end }}
 {{- end }}

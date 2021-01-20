@@ -105,15 +105,9 @@ https://sorry-cypress.dev/director/configuration
 | `director.image.pullPolicy`                       | Image pull policy                                                                                                                                                            | `Always`                         |
 | `director.resources`                              | Resources to initialize the container                                                                                                                                        | `{}`                             |
 | `director.environmentVariables.allowedKeys`       | Define the list of comma delimited record keys (provided to the Cypress Runner using `--key` option). Empty or not provided variable means that all record keys are allowed. | `""`                             |
-| `dashboard.environmentVariables.dashboardUrl`     | The "Run URL" in the Cypress client                                                                                                                                          | `""`                             |
+| `director.environmentVariables.dashboardUrl`      | The "Run URL" in the Cypress client                                                                                                                                          | `""`                             |
 | `director.environmentVariables.executionDriver`   | Set the execution driver. Valid options are `"../execution/in-memory"` and `"../execution/mongo/driver"`                                                                     | `"../execution/in-memory"`       |
 | `director.environmentVariables.screenshotsDriver` | Set the screenshots driver. Valid options are `"../screenshots/dummy.driver"` and `"../screenshots/s3.driver"`                                                               | `"../screenshots/dummy.driver"`  |
-| `director.s3.bucketName`                          | Set the screenshots storage bucket name, if the screenshots driver is set to `"../screenshots/s3.driver"`                                                                    | `example-bucket`                 |
-| `director.s3.region`                              | Set the screenshots storage bucket region, if the screenshots driver is set to `"../screenshots/s3.driver"`                                                                  | `us-east-1`                      |
-| `director.s3.acl`                                 | The uploaded video/screenshot object ACL, if the screenshots driver is set to `"../screenshots/s3.driver"`                                                                   | `"public-read"`                  |
-| `director.s3.readUrlPrefix`                       | The host to load the video/screenshot in the dashboard (defaults to the bucket URL), if the screenshots driver is set to `"../screenshots/s3.driver"`                        | `""`                             |
-| `director.s3.accessKey`                           | The `AWS_ACCESS_KEY_ID` environment variable to configure AWS credentials, if the screenshots driver is set to `"../screenshots/s3.driver"`                                  | `""`                             |
-| `director.s3.secretAccessKey`                     | The `AWS_SECRET_ACCESS_KEY` environment variable to configure AWS credentials, if the screenshots driver is set to `"../screenshots/s3.driver"`                              | `""`                             |
 | `director.podAnnotations`                         | Set annotations for pods                                                                                                                                                     | `{}`                             |
 | `director.podLabels`                              | Set additional labels for pods                                                                                                                                               | `{}`                             |
 | `director.service.port`                           | Kubernetes service port                                                                                                                                                      | `4000`                           |
@@ -142,3 +136,21 @@ If the execution driver is set to `"../execution/mongo/driver"`, you may enable 
 | `mongo.podAnnotations`         | Set annotations for pods                                                           | `{}`            |
 | `mongo.podLabels`              | Set additional labels for pods                                                     | `{}`            |
 | `mongo.service.port`           | Kubernetes service port                                                            | `4000`          |
+
+### S3
+
+If the screenshots driver is set to `"../screenshots/s3.driver"`, you must configure the bucket settings. Ignore this configuration when using other screenshots drivers.
+
+| Parameter                  | Description                                                                                                       | Default                      |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `s3.bucketName`            | Set the screenshots storage bucket name                                                                           | `example-bucket`             |
+| `s3.region`                | Set the screenshots storage bucket region                                                                         | `us-east-1`                  |
+| `s3.acl`                   | The uploaded video/screenshot object ACL                                                                          | `"public-read"`              |
+| `s3.readUrlPrefix`         | The host to load the video/screenshot in the dashboard (defaults to the bucket URL)                               | `""`                         |
+| `s3.accessKey`             | The `AWS_ACCESS_KEY_ID` environment variable to configure AWS credentials                                         | `""`                         |
+| `s3.secretAccessKey`       | The `AWS_SECRET_ACCESS_KEY` environment variable to configure AWS credentials                                     | `""`                         |
+| `s3.ingress.enabled`       | Flag to define if the S3 ingress is enabled. **It will also enable an ExternalName service to expose the bucket** | `true`                       |
+| `s3.ingress.labels`        | Ingress labels                                                                                                    | `{}`                         |
+| `s3.ingress.annotations`   | Ingress annotations                                                                                               | `{}`                         |
+| `s3.ingress.hosts[0].host` | Hostname to the service installation                                                                              | `static.chart-example.local` |
+| `s3.ingress.tls`           | Ingress secrets for TLS certificates                                                                              | `[]`                         |

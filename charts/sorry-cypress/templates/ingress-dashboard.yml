@@ -38,7 +38,7 @@ spec:
       http:
         paths:
           {{- if $v1Networking }}
-          - path: {{ .path | quote }}
+          - path: {{ .path | default "/" }}
             pathType: Prefix
             backend:
               service:

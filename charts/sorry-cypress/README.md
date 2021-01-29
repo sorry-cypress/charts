@@ -70,6 +70,7 @@ https://sorry-cypress.dev/api#configuration
 | `api.ingress.labels`        | Ingress labels                        | `{}`                        |
 | `api.ingress.annotations`   | Ingress annotations                   | `{}`                        |
 | `api.ingress.hosts[0].host` | Hostname to the service installation  | `api.chart-example.local`   |
+| `api.ingress.hosts[0].path` | Root path to the service installation | `/`                         |
 | `api.ingress.tls`           | Ingress secrets for TLS certificates  | `[]`                        |
 
 ### Dashboard service
@@ -92,6 +93,7 @@ https://sorry-cypress.dev/dashboard#configuration
 | `dashboard.ingress.labels`                                | Ingress labels                                                                                             | `{}`                              |
 | `dashboard.ingress.annotations`                           | Ingress annotations                                                                                        | `{}`                              |
 | `dashboard.ingress.hosts[0].host`                         | Hostname to the service installation                                                                       | `dashboard.chart-example.local`   |
+| `dashboard.ingress.hosts[0].path`                         | Root path to the service installation                                                                      | `/`                               |
 | `dashboard.ingress.tls`                                   | Ingress secrets for TLS certificates                                                                       | `[]`                              |
 
 ### Director service

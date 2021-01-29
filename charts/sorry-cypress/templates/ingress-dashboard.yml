@@ -38,7 +38,7 @@ spec:
       http:
         paths:
           {{- if $v1Networking }}
-          - path: /
+          - path: {{ .path | default "/" }}
             pathType: Prefix
             backend:
               service:
@@ -46,7 +46,8 @@ spec:
                 port:
                   number: {{ $servicePort }}
           {{- else }}
-          - backend:
+          - path: {{ .path | default "/" }}
+            backend:
               serviceName: {{ $fullName }}-dashboard
               servicePort: {{ $servicePort }}
           {{- end }}

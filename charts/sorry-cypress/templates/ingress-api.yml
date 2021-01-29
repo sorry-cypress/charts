@@ -46,7 +46,7 @@ spec:
                 port:
                   number: {{ $servicePort }}
           {{- else }}
-            - path: {{ .path | quote }}
+            - path: {{ .path | default "/" }}
               backend:
               serviceName: {{ $fullName }}-api
               servicePort: {{ $servicePort }}

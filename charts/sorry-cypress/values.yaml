@@ -146,7 +146,7 @@ director:
       # kubernetes.io/tls-acme: "true"
     hosts:
       - host: director.chart-example.local
-        paths: /
+        path: /
     tls: []
     #  - secretName: chart-example-tls
     #    hosts:
@@ -213,7 +213,7 @@ s3:
       # nginx.ingress.kubernetes.io/cors-allow-methods: "POST, GET, PUT, DELETE, HEAD"
     hosts:
       - host: static.chart-example.local
-        paths: /
+        path: /
     tls: []
     #  - secretName: chart-example-tls
     #    hosts:

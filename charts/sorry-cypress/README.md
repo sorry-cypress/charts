@@ -117,6 +117,7 @@ https://sorry-cypress.dev/director/configuration
 | `director.ingress.labels`                         | Ingress labels                                                                                                                                                               | `{}`                             |
 | `director.ingress.annotations`                    | Ingress annotations                                                                                                                                                          | `{}`                             |
 | `director.ingress.hosts[0].host`                  | Hostname to the service installation                                                                                                                                         | `director.chart-example.local`   |
+| `director.ingress.hosts[0].path`                  | Root path to the service installation                                                                                                                                        | `/`                              |
 | `director.ingress.tls`                            | Ingress secrets for TLS certificates                                                                                                                                         | `[]`                             |
 
 ### Mongo service
@@ -155,4 +156,5 @@ If the screenshots driver is set to `"../screenshots/s3.driver"`, you must confi
 | `s3.ingress.labels`        | Ingress labels                                                                                                    | `{}`                         |
 | `s3.ingress.annotations`   | Ingress annotations                                                                                               | `{}`                         |
 | `s3.ingress.hosts[0].host` | Hostname to the service installation                                                                              | `static.chart-example.local` |
+| `s3.ingress.hosts[0].path` | Root path to the service installation                                                                             | `/`                          |
 | `s3.ingress.tls`           | Ingress secrets for TLS certificates                                                                              | `[]`                         |

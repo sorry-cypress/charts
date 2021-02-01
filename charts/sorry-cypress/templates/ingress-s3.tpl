@@ -16,10 +16,10 @@ metadata:
     {{- with .Values.s3.ingress.labels }}
     {{- toYaml . | nindent 4 }}
     {{- end}}
+  {{- with .Values.s3.ingress.annotations }}
   annotations:
-    {{- with .Values.s3.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
-    {{- end }}
+  {{- end }}
 spec:
   {{- if .Values.s3.ingress.tls }}
   tls:
@@ -37,7 +37,7 @@ spec:
       http:
         paths:
           {{- if $v1Networking }}
-          - path: /
+          - path: {{ .path | default "/" }}
             pathType: Prefix
             backend:
               service:
@@ -45,7 +45,8 @@ spec:
                 port:
                   number: 80
           {{- else }}
-          - backend:
+          - path: {{ .path | default "/" }}
+            backend:
               serviceName: {{ $fullName }}-s3
               servicePort: 80
           {{- end }}

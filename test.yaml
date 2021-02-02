@@ -1,6 +1,8 @@
 # See https://github.com/helm/chart-testing#configuration
 remote: origin
 target-branch: main
+chart-repos:
+  - minio=https://helm.min.io
 chart-dirs:
   - charts
 helm-extra-args: --timeout 600s

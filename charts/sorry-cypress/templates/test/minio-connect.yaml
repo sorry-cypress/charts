@@ -15,3 +15,4 @@ spec:
       command: ['wget']
       args:  ['{{ include "sorry-cypress-helm.fullname" . }}-minio:9000/minio/login --header="User-Agent: Mozilla"']
   restartPolicy: Never
+{{- end }}

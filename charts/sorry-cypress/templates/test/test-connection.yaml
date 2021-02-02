@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "nginx-helm.fullname" . }}-test-api-connection"
+  name: "{{ include "sorry-cypress-helm.fullname" . }}-test-api-connection"
   labels:
-    app.kubernetes.io/name: {{ include "nginx-helm.name" . }}
-    helm.sh/chart: {{ include "nginx-helm.chart" . }}
+    app.kubernetes.io/name: {{ include "sorry-cypress-helm.fullname" . }}
+    helm.sh/chart: {{ include "sorry-cypress-helmchart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
   annotations:
@@ -15,5 +15,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args:  ['{{ include "nginx-helm.fullname" . }}:{{ .Values.api.service.port }}']
+      args:  ['{{ include "sorry-cypress-helm.fullname" . }}:{{ .Values.api.service.port }}']
   restartPolicy: Never

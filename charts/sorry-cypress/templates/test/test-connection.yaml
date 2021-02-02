@@ -4,9 +4,6 @@ metadata:
   name: "{{ include "sorry-cypress-helm.fullname" . }}-test-api-connection"
   labels:
     app.kubernetes.io/name: {{ include "sorry-cypress-helm.fullname" . }}
-    helm.sh/chart: {{ include "sorry-cypress-helmchart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
   annotations:
     "helm.sh/hook": test-success
     "helm.sh/hook-delete-policy": hook-succeeded

@@ -1,6 +1,6 @@
-{{- if and (.Values.mongo.enabled) (not .Values.mongo.persistence.enabled) -}}
+{{- if and (.Values.mongo.enabled) (.Values.mongo.persistence.enabled) -}}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "sorry-cypress-helm.fullname" . }}-mongo
 spec:
@@ -45,7 +45,14 @@ spec:
             mountPath: /data/db
       restartPolicy: Always
       serviceAccountName: ""
-      volumes:
-        - name: mongo-storage
-          emptyDir: {}
+  serviceName: {{ include "sorry-cypress-helm.fullname" . }}-mongo
+  volumeClaimTemplates:
+  - metadata:
+      name: mongo-storage
+    spec:
+      accessModes:
+        - {{ .Values.mongo.persistence.accessMode }}
+      resources:
+        requests:
+          storage: {{ .Values.mongo.persistence.size }}      
 {{- end }}

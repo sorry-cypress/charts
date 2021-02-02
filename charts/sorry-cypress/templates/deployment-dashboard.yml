@@ -24,11 +24,17 @@ spec:
     spec:
       containers:
       - env:
+        {{- with .Values.dashboard.environmentVariables }}
         - name: GRAPHQL_SCHEMA_URL
-          value: {{ .Values.dashboard.environmentVariables.graphQlSchemaUrl | quote }}
-        {{- if .Values.dashboard.environmentVariables.ciUrl }}
+          value: {{ .graphQlSchemaUrl | quote }}
+        {{- if .graphQlClientCredentials }}
+        - name: GRAPHQL_CLIENT_CREDENTIALS
+          value: {{ .graphQlClientCredentials | quote }}
+        {{- end }}
+        {{- if .ciUrl }}
         - name: CI_URL
-          value: {{ .Values.dashboard.environmentVariables.ciUrl | quote }}
+          value: {{ .ciUrl | quote }}
+        {{- end }}
         {{- end }}
         - name: PORT
           value: "{{ .Values.dashboard.service.port }}"

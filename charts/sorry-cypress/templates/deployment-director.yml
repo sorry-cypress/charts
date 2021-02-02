@@ -30,7 +30,7 @@ spec:
           value: {{ .Values.director.environmentVariables.executionDriver }}
         {{- if eq .Values.director.environmentVariables.executionDriver "../execution/mongo/driver" }}
         - name: MONGODB_DATABASE
-          value: {{ .Values.director.environmentVariables.mongodbDatabase }}
+          value: {{ .Values.mongo.mongoDatabase }}
         - name: MONGODB_URI
           value: mongodb://{{ include "mongo.hostname" . }}:{{ .Values.mongo.service.port }}
         {{- end }}
@@ -38,16 +38,28 @@ spec:
           value: {{ .Values.director.environmentVariables.screenshotsDriver }}
         {{- if eq .Values.director.environmentVariables.screenshotsDriver "../screenshots/s3.driver" }}
         - name: S3_BUCKET
-          value: {{ .Values.director.s3.bucketName }}
+          value: {{ .Values.s3.bucketName }}
         - name: S3_REGION
-          value: {{ .Values.director.s3.region }}
+          value: {{ .Values.s3.region }}
+        {{- with .Values.s3.acl }}
+        - name: S3_ACL
+          value: {{ . }}
+        {{- end }}
+        {{- with .Values.s3.readUrlPrefix }}
+        - name: S3_READ_URL_PREFIX
+          value: {{ . | quote }}
+        {{- end }}
+        {{- with .Values.s3.accessKeyId }}
         - name: AWS_ACCESS_KEY_ID
-          value: {{ .Values.director.s3.accessKeyId }}
+          value: {{ . }}
+        {{- end }}
+        {{- if .Values.s3.secretAccessKey }}
         - name: AWS_SECRET_ACCESS_KEY
           valueFrom:
             secretKeyRef:
               name: {{ include "sorry-cypress-helm.fullname" . }}-s3Secrets
               key: AWS_SECRET_ACCESS_KEY
+        {{- end }}
         {{- end }}
         image: "{{ .Values.director.image.repository }}:{{ .Values.director.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.director.image.pullPolicy }}

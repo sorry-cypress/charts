@@ -37,6 +37,7 @@ api:
       # kubernetes.io/tls-acme: "true"
     hosts:
       - host: api.chart-example.local
+        path: /
     tls: []
     #  - secretName: chart-example-tls
     #    hosts:
@@ -63,6 +64,7 @@ dashboard:
 
   # https://sorry-cypress.dev/dashboard#configuration
   environmentVariables:
+    graphQlClientCredentials: ""
     graphQlSchemaUrl: ""
     ciUrl: ""
 
@@ -83,7 +85,7 @@ dashboard:
       # kubernetes.io/tls-acme: "true"
     hosts:
       - host: dashboard.chart-example.local
-        paths: /
+        path: /
     tls: []
     #  - secretName: chart-example-tls
     #    hosts:
@@ -118,9 +120,6 @@ director:
     # "../execution/mongo/driver"
     executionDriver: "../execution/in-memory"
 
-    # Ignored if mongo.environmentVariables.executionDriver is set to "../execution/in-memory"
-    mongodbDatabase: sorry-cypress
-
     # Dummy or S3
     # Valid options are:
     # "../screenshots/dummy.driver"
@@ -129,13 +128,6 @@ director:
 
     # https://sorry-cypress.dev/director/configuration
     allowedKeys: ""
-
-  # Ignored if mongo.environmentVariables.screenshotsDriver is set to "../screenshots/dummy.driver"
-  s3:
-    bucketName: example-bucket
-    region: us-east-1
-    accessKeyId: abc
-    secretAccessKey: zyx
 
   # Set annotations for pods
   podAnnotations: {}
@@ -154,7 +146,7 @@ director:
       # kubernetes.io/tls-acme: "true"
     hosts:
       - host: director.chart-example.local
-        paths: /
+        path: /
     tls: []
     #  - secretName: chart-example-tls
     #    hosts:
@@ -164,9 +156,10 @@ mongo:
   # You need to ensure that mongo.environmentVariables.executionDriver is set to "../execution/mongo/driver" if you want mongo.enabled to be true.
   enabled: false
 
-  # To use an external MongoDB instance, set enabled to false and uncomment
-  # the line below:
-  # mongoServer: ""
+  mongoDatabase: "sorry-cypress"
+
+  # Ignored if mongo.enabled is set to true
+  mongoServer: ""
 
   image:
     repository: mongo
@@ -198,3 +191,30 @@ mongo:
 
   service:
     port: 27017
+
+s3:
+  bucketName: example-bucket
+  region: us-east-1
+  accessKeyId: ""
+  secretAccessKey: ""
+  acl: "public-read"
+  readUrlPrefix: ""
+
+  ingress:
+    # When enabling ingress, an ExternalName service will be also created to expose the bucket.
+    enabled: false
+    labels: {}
+    annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+      # nginx.ingress.kubernetes.io/upstream-vhost: <bucket>.s3-website-<region>.amazonaws.com
+      # nginx.ingress.kubernetes.io/enable-cors: "true"
+      # nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+      # nginx.ingress.kubernetes.io/cors-allow-methods: "POST, GET, PUT, DELETE, HEAD"
+    hosts:
+      - host: static.chart-example.local
+        path: /
+    tls: []
+    #  - secretName: chart-example-tls
+    #    hosts:
+    #      - chart-example.local

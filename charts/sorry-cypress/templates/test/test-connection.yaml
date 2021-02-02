@@ -12,5 +12,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args:  ['{{ include "sorry-cypress-helm.fullname" . }}:{{ .Values.api.service.port }}']
+      args:  ['{{ include "sorry-cypress-helm.fullname" . }}-api:{{ .Values.api.service.port }}']
   restartPolicy: Never

@@ -73,7 +73,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: { { default (include "sorry-cypress.minio.fullname" .) .Values.minio.existingSecret } }
-                key: { { default "accesskey" .Values.minio.existingSecret.acesskey } }
+                key: { { default "secretkey" .Values.minio.existingSecret.secretkey } }
         - name: MINIO_ENDPOINT
           value: { { .Values.minio.endpoint } }
         - name: MINIO_URL

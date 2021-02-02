@@ -228,3 +228,6 @@ minio:
   defaultBucket:
     enabled: true
     name: sorry-cypress
+
+  persistence:
+    size: 10Gi

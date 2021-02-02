@@ -118,7 +118,7 @@ director:
     # Valid options are:
     # "../execution/in-memory"
     # "../execution/mongo/driver"
-    executionDriver: "../execution/in-memory"
+    executionDriver: "../execution/mongo/driver"
 
     # Dummy or S3
     # Valid options are:
@@ -154,7 +154,7 @@ director:
 
 mongo:
   # You need to ensure that director.environmentVariables.executionDriver is set to "../execution/mongo/driver" if you want mongo.enabled to be true.
-  enabled: false
+  enabled: true
 
   mongoDatabase: "sorry-cypress"
 

@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "sorry-cypress-helm.fullname" . }}-test-dashboard-connection"
+  labels:
+    app.kubernetes.io/name: "{{ include "sorry-cypress-helm.fullname" . }}-test-dashboard-connection"
+  annotations:
+    "helm.sh/hook": test-success
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args:  ['{{ include "sorry-cypress-helm.fullname" . }}-dashboard:{{ .Values.dashboard.service.port }}']
+  restartPolicy: Never
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "sorry-cypress-helm.fullname" . }}-test-director-connection"
+  labels:
+    app.kubernetes.io/name: "{{ include "sorry-cypress-helm.fullname" . }}-test-director-connection"
+  annotations:
+    "helm.sh/hook": test-success
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args:  ['{{ include "sorry-cypress-helm.fullname" . }}-director:{{ .Values.director.service.port }}']
+  restartPolicy: Never
+---
+{{- if .Values.mongo.enabled }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "sorry-cypress-helm.fullname" . }}-test-mongo-connection"
+  labels:
+    app.kubernetes.io/name: "{{ include "sorry-cypress-helm.fullname" . }}-test-mongo-connection"
+  annotations:
+    "helm.sh/hook": test-success
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args:  ['{{ include "sorry-cypress-helm.fullname" . }}-mongo:{{ .Values.mongo.service.port }}']
+  restartPolicy: Never
+{{- end }}
+
+# Note. Not testing API yet.. can't do a 'get' on that unless there's a nice secret healthz path hidden somewhere.

@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "sorry-cypress-helm.fullname" . }}-test-api-connection"
+  name: "{{ include "sorry-cypress-helm.fullname" . }}-test-dashboard-connection"
   labels:
-    app.kubernetes.io/name: {{ include "sorry-cypress-helm.fullname" . }}
+    app.kubernetes.io/name: "{{ include "sorry-cypress-helm.fullname" . }}-test-dashboard-connection"
   annotations:
     "helm.sh/hook": test-success
     "helm.sh/hook-delete-policy": hook-succeeded
@@ -12,5 +12,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args:  ['{{ include "sorry-cypress-helm.fullname" . }}-api:{{ .Values.api.service.port }}']
+      args:  ['{{ include "sorry-cypress-helm.fullname" . }}-dashboard:{{ .Values.dashboard.service.port }}']
   restartPolicy: Never

@@ -11,3 +11,8 @@ icon: https://sorry-cypress.dev/public/octolumbercat.png
 maintainers:
   - name: tico24
     url: https://crumbhole.com
+dependencies:
+  - name: minio
+    repository: https://helm.min.io/
+    version: 8.0.9
+    condition: minio.enabled

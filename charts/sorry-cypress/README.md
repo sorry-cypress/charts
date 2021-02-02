@@ -140,9 +140,14 @@ If the execution driver is set to `"../execution/mongo/driver"`, you may enable 
 | `mongo.podLabels`              | Set additional labels for pods                                                     | `{}`            |
 | `mongo.service.port`           | Kubernetes service port                                                            | `4000`          |
 
-### S3
 
-If the screenshots driver is set to `"../screenshots/s3.driver"`, you must configure the bucket settings. Ignore this configuration when using other screenshots drivers.
+### Screenshots And Videos
+
+For saving screenshot you need to configure screenshots driver.
+Currently only S3 and MinIO supported and for both of them you should use `"../screenshots/s3.driver"`.
+https://sorry-cypress.dev/director/storage
+
+## S3
 
 | Parameter                  | Description                                                                                                       | Default                      |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------- |
@@ -158,3 +163,16 @@ If the screenshots driver is set to `"../screenshots/s3.driver"`, you must confi
 | `s3.ingress.hosts[0].host` | Hostname to the service installation                                                                              | `static.chart-example.local` |
 | `s3.ingress.hosts[0].path` | Root path to the service installation                                                                             | `/`                          |
 | `s3.ingress.tls`           | Ingress secrets for TLS certificates                                                                              | `[]`                         |
+
+### MinIO
+
+We use MinIO As subchart, so you can also add other variables from [minio chart](https://github.com/minio/charts/tree/master/minio)
+
+| Parameter                     | Description                                                                                                                                                                                    | Default                         |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `minio.enabled`               | If enabled, it will deploy the internal MinIO service.                                                                                                                                         | `false`                         |
+| `minio.endpoint`              | Hostname or IP address that both director and cypress agents will use to communicate with minio service.                                                                                       | `storage.yourdomain.com`        |
+| `minio.url`                   | The public URL used for public read access to the stored screenshots and videos. This URL should be available from your browser and it will be used to fetch generated screenshots and videos. | `http://storage.yourdomain.com` |
+| `minio.defaultBucket.enabled` | Creates bucket when MinIO installed                                                                                                                                                            | `true`                          |
+| `minio.defaultBucket.name`    | The name of the bucket in MinIO that Sorry Cypress should use                                                                                                                                  | `sorry-cypress`                 |
+| `minio.persistence.size`      | Size of persistent volume claim of MinIO	                                                                                                                                                     | `10Gi`                          |

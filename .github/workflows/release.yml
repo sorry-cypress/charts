@@ -24,11 +24,9 @@ jobs:
         with:
           version: v3.4.0
           
-      - name: Add Helm repos
-        with:
-          charts_dir: charts
+      - name: Add dependency chart repos
         run: |
-          helm dependency build 
+          helm repo add minio https://helm.min.io/
         
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.1.0

@@ -27,8 +27,8 @@ api:
   # If you are using v10.0.0-beta.15 or greater, you can enable a readinessProbe for the API pods.
   readinessProbe:
     enabled: false
-    periodSeconds: 10
-    timeoutSeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 3
     successThreshold: 2
     failureThreshold: 5
 

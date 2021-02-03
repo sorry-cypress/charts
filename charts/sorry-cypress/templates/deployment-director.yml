@@ -36,7 +36,7 @@ spec:
         {{- end }}
         - name: SCREENSHOTS_DRIVER
           value: {{ .Values.director.environmentVariables.screenshotsDriver }}
-        {{- if eq .Values.director.environmentVariables.screenshotsDriver "../screenshots/s3.driver" }}
+        {{- if and (not .Values.minio.enabled) (eq .Values.director.environmentVariables.screenshotsDriver "../screenshots/s3.driver") }}
         - name: S3_BUCKET
           value: {{ .Values.s3.bucketName }}
         - name: S3_REGION
@@ -60,6 +60,24 @@ spec:
               name: {{ include "sorry-cypress-helm.fullname" . }}-s3Secrets
               key: AWS_SECRET_ACCESS_KEY
         {{- end }}
+        {{- end }}
+        {{- if and (.Values.minio.enabled) (eq .Values.director.environmentVariables.screenshotsDriver "../screenshots/s3.driver") }}
+        - name: MINIO_BUCKET
+          value: {{ .Values.minio.defaultBucket.name }}
+        - name: MINIO_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ default (include "sorry-cypress.minio.fullname" .) .Values.minio.existingSecret }}
+              key: "accesskey"
+        - name: MINIO_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ default (include "sorry-cypress.minio.fullname" .) .Values.minio.existingSecret }}
+              key: "secretkey"
+        - name: MINIO_ENDPOINT
+          value: {{ .Values.minio.endpoint }}
+        - name: MINIO_URL
+          value: {{ .Values.minio.url }}
         {{- end }}
         image: "{{ .Values.director.image.repository }}:{{ .Values.director.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.director.image.pullPolicy }}

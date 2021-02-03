@@ -218,3 +218,16 @@ s3:
     #  - secretName: chart-example-tls
     #    hosts:
     #      - chart-example.local
+
+minio:
+  enabled: false
+
+  endpoint: storage.yourdomain.com
+  url: http://storage.yourdomain.com
+
+  defaultBucket:
+    enabled: true
+    name: sorry-cypress
+
+  persistence:
+    size: 10Gi

@@ -1,3 +1,4 @@
+#enables mongo for testing
 director:
   environmentVariables:
     executionDriver: "../execution/mongo/driver"

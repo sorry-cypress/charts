@@ -1,2 +1,4 @@
+# Enables minio for testing
+
 minio:
   enabled: true

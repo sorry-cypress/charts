@@ -58,20 +58,25 @@ The following table lists the configurable parameters of the sorry-cypress chart
 
 https://sorry-cypress.dev/api#configuration
 
-| Parameter                   | Description                           | Default                     |
-| --------------------------- | ------------------------------------- | --------------------------- |
-| `api.image.repository`      | Image repository                      | `agoldis/sorry-cypress-api` |
-| `api.image.tag`             | Image tag                             | `latest`                    |
-| `api.image.pullPolicy`      | Image pull policy                     | `Always`                    |
-| `api.resources`             | Resources to initialize the container | `{}`                        |
-| `api.podAnnotations`        | Set annotations for pods              | `{}`                        |
-| `api.podLabels`             | Set additional labels for pods        | `{}`                        |
-| `api.service.port`          | Kubernetes service port               | `4000`                      |
-| `api.ingress.labels`        | Ingress labels                        | `{}`                        |
-| `api.ingress.annotations`   | Ingress annotations                   | `{}`                        |
-| `api.ingress.hosts[0].host` | Hostname to the service installation  | `api.chart-example.local`   |
-| `api.ingress.hosts[0].path` | Root path to the service installation | `/`                         |
-| `api.ingress.tls`           | Ingress secrets for TLS certificates  | `[]`                        |
+| Parameter                               | Description                                                                                     | Default                     |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------- |
+| `api.image.repository`                  | Image repository                                                                                | `agoldis/sorry-cypress-api` |
+| `api.image.tag`                         | Image tag                                                                                       | ``                          |
+| `api.image.pullPolicy`                  | Image pull policy                                                                               | `Always`                    |
+| `api.resources`                         | Resources to initialize the container                                                           | `{}`                        |
+| `api.podAnnotations`                    | Set annotations for pods                                                                        | `{}`                        |
+| `api.podLabels`                         | Set additional labels for pods                                                                  | `{}`                        |
+| `api.service.port`                      | Kubernetes service port                                                                         | `4000`                      |
+| `api.readinessProbe.enabled`            | Enables a readiness probe for the pod                                                           | `false`                     |
+| `api.readinessProbe.periodSeconds`      | How often (in seconds) to perform the probe.                                                    | `5`                         |
+| `api.readinessProbe.timeoutSeconds`     | Number of seconds after which the probe times out.                                              | `3`                         |
+| `api.readinessProbe.successThreshold`   | Minimum consecutive successes for the probe to be considered successful after having failed.    | `2`                         |
+| `api.readinessProbe.failureThreshold`   |  When a probe fails, Kubernetes will try `failureThreshold` times before giving up.             | `5`                         |
+| `api.ingress.labels`                    | Ingress labels                                                                                  | `{}`                        |
+| `api.ingress.annotations`               | Ingress annotations                                                                             | `{}`                        |
+| `api.ingress.hosts[0].host`             | Hostname to the service installation                                                            | `api.chart-example.local`   |
+| `api.ingress.hosts[0].path`             | Root path to the service installation                                                           | `/`                         |
+| `api.ingress.tls`                       | Ingress secrets for TLS certificates                                                            | `[]`                        |
 
 ### Dashboard service
 
@@ -80,7 +85,7 @@ https://sorry-cypress.dev/dashboard#configuration
 | Parameter                                                 | Description                                                                                                | Default                           |
 | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------- |
 | `dashboard.image.repository`                              | Image repository                                                                                           | `agoldis/sorry-cypress-dashboard` |
-| `dashboard.image.tag`                                     | Image tag                                                                                                  | `latest`                          |
+| `dashboard.image.tag`                                     | Image tag                                                                                                  | ``                                |
 | `dashboard.image.pullPolicy`                              | Image pull policy                                                                                          | `Always`                          |
 | `dashboard.resources`                                     | Resources to initialize the container                                                                      | `{}`                              |
 | `dashboard.environmentVariables.ciUrl`                    | Set the `CI_URL` optional environment variable to add a link to your CI tool                               | `""`                              |
@@ -103,7 +108,7 @@ https://sorry-cypress.dev/director/configuration
 | Parameter                                         | Description                                                                                                                                                                  | Default                          |
 | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
 | `director.image.repository`                       | Image repository                                                                                                                                                             | `agoldis/sorry-cypress-director` |
-| `director.image.tag`                              | Image tag                                                                                                                                                                    | `latest`                         |
+| `director.image.tag`                              | Image tag                                                                                                                                                                    | ``                               |
 | `director.image.pullPolicy`                       | Image pull policy                                                                                                                                                            | `Always`                         |
 | `director.resources`                              | Resources to initialize the container                                                                                                                                        | `{}`                             |
 | `director.environmentVariables.allowedKeys`       | Define the list of comma delimited record keys (provided to the Cypress Runner using `--key` option). Empty or not provided variable means that all record keys are allowed. | `""`                             |

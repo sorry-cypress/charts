@@ -25,6 +25,8 @@ jobs:
           version: v3.4.0
           
       - name: Add Helm repos
+        with:
+          charts_dir: charts
         run: |
           helm dependency build 
         

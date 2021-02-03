@@ -1,3 +1,5 @@
+# A very basic set of tests to query that the appropriate services work and connect to a pod as long as they are enabled in the Vales.yaml file
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -50,5 +52,25 @@ spec:
       args:  ['{{ include "sorry-cypress-helm.fullname" . }}-mongo:{{ .Values.mongo.service.port }}']
   restartPolicy: Never
 {{- end }}
-
+---
+{{- if .Values.minio.enabled }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "sorry-cypress-helm.fullname" . }}-test-minio-connection"
+  labels:
+    app.kubernetes.io/name: "{{ include "sorry-cypress-helm.fullname" . }}-test-minio-connection"
+  annotations:
+    "helm.sh/hook": test-success
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command:
+      - wget
+      - "-U Mozilla"
+      - "{{ include "sorry-cypress-helm.fullname" . }}-minio:9000/minio/login"
+  restartPolicy: Never
+{{- end }}
 # Note. Not testing API yet.. can't do a 'get' on that unless there's a nice secret healthz path hidden somewhere.

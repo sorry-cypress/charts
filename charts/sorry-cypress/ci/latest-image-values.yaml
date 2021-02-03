@@ -1,0 +1,19 @@
+# Pulls the latest docker image and tests that the chart still works with them.
+
+api:
+  image:
+    repository: agoldis/sorry-cypress-api
+    pullPolicy: Always
+    tag: "latest"
+
+dashboard:
+  image:
+    repository: agoldis/sorry-cypress-dashboard
+    pullPolicy: Always
+    tag: "latest"
+
+director:
+  image:
+    repository: agoldis/sorry-cypress-director
+    pullPolicy: Always
+    tag: "latest"

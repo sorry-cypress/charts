@@ -57,7 +57,7 @@ spec:
         - name: AWS_SECRET_ACCESS_KEY
           valueFrom:
             secretKeyRef:
-              name: {{ include "sorry-cypress-helm.fullname" . }}-s3Secrets
+              name: {{ include "sorry-cypress-helm.fullname" . }}-s3secrets
               key: AWS_SECRET_ACCESS_KEY
         {{- end }}
         {{- end }}

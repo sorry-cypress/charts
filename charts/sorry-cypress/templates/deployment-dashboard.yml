@@ -22,6 +22,16 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
     spec:
+      nodeSelector:
+        {{ toYaml .Values.dashboard.nodeSelector | indent 8 }}
+      {{- with .Values.dashboard.tolerations }}
+      tolerations:
+        {{ toYaml . | indent 8 }}
+      {{- end }}
+      {{- with .Values.dashboard.affinity }}
+      affinity:
+        {{ toYaml . | indent 8 }}
+      {{- end }}
       containers:
       - env:
         {{- with .Values.dashboard.environmentVariables }}

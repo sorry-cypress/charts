@@ -24,6 +24,9 @@
                 },
                 "podAnnotations": {},
                 "podLabels": {},
+                "affinity": {},
+                "nodeSelector": {},
+                "tolerations": [],
                 "ingress": {
                     "labels": {},
                     "annotations": {},
@@ -52,6 +55,9 @@
                 },
                 "podAnnotations": {},
                 "podLabels": {},
+                "affinity": {},
+                "nodeSelector": {},
+                "tolerations": [],
                 "ingress": {
                     "enabled": true,
                     "labels": {},
@@ -79,6 +85,9 @@
                 },
                 "podAnnotations": {},
                 "podLabels": {},
+                "affinity": {},
+                "nodeSelector": {},
+                "tolerations": [],
                 "service": {
                     "port": 1234
                 },
@@ -112,6 +121,9 @@
                 "resources": {},
                 "podAnnotations": {},
                 "podLabels": {},
+                "affinity": {},
+                "nodeSelector": {},
+                "tolerations": [],
                 "service": {
                     "port": 27017
                 }
@@ -184,6 +196,9 @@
                     },
                     "podAnnotations": {},
                     "podLabels": {},
+                    "affinity": {},
+                    "nodeSelector": {},
+                    "tolerations": [],
                     "ingress": {
                         "labels": {},
                         "annotations": {},
@@ -204,6 +219,9 @@
                 "readinessProbe",
                 "podAnnotations",
                 "podLabels",
+                "affinity",
+                "nodeSelector",
+                "tolerations",
                 "ingress"
             ],
             "properties": {
@@ -387,6 +405,42 @@
                     "required": [],
                     "additionalProperties": true
                 },
+                "affinity": {
+                    "$id": "#/properties/api/properties/affinity",
+                    "type": "object",
+                    "title": "The affinity schema",
+                    "description": "Affinities describe where pods prefer or require to be scheduled.",
+                    "default": {},
+                    "examples": [
+                        {}
+                    ],
+                    "required": [],
+                    "additionalProperties": true
+                },
+                "nodeSelector": {
+                    "$id": "#/properties/api/properties/nodeSelector",
+                    "type": "object",
+                    "title": "The nodeSelector schema",
+                    "description": "Allow pods to be scheduled on matched node labels.",
+                    "default": {},
+                    "examples": [
+                        {}
+                    ],
+                    "required": [],
+                    "additionalProperties": true
+                },
+                "tolerations": {
+                    "$id": "#/properties/api/properties/tolerations",
+                    "type": "array",
+                    "title": "The tolerations schema",
+                    "description": "Tolerations allow a pod to be scheduled on nodes with taints.",
+                    "default": [],
+                    "examples": [
+                        []
+                    ],
+                    "required": [],
+                    "additionalProperties": true
+                },
                 "ingress": {
                     "$id": "#/properties/api/properties/ingress",
                     "type": "object",
@@ -541,6 +595,9 @@
                     },
                     "podAnnotations": {},
                     "podLabels": {},
+                    "affinity": {},
+                    "nodeSelector": {},
+                    "tolerations": [],
                     "ingress": {
                         "enabled": true,
                         "labels": {},
@@ -562,6 +619,9 @@
                 "service",
                 "podAnnotations",
                 "podLabels",
+                "affinity",
+                "nodeSelector",
+                "tolerations",
                 "ingress"
             ],
             "properties": {
@@ -717,6 +777,42 @@
                     "default": {},
                     "examples": [
                         {}
+                    ],
+                    "required": [],
+                    "additionalProperties": true
+                },
+                "affinity": {
+                    "$id": "#/properties/dashboard/properties/affinity",
+                    "type": "object",
+                    "title": "The affinity schema",
+                    "description": "Affinities describe where pods prefer or require to be scheduled.",
+                    "default": {},
+                    "examples": [
+                        {}
+                    ],
+                    "required": [],
+                    "additionalProperties": true
+                },
+                "nodeSelector": {
+                    "$id": "#/properties/dashboard/properties/nodeSelector",
+                    "type": "object",
+                    "title": "The nodeSelector schema",
+                    "description": "Allow pods to be scheduled on matched node labels.",
+                    "default": {},
+                    "examples": [
+                        {}
+                    ],
+                    "required": [],
+                    "additionalProperties": true
+                },
+                "tolerations": {
+                    "$id": "#/properties/dashboard/properties/tolerations",
+                    "type": "array",
+                    "title": "The tolerations schema",
+                    "description": "Tolerations allow a pod to be scheduled on nodes with taints.",
+                    "default": [],
+                    "examples": [
+                        []
                     ],
                     "required": [],
                     "additionalProperties": true
@@ -885,6 +981,9 @@
                     },
                     "podAnnotations": {},
                     "podLabels": {},
+                    "affinity": {},
+                    "nodeSelector": {},
+                    "tolerations": [],
                     "service": {
                         "port": 1234
                     },
@@ -908,6 +1007,9 @@
                 "environmentVariables",
                 "podAnnotations",
                 "podLabels",
+                "affinity",
+                "nodeSelector",
+                "tolerations",
                 "service",
                 "ingress"
             ],
@@ -1048,6 +1150,42 @@
                     "default": {},
                     "examples": [
                         {}
+                    ],
+                    "required": [],
+                    "additionalProperties": true
+                },
+                "affinity": {
+                    "$id": "#/properties/director/properties/affinity",
+                    "type": "object",
+                    "title": "The affinity schema",
+                    "description": "Affinities describe where pods prefer or require to be scheduled.",
+                    "default": {},
+                    "examples": [
+                        {}
+                    ],
+                    "required": [],
+                    "additionalProperties": true
+                },
+                "nodeSelector": {
+                    "$id": "#/properties/director/properties/nodeSelector",
+                    "type": "object",
+                    "title": "The nodeSelector schema",
+                    "description": "Allow pods to be scheduled on matched node labels.",
+                    "default": {},
+                    "examples": [
+                        {}
+                    ],
+                    "required": [],
+                    "additionalProperties": true
+                },
+                "tolerations": {
+                    "$id": "#/properties/director/properties/tolerations",
+                    "type": "array",
+                    "title": "The tolerations schema",
+                    "description": "Tolerations allow a pod to be scheduled on nodes with taints.",
+                    "default": [],
+                    "examples": [
+                        []
                     ],
                     "required": [],
                     "additionalProperties": true
@@ -1247,6 +1385,9 @@
                     "resources": {},
                     "podAnnotations": {},
                     "podLabels": {},
+                    "affinity": {},
+                    "nodeSelector": {},
+                    "tolerations": [],
                     "service": {
                         "port": 27017
                     }
@@ -1261,6 +1402,9 @@
                 "resources",
                 "podAnnotations",
                 "podLabels",
+                "affinity",
+                "nodeSelector",
+                "tolerations",
                 "service"
             ],
             "properties": {
@@ -1430,6 +1574,42 @@
                     "default": {},
                     "examples": [
                         {}
+                    ],
+                    "required": [],
+                    "additionalProperties": true
+                },
+                "affinity": {
+                    "$id": "#/properties/mongo/properties/affinity",
+                    "type": "object",
+                    "title": "The affinity schema",
+                    "description": "Affinities describe where pods prefer or require to be scheduled.",
+                    "default": {},
+                    "examples": [
+                        {}
+                    ],
+                    "required": [],
+                    "additionalProperties": true
+                },
+                "nodeSelector": {
+                    "$id": "#/properties/mongo/properties/nodeSelector",
+                    "type": "object",
+                    "title": "The nodeSelector schema",
+                    "description": "Allow pods to be scheduled on matched node labels.",
+                    "default": {},
+                    "examples": [
+                        {}
+                    ],
+                    "required": [],
+                    "additionalProperties": true
+                },
+                "tolerations": {
+                    "$id": "#/properties/mongo/properties/tolerations",
+                    "type": "array",
+                    "title": "The tolerations schema",
+                    "description": "Tolerations allow a pod to be scheduled on nodes with taints.",
+                    "default": [],
+                    "examples": [
+                        []
                     ],
                     "required": [],
                     "additionalProperties": true

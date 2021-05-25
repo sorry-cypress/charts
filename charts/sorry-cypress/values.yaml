@@ -128,8 +128,8 @@ director:
     #   memory: 128Mi
     # requests:
     #   cpu: 100m
-    #   memory: 
-    
+    #   memory: 128Mi
+
   nodeSelector: {}
   
   tolerations: []

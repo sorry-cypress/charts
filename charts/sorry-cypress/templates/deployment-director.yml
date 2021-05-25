@@ -104,7 +104,6 @@ spec:
           failureThreshold: 5
         resources:
           {{- toYaml .Values.director.resources | nindent 10 }}
-      
       restartPolicy: Always
       serviceAccountName: ""
       volumes: null

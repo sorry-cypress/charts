@@ -77,7 +77,7 @@ dashboard:
     #   memory: 128Mi
 
   nodeSelector: {}
-  
+
   tolerations: []
 
   affinity: {}
@@ -131,7 +131,7 @@ director:
     #   memory: 128Mi
 
   nodeSelector: {}
-  
+
   tolerations: []
 
   affinity: {}
@@ -193,7 +193,7 @@ mongo:
     tag: "4.0"
 
   nodeSelector: {}
-  
+
   tolerations: []
 
   affinity: {}

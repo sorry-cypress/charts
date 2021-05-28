@@ -62,6 +62,7 @@ https://sorry-cypress.dev/api#configuration
 | `api.image.repository`                  | Image repository                                                                                | `agoldis/sorry-cypress-api` |
 | `api.image.tag`                         | Image tag                                                                                       | ``                          |
 | `api.image.pullPolicy`                  | Image pull policy                                                                               | `Always`                    |
+| `api.enabled`                           | Whether to deploy the API service                                                               | `true`                    |
 | `api.resources`                         | Resources to initialize the container                                                           | `{}`                        |
 | `api.podAnnotations`                    | Set annotations for pods                                                                        | `{}`                        |
 | `api.podLabels`                         | Set additional labels for pods                                                                  | `{}`                        |
@@ -86,6 +87,7 @@ https://sorry-cypress.dev/dashboard#configuration
 | `dashboard.image.repository`                              | Image repository                                                                                           | `agoldis/sorry-cypress-dashboard` |
 | `dashboard.image.tag`                                     | Image tag                                                                                                  | ``                                |
 | `dashboard.image.pullPolicy`                              | Image pull policy                                                                                          | `Always`                          |
+| `dashboard.enabled`                                       | Whether to deploy the Dashboard service                                                                    | `true`                    |
 | `dashboard.resources`                                     | Resources to initialize the container                                                                      | `{}`                              |
 | `dashboard.environmentVariables.ciUrl`                    | Set the `CI_URL` optional environment variable to add a link to your CI tool                               | `""`                              |
 | `dashboard.environmentVariables.graphQlClientCredentials` | Set the `GRAPHQL_CLIENT_CREDENTIALS` environment variable to configure the API service client credentials. | `""`                              |

@@ -1,3 +1,4 @@
+{{- if .Values.api.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -50,3 +51,4 @@ spec:
       restartPolicy: Always
       serviceAccountName: ""
       volumes: null
+{{- end }}

@@ -11,6 +11,7 @@
                     "repository": "agoldis/sorry-cypress-api",
                     "pullPolicy": "Always"
                 },
+                "enabled": true,
                 "resources": {},
                 "service": {
                     "port": 4000
@@ -41,6 +42,7 @@
                     "repository": "agoldis/sorry-cypress-dashboard",
                     "pullPolicy": "Always"
                 },
+                "enabled": true,
                 "resources": {},
                 "environmentVariables": {
                     "graphQlClientCredentials": "",

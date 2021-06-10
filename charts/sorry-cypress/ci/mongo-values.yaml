@@ -3,5 +3,5 @@ director:
   environmentVariables:
     executionDriver: "../execution/mongo/driver"
 
-mongo:
+mongodb:
   enabled: true

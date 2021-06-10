@@ -40,6 +40,11 @@ jobs:
         with:
           version: v3.3.0
 
+      - name: Add dependency chart repos
+        run: |
+          helm repo add minio https://helm.min.io/
+          helm repo add mongodb https://charts.bitnami.com/bitnami
+
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |

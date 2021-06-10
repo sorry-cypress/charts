@@ -26,9 +26,9 @@ spec:
       - env:
         {{- if eq .Values.director.environmentVariables.executionDriver "../execution/mongo/driver" }}
         - name: MONGODB_DATABASE
-          value: {{ .Values.mongo.mongoDatabase }}
+          value: {{ .Values.mongodb.mongoDatabase }}
         - name: MONGODB_URI
-          value: mongodb://{{ include "mongo.hostname" . }}:{{ .Values.mongo.service.port }}
+          value: mongodb://{{ include "mongodb.hostname" . }}:{{ .Values.mongodb.service.port }}
         {{- end }}
         image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.api.image.pullPolicy }}

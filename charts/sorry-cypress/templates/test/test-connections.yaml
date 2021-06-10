@@ -34,7 +34,7 @@ spec:
       args:  ['{{ include "sorry-cypress-helm.fullname" . }}-director:{{ .Values.director.service.port }}']
   restartPolicy: Never
 ---
-{{- if .Values.mongo.enabled }}
+{{- if .Values.mongodb.enabled }}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -49,7 +49,7 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args:  ['{{ include "sorry-cypress-helm.fullname" . }}-mongo:{{ .Values.mongo.service.port }}']
+      args:  ['{{ include "sorry-cypress-helm.fullname" . }}-mongo:{{ .Values.mongodb.service.port }}']
   restartPolicy: Never
 {{- end }}
 ---

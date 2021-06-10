@@ -1,7 +1,6 @@
 # Sorry Cypress (Helm Chart)
 
 <div align="center">
-<div><img src="https://sorry-cypress.dev/public/octolumbercat.png" width="256" /></div>
 <div>:octocat: An open-source, on-premise, self-hosted alternative to Cypress dashboard :evergreen_tree:</div>
 </div>
 
@@ -149,7 +148,7 @@ If the execution driver is set to `"../execution/mongo/driver"`, you may enable 
 ### Screenshots And Videos
 
 For saving screenshot you need to configure screenshots driver.
-Currently only S3 and MinIO supported and for both of them you should use `"../screenshots/s3.driver"`.
+Currently only S3 and MinIO supported and for s3 you should use `"../screenshots/s3.driver"`.
 https://sorry-cypress.dev/director/storage
 
 ## S3
@@ -171,8 +170,9 @@ https://sorry-cypress.dev/director/storage
 
 ### MinIO
 
-We use MinIO As subchart, so you can also add other variables from [minio chart](https://github.com/minio/charts/tree/master/minio)
-
+We use MinIO As subchart, so you can also add other variables from [minio chart](https://github.com/minio/charts/tree/master/minio).
+Currently only S3 and MinIO supported and for MinIO you should use `"../screenshots/minio.driver"`.
+https://sorry-cypress.dev/director/storage
 | Parameter                     | Description                                                                                                                                                                                    | Default                         |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | `minio.enabled`               | If enabled, it will deploy the internal MinIO service.                                                                                                                                         | `false`                         |

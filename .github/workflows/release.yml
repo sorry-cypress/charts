@@ -4,10 +4,13 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'charts/sorry-cypress/Chart.yaml'
 
 jobs:
   release:
     runs-on: ubuntu-latest
+    if: "!contains(toJSON(github.event.commits.*.message), '[skip release]')"
     steps:
       - name: Checkout
         uses: actions/checkout@v2

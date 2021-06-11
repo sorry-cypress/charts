@@ -38,9 +38,9 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "sorry-cypress-helm.fullname" . }}-test-mongo-connection"
+  name: "{{ include "sorry-cypress-helm.fullname" . }}-test-mongodb-connection"
   labels:
-    app.kubernetes.io/name: "{{ include "sorry-cypress-helm.fullname" . }}-test-mongo-connection"
+    app.kubernetes.io/name: "{{ include "sorry-cypress-helm.fullname" . }}-test-mongodb-connection"
   annotations:
     "helm.sh/hook": test-success
     "helm.sh/hook-delete-policy": hook-succeeded
@@ -49,7 +49,7 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args:  ['{{ include "sorry-cypress-helm.fullname" . }}-mongo:{{ .Values.mongodb.service.port }}']
+      args:  ['{{ include "sorry-cypress-helm.fullname" . }}-mongodb-headless:{{ .Values.mongodb.service.port }}']
   restartPolicy: Never
 {{- end }}
 ---

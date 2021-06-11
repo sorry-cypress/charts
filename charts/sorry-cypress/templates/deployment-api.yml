@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - env:
-        {{- if eq .Values.director.environmentVariables.executionDriver "../execution/mongo/driver" }}
+        {{- if .Values.mongodb.enabled }}
         - name: MONGODB_DATABASE
           value: {{ .Values.mongodb.mongoDatabase }}
         - name: MONGODB_URI

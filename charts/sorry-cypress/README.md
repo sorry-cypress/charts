@@ -141,7 +141,7 @@ If the execution driver is set to `"../execution/mongo/driver"`, you may enable 
 
 | Parameter                      | Description                                                                        | Default         |
 |--------------------------------|------------------------------------------------------------------------------------|-----------------|
-| `mongo.enabled`                | If enabled, it will deploy the internal MongoDB service.                           | `false`         |
+| `mongo.enabled`                | If enabled, it will deploy the internal MongoDB service.                           | `true`          |
 | `mongo.mongoDatabase`          | The mongo database                                                                 | `sorry-cypress` |
 | `mongo.mongoServer`            | The mongo server when providing an external one. Use it with `mongo.enabled=false` | `""`            |
 | `mongo.image.repository`       | Image repository                                                                   | `mongo`         |

@@ -2,7 +2,7 @@
 
 minio:
   enabled: true
-  
+
   resources:
     requests:
       memory: 512Mi

@@ -57,43 +57,49 @@ The following table lists the configurable parameters of the sorry-cypress chart
 
 https://sorry-cypress.dev/api#configuration
 
-| Parameter                               | Description                                                                                     | Default                     |
-| --------------------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------- |
-| `api.image.repository`                  | Image repository                                                                                | `agoldis/sorry-cypress-api` |
-| `api.image.tag`                         | Image tag                                                                                       | ``                          |
-| `api.image.pullPolicy`                  | Image pull policy                                                                               | `Always`                    |
-| `api.enabled`                           | Whether to deploy the API service                                                               | `true`                    |
-| `api.resources`                         | Resources to initialize the container                                                           | `{}`                        |
-| `api.podAnnotations`                    | Set annotations for pods                                                                        | `{}`                        |
-| `api.podLabels`                         | Set additional labels for pods                                                                  | `{}`                        |
-| `api.service.port`                      | Kubernetes service port                                                                         | `4000`                      |
-| `api.readinessProbe.enabled`            | Enables a readiness probe for the pod                                                           | `false`                     |
-| `api.readinessProbe.periodSeconds`      | How often (in seconds) to perform the probe.                                                    | `5`                         |
-| `api.readinessProbe.timeoutSeconds`     | Number of seconds after which the probe times out.                                              | `3`                         |
-| `api.readinessProbe.successThreshold`   | Minimum consecutive successes for the probe to be considered successful after having failed.    | `2`                         |
-| `api.readinessProbe.failureThreshold`   |  When a probe fails, Kubernetes will try `failureThreshold` times before giving up.             | `5`                         |
-| `api.ingress.labels`                    | Ingress labels                                                                                  | `{}`                        |
-| `api.ingress.annotations`               | Ingress annotations                                                                             | `{}`                        |
-| `api.ingress.hosts[0].host`             | Hostname to the service installation                                                            | `api.chart-example.local`   |
-| `api.ingress.hosts[0].path`             | Root path to the service installation                                                           | `/`                         |
-| `api.ingress.tls`                       | Ingress secrets for TLS certificates                                                            | `[]`                        |
+| Parameter                             | Description                                                                                  | Default                     |
+|---------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------|
+| `api.image.repository`                | Image repository                                                                             | `agoldis/sorry-cypress-api` |
+| `api.image.tag`                       | Image tag                                                                                    | ``                          |
+| `api.image.pullPolicy`                | Image pull policy                                                                            | `Always`                    |
+| `api.enabled`                         | Whether to deploy the API service                                                            | `true`                      |
+| `api.resources`                       | Resources to initialize the container                                                        | `{}`                        |
+| `api.podAnnotations`                  | Set annotations for pods                                                                     | `{}`                        |
+| `api.podLabels`                       | Set additional labels for pods                                                               | `{}`                        |
+| `api.affinity`                        | Set affinity for pods                                                                        | `{}`                        |
+| `api.nodeSelector`                    | Set node selector for pods                                                                   | `{}`                        |
+| `api.tolerations`                     | Set tolerations for pods                                                                     | `[]`                        |
+| `api.service.port`                    | Kubernetes service port                                                                      | `4000`                      |
+| `api.readinessProbe.enabled`          | Enables a readiness probe for the pod                                                        | `false`                     |
+| `api.readinessProbe.periodSeconds`    | How often (in seconds) to perform the probe.                                                 | `5`                         |
+| `api.readinessProbe.timeoutSeconds`   | Number of seconds after which the probe times out.                                           | `3`                         |
+| `api.readinessProbe.successThreshold` | Minimum consecutive successes for the probe to be considered successful after having failed. | `2`                         |
+| `api.readinessProbe.failureThreshold` | When a probe fails, Kubernetes will try `failureThreshold` times before giving up.           | `5`                         |
+| `api.ingress.labels`                  | Ingress labels                                                                               | `{}`                        |
+| `api.ingress.annotations`             | Ingress annotations                                                                          | `{}`                        |
+| `api.ingress.hosts[0].host`           | Hostname to the service installation                                                         | `api.chart-example.local`   |
+| `api.ingress.hosts[0].path`           | Root path to the service installation                                                        | `/`                         |
+| `api.ingress.tls`                     | Ingress secrets for TLS certificates                                                         | `[]`                        |
 
 ### Dashboard service
 
 https://sorry-cypress.dev/dashboard#configuration
 
 | Parameter                                                 | Description                                                                                                | Default                           |
-| --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------- |
+|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------|-----------------------------------|
 | `dashboard.image.repository`                              | Image repository                                                                                           | `agoldis/sorry-cypress-dashboard` |
 | `dashboard.image.tag`                                     | Image tag                                                                                                  | ``                                |
 | `dashboard.image.pullPolicy`                              | Image pull policy                                                                                          | `Always`                          |
-| `dashboard.enabled`                                       | Whether to deploy the Dashboard service                                                                    | `true`                    |
+| `dashboard.enabled`                                       | Whether to deploy the Dashboard service                                                                    | `true`                            |
 | `dashboard.resources`                                     | Resources to initialize the container                                                                      | `{}`                              |
 | `dashboard.environmentVariables.ciUrl`                    | Set the `CI_URL` optional environment variable to add a link to your CI tool                               | `""`                              |
 | `dashboard.environmentVariables.graphQlClientCredentials` | Set the `GRAPHQL_CLIENT_CREDENTIALS` environment variable to configure the API service client credentials. | `""`                              |
 | `dashboard.environmentVariables.graphQlSchemaUrl`         | Set the `GRAPHQL_SCHEMA_URL` environment variable to configure the URL of API service.                     | `""`                              |
 | `dashboard.podAnnotations`                                | Set annotations for pods                                                                                   | `{}`                              |
 | `dashboard.podLabels`                                     | Set additional labels for pods                                                                             | `{}`                              |
+| `dashboard.affinity`                                      | Set affinity for pods                                                                                      | `{}`                              |
+| `dashboard.nodeSelector`                                  | Set node selector for pods                                                                                 | `{}`                              |
+| `dashboard.tolerations`                                   | Set tolerations for pods                                                                                   | `[]`                              |
 | `dashboard.service.port`                                  | Kubernetes service port                                                                                    | `4000`                            |
 | `dashboard.ingress.enabled`                               | Flag to define if the dashboard service ingress is enabled                                                 | `true`                            |
 | `dashboard.ingress.labels`                                | Ingress labels                                                                                             | `{}`                              |
@@ -107,7 +113,7 @@ https://sorry-cypress.dev/dashboard#configuration
 https://sorry-cypress.dev/director/configuration
 
 | Parameter                                         | Description                                                                                                                                                                  | Default                          |
-| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+|---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|
 | `director.image.repository`                       | Image repository                                                                                                                                                             | `agoldis/sorry-cypress-director` |
 | `director.image.tag`                              | Image tag                                                                                                                                                                    | ``                               |
 | `director.image.pullPolicy`                       | Image pull policy                                                                                                                                                            | `Always`                         |
@@ -118,6 +124,9 @@ https://sorry-cypress.dev/director/configuration
 | `director.environmentVariables.screenshotsDriver` | Set the screenshots driver. Valid options are `"../screenshots/dummy.driver"` and `"../screenshots/s3.driver"`                                                               | `"../screenshots/dummy.driver"`  |
 | `director.podAnnotations`                         | Set annotations for pods                                                                                                                                                     | `{}`                             |
 | `director.podLabels`                              | Set additional labels for pods                                                                                                                                               | `{}`                             |
+| `director.affinity`                               | Set affinity for pods                                                                                                                                                        | `{}`                             |
+| `director.nodeSelector`                           | Set node selector for pods                                                                                                                                                   | `{}`                             |
+| `director.tolerations`                            | Set tolerations for pods                                                                                                                                                     | `[]`                             |
 | `director.service.port`                           | Kubernetes service port                                                                                                                                                      | `4000`                           |
 | `director.ingress.enabled`                        | Flag to define if the director service ingress is enabled                                                                                                                    | `true`                           |
 | `director.ingress.labels`                         | Ingress labels                                                                                                                                                               | `{}`                             |
@@ -131,7 +140,7 @@ https://sorry-cypress.dev/director/configuration
 If the execution driver is set to `"../execution/mongo/driver"`, you may enable the internal MongoDB service deploy or provide an external one. Ignore this configuration when using other execution drivers.
 
 | Parameter                      | Description                                                                        | Default         |
-| ------------------------------ | ---------------------------------------------------------------------------------- | --------------- |
+|--------------------------------|------------------------------------------------------------------------------------|-----------------|
 | `mongo.enabled`                | If enabled, it will deploy the internal MongoDB service.                           | `false`         |
 | `mongo.mongoDatabase`          | The mongo database                                                                 | `sorry-cypress` |
 | `mongo.mongoServer`            | The mongo server when providing an external one. Use it with `mongo.enabled=false` | `""`            |
@@ -144,6 +153,9 @@ If the execution driver is set to `"../execution/mongo/driver"`, you may enable 
 | `mongo.resources`              | Resources to initialize the container                                              | `{}`            |
 | `mongo.podAnnotations`         | Set annotations for pods                                                           | `{}`            |
 | `mongo.podLabels`              | Set additional labels for pods                                                     | `{}`            |
+| `mongo.affinity`               | Set affinity for pods                                                              | `{}`            |
+| `mongo.nodeSelector`           | Set node selector for pods                                                         | `{}`            |
+| `mongo.tolerations`            | Set tolerations for pods                                                           | `[]`            |
 | `mongo.service.port`           | Kubernetes service port                                                            | `4000`          |
 
 

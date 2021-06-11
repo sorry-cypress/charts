@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         kubernetes_version:
-          - "kindest/node:v1.21.1"
+          # - "kindest/node:v1.21.1" - There seems to be a bug with the github action which casuses 1.21 to fail to start up.
           - "kindest/node:v1.20.7"
           - "kindest/node:v1.19.11"
           - "kindest/node:v1.18.19"

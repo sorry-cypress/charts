@@ -7,7 +7,7 @@ api:
     repository: agoldis/sorry-cypress-api
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "latest"
+    # tag: "latest"
 
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious
@@ -24,7 +24,6 @@ api:
   service:
     port: 4000
 
-  # If you are using v10.0.0-beta.15 or greater, you can enable a readinessProbe for the API pods.
   readinessProbe:
     enabled: true
     periodSeconds: 5

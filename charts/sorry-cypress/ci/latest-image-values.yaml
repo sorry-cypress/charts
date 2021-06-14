@@ -6,9 +6,6 @@ api:
     pullPolicy: Always
     tag: "latest"
 
-  readinessProbe:
-    enabled: true
-
 dashboard:
   image:
     repository: agoldis/sorry-cypress-dashboard

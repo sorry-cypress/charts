@@ -2,6 +2,3 @@
 director:
   environmentVariables:
     executionDriver: "../execution/mongo/driver"
-
-mongo:
-  enabled: true

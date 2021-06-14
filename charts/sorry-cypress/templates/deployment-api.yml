@@ -34,11 +34,7 @@ spec:
       {{- end }}
       containers:
       - env:
-<<<<<<< HEAD
         {{- if .Values.mongodb.enabled }}
-=======
-        {{- if .Values.mongo.enabled }}
->>>>>>> origin
         - name: MONGODB_DATABASE
           value: {{ .Values.mongodb.mongoDatabase }}
         - name: MONGODB_URI

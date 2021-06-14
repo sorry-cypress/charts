@@ -9,6 +9,9 @@ api:
     # Overrides the image tag whose default is the chart appVersion.
     # tag: "latest"
 
+  # If you have no need for the API service, you can set this to false to exclude it
+  enabled: true
+
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
@@ -62,6 +65,9 @@ dashboard:
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
     # tag: "latest"
+
+  # If you have no need for the Dashboard service, you can set this to false to exclude it
+  enabled: true
 
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious

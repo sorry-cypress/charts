@@ -62,6 +62,7 @@ https://sorry-cypress.dev/api#configuration
 | `api.image.repository`                | Image repository                                                                             | `agoldis/sorry-cypress-api` |
 | `api.image.tag`                       | Image tag                                                                                    | ``                          |
 | `api.image.pullPolicy`                | Image pull policy                                                                            | `Always`                    |
+| `api.enabled`                         | Whether to deploy the API service                                                            | `true`                      |
 | `api.resources`                       | Resources to initialize the container                                                        | `{}`                        |
 | `api.podAnnotations`                  | Set annotations for pods                                                                     | `{}`                        |
 | `api.podLabels`                       | Set additional labels for pods                                                               | `{}`                        |
@@ -89,6 +90,7 @@ https://sorry-cypress.dev/dashboard#configuration
 | `dashboard.image.repository`                              | Image repository                                                                                           | `agoldis/sorry-cypress-dashboard` |
 | `dashboard.image.tag`                                     | Image tag                                                                                                  | ``                                |
 | `dashboard.image.pullPolicy`                              | Image pull policy                                                                                          | `Always`                          |
+| `dashboard.enabled`                                       | Whether to deploy the Dashboard service                                                                    | `true`                            |
 | `dashboard.resources`                                     | Resources to initialize the container                                                                      | `{}`                              |
 | `dashboard.environmentVariables.ciUrl`                    | Set the `CI_URL` optional environment variable to add a link to your CI tool                               | `""`                              |
 | `dashboard.environmentVariables.graphQlClientCredentials` | Set the `GRAPHQL_CLIENT_CREDENTIALS` environment variable to configure the API service client credentials. | `""`                              |
@@ -139,7 +141,7 @@ If the execution driver is set to `"../execution/mongo/driver"`, you may enable 
 
 | Parameter                      | Description                                                                        | Default         |
 |--------------------------------|------------------------------------------------------------------------------------|-----------------|
-| `mongo.enabled`                | If enabled, it will deploy the internal MongoDB service.                           | `false`         |
+| `mongo.enabled`                | If enabled, it will deploy the internal MongoDB service.                           | `true`          |
 | `mongo.mongoDatabase`          | The mongo database                                                                 | `sorry-cypress` |
 | `mongo.mongoServer`            | The mongo server when providing an external one. Use it with `mongo.enabled=false` | `""`            |
 | `mongo.image.repository`       | Image repository                                                                   | `mongo`         |

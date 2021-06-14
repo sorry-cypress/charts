@@ -1,0 +1,10 @@
+# Disables the API and dashboard for testing the director still works
+
+api:
+  enabled: false
+
+dashboard:
+  enabled: false
+
+mongodb:
+  enabled: false

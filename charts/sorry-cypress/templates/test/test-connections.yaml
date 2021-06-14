@@ -1,5 +1,6 @@
 # A very basic set of tests to query that the appropriate services work and connect to a pod as long as they are enabled in the Vales.yaml file
 
+{{- if .Values.dashboard.enabled }}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -16,6 +17,7 @@ spec:
       command: ['wget']
       args:  ['{{ include "sorry-cypress-helm.fullname" . }}-dashboard:{{ .Values.dashboard.service.port }}']
   restartPolicy: Never
+{{- end }}
 ---
 apiVersion: v1
 kind: Pod
@@ -74,7 +76,7 @@ spec:
   restartPolicy: Never
 {{- end }}
 ---
-{{- if .Values.api.readinessProbe.enabled }}
+{{- if .Values.api.enabled }}
 apiVersion: v1
 kind: Pod
 metadata:

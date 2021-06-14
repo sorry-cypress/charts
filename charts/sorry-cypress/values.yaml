@@ -200,7 +200,7 @@ mongodb:
     limits: {}
     #   cpu: 100m
     #   memory: 128Mi
-    requests: 
+    requests:
       cpu: 25m
       memory: 90Mi
 

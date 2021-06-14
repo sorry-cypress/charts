@@ -12,18 +12,18 @@ jobs:
     strategy:
       matrix:
         kubernetes_version:
-          - "kindest/node:v1.20.2"
-          - "kindest/node:v1.19.7"
-          - "kindest/node:v1.18.15"
+          # - "kindest/node:v1.21.1" - There seems to be a bug with the github action which casuses 1.21 to fail to start up.
+          - "kindest/node:v1.20.7"
+          - "kindest/node:v1.19.11"
+          - "kindest/node:v1.18.19"
           - "kindest/node:v1.17.17"
-          - "kindest/node:v1.16.15"
       fail-fast: false
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: "0"
 
       - name: Set up Helm
         uses: azure/setup-helm@v1
@@ -36,10 +36,15 @@ jobs:
           python-version: 3.7
 
       - name: Set up chart-testing
-        uses: helm/chart-testing-action@v2.0.1
+        uses: helm/chart-testing-action@v2.1.0
         with:
-          version: v3.3.0
+          version: v3.4.0
           
+      # - name: Add dependency chart repos
+      #   run: |
+      #     helm repo add minio https://helm.min.io/ --force-update
+      #     helm repo add mongodb https://charts.bitnami.com/bitnami --force-update
+
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |

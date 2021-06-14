@@ -135,29 +135,17 @@ https://sorry-cypress.dev/director/configuration
 | `director.ingress.hosts[0].path`                  | Root path to the service installation                                                                                                                                        | `/`                              |
 | `director.ingress.tls`                            | Ingress secrets for TLS certificates                                                                                                                                         | `[]`                             |
 
-### Mongo service
+### Mongodb service
 
 If the execution driver is set to `"../execution/mongo/driver"`, you may enable the internal MongoDB service deploy or provide an external one. Ignore this configuration when using other execution drivers.
 
 | Parameter                      | Description                                                                        | Default         |
 |--------------------------------|------------------------------------------------------------------------------------|-----------------|
-| `mongo.enabled`                | If enabled, it will deploy the internal MongoDB service.                           | `true`          |
-| `mongo.mongoDatabase`          | The mongo database                                                                 | `sorry-cypress` |
-| `mongo.mongoServer`            | The mongo server when providing an external one. Use it with `mongo.enabled=false` | `""`            |
-| `mongo.image.repository`       | Image repository                                                                   | `mongo`         |
-| `mongo.image.tag`              | Image tag                                                                          | `"4.0"`         |
-| `mongo.image.pullPolicy`       | Image pull policy                                                                  | `Always`        |
-| `mongo.persistence.enabled`    | Flag for enabling persistent storage                                               | `false`         |
-| `mongo.persistence.accessMode` | Volumes access mode to be set                                                      | `ReadWriteOnce` |
-| `mongo.persistence.size`       | Size of the volume                                                                 | `1Gi`           |
-| `mongo.resources`              | Resources to initialize the container                                              | `{}`            |
-| `mongo.podAnnotations`         | Set annotations for pods                                                           | `{}`            |
-| `mongo.podLabels`              | Set additional labels for pods                                                     | `{}`            |
-| `mongo.affinity`               | Set affinity for pods                                                              | `{}`            |
-| `mongo.nodeSelector`           | Set node selector for pods                                                         | `{}`            |
-| `mongo.tolerations`            | Set tolerations for pods                                                           | `[]`            |
-| `mongo.service.port`           | Kubernetes service port                                                            | `4000`          |
+| `mongodb.enabled`                | If enabled, it will deploy the internal MongoDB service.                           | `true`          |
+| `mongodb.mongoDatabase`          | The mongo database                                                                 | `sorry-cypress` |
+| `mongodb.mongoServer`            | The mongo server when providing an external one. Use it with `mongo.enabled=false` | `""`            |
 
+All other mongodb options are defined in [the Bitnami mongo db helm chart](https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml).
 
 ### Screenshots And Videos
 

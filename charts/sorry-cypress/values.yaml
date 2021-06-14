@@ -34,7 +34,6 @@ api:
     port: 4000
 
   readinessProbe:
-    enabled: true
     periodSeconds: 5
     timeoutSeconds: 3
     successThreshold: 2

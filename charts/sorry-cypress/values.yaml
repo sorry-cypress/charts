@@ -195,8 +195,23 @@ mongodb:
   architecture: replicaset
   auth:
     enabled: false
+
+  resources:
+    limits: {}
+    #   cpu: 100m
+    #   memory: 128Mi
+    requests: 
+      cpu: 25m
+      memory: 90Mi
+
   persistence:
     enabled: false
+    size: 1Gi
+
+  externalAccess:
+    enabled: true
+    service:
+      type: ClusterIP
 
 s3:
   bucketName: example-bucket

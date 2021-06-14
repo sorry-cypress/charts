@@ -29,8 +29,8 @@ jobs:
           
       - name: Add dependency chart repos
         run: |
-          helm repo add minio https://helm.min.io/
-          helm repo add mongodb https://charts.bitnami.com/bitnami
+          helm repo add minio https://helm.min.io/ --force-update
+          helm repo add mongodb https://charts.bitnami.com/bitnami --force-update
         
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.1.0

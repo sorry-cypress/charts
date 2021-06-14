@@ -42,8 +42,8 @@ jobs:
           
       - name: Add dependency chart repos
         run: |
-          helm repo add minio https://helm.min.io/ --force-update
-          helm repo add mongodb https://charts.bitnami.com/bitnami --force-update
+          helm repo remove minio && helm repo add minio https://helm.min.io/ --force-update
+          helm repo remove mongodb && helm repo add mongodb https://charts.bitnami.com/bitnami --force-update
 
       - name: Run chart-testing (list-changed)
         id: list-changed

@@ -20,6 +20,16 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
     spec:
+      nodeSelector:
+        {{ toYaml .Values.director.nodeSelector | indent 8 }}
+      {{- with .Values.director.tolerations }}
+      tolerations:
+        {{ toYaml . | indent 8 }}
+      {{- end }}
+      {{- with .Values.director.affinity }}
+      affinity:
+        {{ toYaml . | indent 8 }}
+      {{- end }}
       containers:
       - env:
         - name: DASHBOARD_URL

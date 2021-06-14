@@ -22,9 +22,23 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
     spec:
+      nodeSelector:
+        {{ toYaml .Values.api.nodeSelector | indent 8 }}
+      {{- with .Values.api.tolerations }}
+      tolerations:
+        {{ toYaml . | indent 8 }}
+      {{- end }}
+      {{- with .Values.api.affinity }}
+      affinity:
+        {{ toYaml . | indent 8 }}
+      {{- end }}
       containers:
       - env:
+<<<<<<< HEAD
         {{- if .Values.mongodb.enabled }}
+=======
+        {{- if .Values.mongo.enabled }}
+>>>>>>> origin
         - name: MONGODB_DATABASE
           value: {{ .Values.mongodb.mongoDatabase }}
         - name: MONGODB_URI

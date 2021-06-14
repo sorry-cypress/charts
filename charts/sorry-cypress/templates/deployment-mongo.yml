@@ -1,0 +1,71 @@
+{{- if and (.Values.mongo.enabled) (not .Values.mongo.persistence.enabled) -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "sorry-cypress-helm.fullname" . }}-mongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "sorry-cypress-helm.fullname" . }}-mongo
+  template:
+    metadata:
+      name: {{ include "sorry-cypress-helm.fullname" . }}-mongo
+      labels:
+        app: {{ include "sorry-cypress-helm.fullname" . }}-mongo
+        {{- with .Values.mongo.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end}}
+      {{- with .Values.mongo.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    spec:
+      nodeSelector:
+        {{ toYaml .Values.mongo.nodeSelector | indent 8 }}
+      {{- with .Values.mongo.tolerations }}
+      tolerations:
+        {{ toYaml . | indent 8 }}
+      {{- end }}
+      {{- with .Values.mongo.affinity }}
+      affinity:
+        {{ toYaml . | indent 8 }}
+      {{- end }}
+      containers:
+      - image: "{{ .Values.mongo.image.repository }}:{{ .Values.mongo.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.mongo.image.pullPolicy }}
+        name: {{ include "sorry-cypress-helm.fullname" . }}-mongo
+        ports:
+        - containerPort: 27017
+        readinessProbe:
+          exec:
+            command:
+            - mongo
+            - --eval
+            - db.adminCommand('ping')
+          failureThreshold: 6
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          {{- toYaml .Values.mongo.resources | nindent 10 }}
+        volumeMounts:
+          - name: mongo-storage
+            mountPath: /data/db
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+        - name: mongo-storage
+          emptyDir: {}
+    nodeSelector:
+{{ toYaml .Values.nodeSelector | indent 8 }}
+{{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+{{- end }}
+{{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+{{- end }}
+{{- end }}

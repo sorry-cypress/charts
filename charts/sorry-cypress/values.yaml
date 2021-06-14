@@ -21,6 +21,12 @@ api:
     #   cpu: 100m
     #   memory: 128Mi
 
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity: {}
+
   service:
     port: 4000
 
@@ -69,6 +75,12 @@ dashboard:
     #   cpu: 100m
     #   memory: 128Mi
 
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity: {}
+
   # https://sorry-cypress.dev/dashboard#configuration
   environmentVariables:
     graphQlClientCredentials: ""
@@ -116,6 +128,12 @@ director:
     # requests:
     #   cpu: 100m
     #   memory: 128Mi
+
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity: {}
 
   environmentVariables:
     # The "Run URL" in the Cypress client

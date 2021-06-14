@@ -4,23 +4,33 @@ Uses the bitnami mongodb helm chart. There is no automated upgrade path from pre
 
 Here are some very basic instructions on how you could manually migrate the data.
 ### Exec into the old mongo db pod and perform a backup:
+```
 cd /data
 mongodump --out=/tmp/backup
 cd /tmp
 tar -Pczvf backup.tar.gz backup/
+```
 
 ### copy the db dump from the pod
+```
 kubectl cp my-pod:my-file my-file
+```
 
 Eg:
+```
 kubectl cp sorry-cypress-mongo-0:/tmp/backup.tar.gz ~/Desktop/backup.tar.gz
+```
 
 
 ### switch to the new context and copy file:
+```
 kubectl cp ~/Desktop/backup.tar.gz dev-sorry-cypress-mongodb-0:/tmp/
+```
 
 ### Exec into the pod and restore
+```
 cd /tmp
 tar -xvzf backup.tar.gz
 cd /bitnami/mongodb/data
 mongorestore --drop /tmp/backup
+```

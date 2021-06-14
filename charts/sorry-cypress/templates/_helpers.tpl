@@ -78,7 +78,7 @@ Create the s3 secret
   {{- if eq .Values.mongodb.architecture "standalone" }}
   {{- printf "%s-%s" (include "sorry-cypress-helm.fullname" .) "mongodb" -}}
   {{- else }}
-  {{- printf "%s-%s" (include "sorry-cypress-helm.fullname" .) "mongodb-headless" -}}
+  {{- printf "%s-%s" (include "sorry-cypress-helm.fullname" .) "mongodb-0" -}}
   {{- end }}
 {{- else }}
 {{- printf "%s" .Values.mongodb.mongoServer -}}

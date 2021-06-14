@@ -30,9 +30,8 @@ api:
   service:
     port: 4000
 
-  # If you are using v10.0.0-beta.15 or greater, you can enable a readinessProbe for the API pods.
   readinessProbe:
-    enabled: false
+    enabled: true
     periodSeconds: 5
     timeoutSeconds: 3
     successThreshold: 2
@@ -178,51 +177,20 @@ director:
     #    hosts:
     #      - chart-example.local
 
-mongo:
-  # You need to ensure that director.environmentVariables.executionDriver is set to "../execution/mongo/driver" if you want mongo.enabled to be true.
+mongodb:
+  # You need to ensure that director.environmentVariables.executionDriver is set to "../execution/mongo/driver" if you want the director to use mongodb.
   enabled: true
-
   mongoDatabase: "sorry-cypress"
-
   # Ignored if mongo.enabled is set to true
   mongoServer: ""
 
-  image:
-    repository: mongo
-    pullPolicy: Always
-    tag: "4.0"
-
-  nodeSelector: {}
-
-  tolerations: []
-
-  affinity: {}
-
+  # If enabled, you can use any values from the mongodb helm chart: https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml
+  # Below are the bare minimim to get you started.
+  architecture: replicaset
+  auth:
+    enabled: false
   persistence:
     enabled: false
-    accessMode: "ReadWriteOnce"
-    size: "1Gi"
-
-  resources: {}
-    # We usually recommend not to specify default resources and to leave this as a conscious
-    # choice for the user. This also increases chances charts run on environments with little
-    # resources, such as Minikube. If you do want to specify resources, uncomment the following
-    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-    # limits:
-    #   cpu: 100m
-    #   memory: 128Mi
-    # requests:
-    #   cpu: 100m
-    #   memory: 128Mi
-
-  # Set annotations for pods
-  podAnnotations: {}
-
-  # Additional pod labels
-  podLabels: {}
-
-  service:
-    port: 27017
 
 s3:
   bucketName: example-bucket
@@ -253,6 +221,9 @@ s3:
 
 minio:
   enabled: false
+
+  # If enabled, you can include any values from the minio helm chart: https://github.com/minio/charts/blob/master/minio/values.yaml
+  # Below are the bare minimim to get you started.
 
   endpoint: storage.yourdomain.com
   url: http://storage.yourdomain.com

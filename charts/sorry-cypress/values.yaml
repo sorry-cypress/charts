@@ -2,6 +2,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# If you don't want to use the default release name, change it here
+fullnameOverride: "sorry-cypress"
+
 api:
   image:
     repository: agoldis/sorry-cypress-api

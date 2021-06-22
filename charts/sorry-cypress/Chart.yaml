@@ -19,4 +19,4 @@ dependencies:
   - name: mongodb
     repository: https://charts.bitnami.com/bitnami
     version: 10.19.0
-    condition: mongodb.enabled
+    condition: mongodb.internal_db.enabled

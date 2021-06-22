@@ -74,14 +74,14 @@ Create the s3 secret
   Determine the MongoDB hostname.
 */}}
 {{- define "mongodb.hostname" -}}
-{{- if .Values.mongodb.enabled }}
+{{- if .Values.mongodb.internal_db.enabled }}
   {{- if eq .Values.mongodb.architecture "standalone" }}
   {{- printf "%s-%s" (include "sorry-cypress-helm.fullname" .) "mongodb" -}}
   {{- else }}
   {{- printf "%s-%s" (include "sorry-cypress-helm.fullname" .) "mongodb-0" -}}
   {{- end }}
 {{- else }}
-{{- printf "%s" .Values.mongodb.mongoServer -}}
+{{- printf "%s" .Values.mongodb.external_db.mongoServer -}}
 {{- end }}
 {{- end }}
 

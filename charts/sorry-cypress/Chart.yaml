@@ -2,7 +2,7 @@ apiVersion: v2
 name: sorry-cypress
 description: A Helm chart for Sorry Cypress
 type: application
-version: 1.0.0
+version: 1.0.1
 appVersion: 1.0.3
 home: https://sorry-cypress.dev/
 sources:
@@ -19,4 +19,4 @@ dependencies:
   - name: mongodb
     repository: https://charts.bitnami.com/bitnami
     version: 10.19.0
-    condition: mongodb.enabled
+    condition: mongodb.internal_db.enabled

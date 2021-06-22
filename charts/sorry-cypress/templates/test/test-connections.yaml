@@ -36,7 +36,7 @@ spec:
       args:  ['{{ include "sorry-cypress-helm.fullname" . }}-director:{{ .Values.director.service.port }}']
   restartPolicy: Never
 ---
-{{- if .Values.mongodb.enabled }}
+{{- if .Values.mongodb.internal_db.enabled }}
 apiVersion: v1
 kind: Pod
 metadata:

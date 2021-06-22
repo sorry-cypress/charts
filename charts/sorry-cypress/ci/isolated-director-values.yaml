@@ -7,4 +7,5 @@ dashboard:
   enabled: false
 
 mongodb:
-  enabled: false
+  internal_db:
+    enabled: false

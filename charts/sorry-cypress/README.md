@@ -52,7 +52,13 @@ _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documen
 ## Configuration
 
 The following table lists the configurable parameters of the sorry-cypress chart and their default values.
+### Helm Chart
 
+https://sorry-cypress.dev/api#configuration
+
+| Parameter                             | Description                                                                                  | Default                     |
+|---------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------|
+| `.fullnameOverride`                   | Allows you to override the name of the chart.                                                | ``                          |
 ### API service
 
 https://sorry-cypress.dev/api#configuration
@@ -141,9 +147,10 @@ If the execution driver is set to `"../execution/mongo/driver"`, you may enable 
 
 | Parameter                      | Description                                                                        | Default         |
 |--------------------------------|------------------------------------------------------------------------------------|-----------------|
-| `mongodb.enabled`                | If enabled, it will deploy the internal MongoDB service.                           | `true`          |
+| `mongodb.internal_db.enabled`    | If enabled, it will deploy the internal MongoDB service.                           | `true`          |
+| `mongodb.external_db.enabled`    | If enabled, it will allow you to use an external mongodb                           | `false`          |
+| `mongodb.external_db.mongoServer`| The mongo server when providing an external one. Use it with `mongo.enabled=false` | `""`            |
 | `mongodb.mongoDatabase`          | The mongo database                                                                 | `sorry-cypress` |
-| `mongodb.mongoServer`            | The mongo server when providing an external one. Use it with `mongo.enabled=false` | `""`            |
 
 All other mongodb options are defined in [the Bitnami mongo db helm chart](https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml).
 

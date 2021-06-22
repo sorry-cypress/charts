@@ -2,6 +2,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+# If you don't want to use the default release name, change it here.
+# fullnameOverride: "sorry-cypress"
+
 api:
   image:
     repository: agoldis/sorry-cypress-api
@@ -65,7 +68,7 @@ dashboard:
     # Overrides the image tag whose default is the chart appVersion.
     # tag: "latest"
 
-  # If you have no need for the Dashboard service, you can set this to false to exclude it
+  # If you have no need for the Dashboard service, you can set this to false to exclude it.
   enabled: true
 
   resources: {}
@@ -184,10 +187,17 @@ director:
 
 mongodb:
   # You need to ensure that director.environmentVariables.executionDriver is set to "../execution/mongo/driver" if you want the director to use mongodb.
-  enabled: true
+
+  # Set this to "true" if you wish to use your own external mongodb.
+  external_db:
+    enabled: false
+    mongoServer: ""
+
+  # Set this to "true" if you want this chart to deploy mongodb for you.
+  internal_db:
+    enabled: true
+
   mongoDatabase: "sorry-cypress"
-  # Ignored if mongo.enabled is set to true
-  mongoServer: ""
 
   # If enabled, you can use any values from the mongodb helm chart: https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml
   # Below are the bare minimim to get you started.

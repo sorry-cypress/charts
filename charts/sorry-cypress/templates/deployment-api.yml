@@ -35,7 +35,7 @@ spec:
       {{- end }}
       containers:
       - env:
-        {{- if .Values.mongodb.enabled }}
+        {{- if or (.Values.mongodb.internal_db.enabled) (.Values.mongodb.external_db.enabled) }}
         - name: MONGODB_DATABASE
           value: {{ .Values.mongodb.mongoDatabase }}
         - name: MONGODB_URI

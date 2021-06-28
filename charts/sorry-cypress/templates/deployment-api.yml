@@ -38,8 +38,13 @@ spec:
         {{- if or (.Values.mongodb.internal_db.enabled) (.Values.mongodb.external_db.enabled) }}
         - name: MONGODB_DATABASE
           value: {{ .Values.mongodb.mongoDatabase }}
+        {{- if .Values.mongodb.mongoConnectionString }}
         - name: MONGODB_URI
-          value: mongodb://{{ include "mongodb.hostname" . }}:{{ .Values.mongodb.service.port }}
+          value: {{ .Values.mongodb.mongoConnectionString }}
+        {{- else }}
+        - name: MONGODB_URI
+          value: "mongodb://{{ include "mongodb.hostname" . }}:{{ .Values.mongodb.service.port }}"
+        {{- end }}
         {{- end }}
         image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.api.image.pullPolicy }}

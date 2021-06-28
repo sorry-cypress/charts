@@ -42,7 +42,11 @@ spec:
         - name: MONGODB_DATABASE
           value: {{ .Values.mongodb.mongoDatabase }}
         - name: MONGODB_URI
-          value: mongodb://{{ include "mongodb.hostname" . }}:{{ .Values.mongodb.service.port }}
+        {{- if .Values.mongodb.mongoConnectionString }}
+          value: {{ .Values.mongodb.mongoConnectionString }}
+        {{- else }}
+          value:    "mongodb://{{ include "mongodb.hostname" . }}:{{ .Values.mongodb.service.port }}"
+        {{- end }}
         {{- end }}
         - name: SCREENSHOTS_DRIVER
           value: {{ .Values.director.environmentVariables.screenshotsDriver }}

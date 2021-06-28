@@ -149,8 +149,9 @@ If the execution driver is set to `"../execution/mongo/driver"`, you may enable 
 |--------------------------------|------------------------------------------------------------------------------------|-----------------|
 | `mongodb.internal_db.enabled`    | If enabled, it will deploy the internal MongoDB service.                           | `true`          |
 | `mongodb.external_db.enabled`    | If enabled, it will allow you to use an external mongodb                           | `false`          |
-| `mongodb.external_db.mongoServer`| The mongo server when providing an external one. Use it with `mongo.enabled=false` | `""`            |
+| `mongodb.external_db.mongoServer`| The mongo server when providing an external one. Use it with `mongodb.internal_db.enabled=false` | `""`            |
 | `mongodb.mongoDatabase`          | The mongo database                                                                 | `sorry-cypress` |
+| `mongodb.mongoConnectionString`  | Ignored if blank. Set a custom mongodb connection string.                          | `""` |
 
 All other mongodb options are defined in [the Bitnami mongo db helm chart](https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml).
 

@@ -187,6 +187,7 @@ director:
 
 mongodb:
   # You need to ensure that director.environmentVariables.executionDriver is set to "../execution/mongo/driver" if you want the director to use mongodb.
+  mongoConnectionString: ""
 
   # Set this to "true" if you wish to use your own external mongodb.
   external_db:

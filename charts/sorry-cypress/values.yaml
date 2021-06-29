@@ -33,6 +33,16 @@ api:
 
   affinity: {}
 
+  # You can define any init container(s) here.
+  # This example checks that mongodb is running before allowing the api pod to start.
+  # If you wish to do this, you will need to modify your RBAC settings (not included in this Helm chart)
+  initContainers: []
+  # - name: waitformongo
+  #   image: groundnuty/k8s-wait-for
+  #   args:
+  #     - "pod"
+  #     - "-lapp.kubernetes.io/name=mongodb"
+
   service:
     port: 4000
 
@@ -89,6 +99,8 @@ dashboard:
 
   affinity: {}
 
+  initContainers: []
+
   # https://sorry-cypress.dev/dashboard#configuration
   environmentVariables:
     graphQlClientCredentials: ""
@@ -142,6 +154,16 @@ director:
   tolerations: []
 
   affinity: {}
+
+  # You can define any init container(s) here.
+  # This example checks that mongodb is running before allowing the api pod to start.
+  # If you wish to do this, you will need to modify your RBAC settings (not included in this Helm chart)
+  initContainers: []
+  # - name: waitformongo
+  #   image: groundnuty/k8s-wait-for
+  #   args:
+  #     - "pod"
+  #     - "-lapp.kubernetes.io/name=mongodb"
 
   environmentVariables:
     # The "Run URL" in the Cypress client

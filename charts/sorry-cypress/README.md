@@ -86,6 +86,7 @@ https://sorry-cypress.dev/api#configuration
 | `api.ingress.hosts[0].host`           | Hostname to the service installation                                                         | `api.chart-example.local`   |
 | `api.ingress.hosts[0].path`           | Root path to the service installation                                                        | `/`                         |
 | `api.ingress.tls`                     | Ingress secrets for TLS certificates                                                         | `[]`                        |
+| `api.initContainers`                  | Allows you to define init container(s) for the api pod                                       | `[]`                        |
 
 ### Dashboard service
 
@@ -113,6 +114,7 @@ https://sorry-cypress.dev/dashboard#configuration
 | `dashboard.ingress.hosts[0].host`                         | Hostname to the service installation                                                                       | `dashboard.chart-example.local`   |
 | `dashboard.ingress.hosts[0].path`                         | Root path to the service installation                                                                      | `/`                               |
 | `dashboard.ingress.tls`                                   | Ingress secrets for TLS certificates                                                                       | `[]`                              |
+| `dashboard.initContainers`                                | Allows you to define init container(s) for the dashboard pod                                               | `[]`                              |
 
 ### Director service
 
@@ -140,6 +142,7 @@ https://sorry-cypress.dev/director/configuration
 | `director.ingress.hosts[0].host`                  | Hostname to the service installation                                                                                                                                         | `director.chart-example.local`   |
 | `director.ingress.hosts[0].path`                  | Root path to the service installation                                                                                                                                        | `/`                              |
 | `director.ingress.tls`                            | Ingress secrets for TLS certificates                                                                                                                                         | `[]`                             |
+| `director.initContainers`                         | Allows you to define init container(s) for the director pod                                                                                                                  | `[]`                             |
 
 ### Mongodb service
 

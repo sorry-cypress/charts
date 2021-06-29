@@ -111,3 +111,7 @@ spec:
       restartPolicy: Always
       serviceAccountName: ""
       volumes: null
+      {{- if .Values.director.initContainers }}
+      initContainers:
+      {{- include "common.tplvalues.render" (dict "value" .Values.api.initContainers "context" $) | nindent 8 }}
+      {{- end  }}

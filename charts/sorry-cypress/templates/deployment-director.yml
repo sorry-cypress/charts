@@ -98,14 +98,6 @@ spec:
         name: {{ include "sorry-cypress-helm.fullname" . }}-director
         ports:
         - containerPort: 1234
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 1234
-          periodSeconds: 10
-          timeoutSeconds: 5
-          successThreshold: 2
-          failureThreshold: 5
         resources:
           {{- toYaml .Values.director.resources | nindent 10 }}
       restartPolicy: Always

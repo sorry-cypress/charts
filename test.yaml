@@ -6,4 +6,4 @@ chart-repos:
   - mongodb=https://charts.bitnami.com/bitnami
 chart-dirs:
   - charts
-helm-extra-args: --timeout 600s
+helm-extra-args: --timeout 300s

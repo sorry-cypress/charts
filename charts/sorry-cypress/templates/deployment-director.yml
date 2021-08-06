@@ -92,6 +92,12 @@ spec:
           value: {{ .Values.minio.endpoint }}
         - name: MINIO_URL
           value: {{ .Values.minio.url }}
+        - name: MINIO_PORT
+          value: {{ .Values.minio.service.port }}
+        {{- if eq .Values.minio.service.port "443" }}
+        - name: MINIO_USESSL
+          value: "true"
+        {{- end }}
         {{- end }}
         image: "{{ .Values.director.image.repository }}:{{ .Values.director.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.director.image.pullPolicy }}

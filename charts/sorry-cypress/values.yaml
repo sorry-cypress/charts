@@ -181,8 +181,11 @@ director:
     # "../screenshots/s3.driver"
     screenshotsDriver: "../screenshots/dummy.driver"
 
-    # https://sorry-cypress.dev/director/configuration
+    # https://docs.sorry-cypress.dev/configuration/director-configuration
     allowedKeys: ""
+
+    # Test runs timeouts
+    inactivityTimeoutSeconds: ""
 
   # Set annotations for pods
   podAnnotations: {}

@@ -21,6 +21,7 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+  {{- if .Values.s3.ingress.ingressClassName }}
   {{- if .Values.s3.ingress.tls }}
   tls:
     {{- range .Values.s3.ingress.tls }}

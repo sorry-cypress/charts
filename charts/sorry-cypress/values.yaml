@@ -59,6 +59,10 @@ api:
   podLabels: {}
 
   ingress:
+    # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
+    # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
+    # ingressClassName: nginx
+
     labels: {}
     annotations: {}
       # kubernetes.io/ingress.class: nginx
@@ -118,6 +122,11 @@ dashboard:
 
   ingress:
     enabled: true
+
+    # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
+    # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
+    # ingressClassName: nginx
+
     labels: {}
     annotations: {}
       # kubernetes.io/ingress.class: nginx
@@ -198,6 +207,11 @@ director:
 
   ingress:
     enabled: true
+
+    # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
+    # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
+    # ingressClassName: nginx
+
     labels: {}
     annotations: {}
       # kubernetes.io/ingress.class: nginx
@@ -259,6 +273,11 @@ s3:
   ingress:
     # When enabling ingress, an ExternalName service will be also created to expose the bucket.
     enabled: false
+
+    # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
+    # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
+    # ingressClassName: nginx
+
     labels: {}
     annotations: {}
       # kubernetes.io/ingress.class: nginx

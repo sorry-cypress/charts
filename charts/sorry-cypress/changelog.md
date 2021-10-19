@@ -1,3 +1,12 @@
+# 1.0.10
+## Update
+Only Kubernetes 1.19+ is supported.
+This means we only support `networking.k8s.io/v1`.
+
+# 1.0.9
+## Fix
+Remove hard-coded namespace from service-s3.
+
 # 1.0.0
 ## Breaking Changes
 Uses the bitnami mongodb helm chart. There is no automated upgrade path from previous versions... you will have to manually migrate data.

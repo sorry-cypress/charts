@@ -59,6 +59,7 @@ api:
   podLabels: {}
 
   ingress:
+    ingressClassName: nginx
     labels: {}
     annotations: {}
       # kubernetes.io/ingress.class: nginx

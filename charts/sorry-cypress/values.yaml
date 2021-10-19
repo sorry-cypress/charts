@@ -59,9 +59,9 @@ api:
   podLabels: {}
 
   ingress:
+    ingressClassName: nginx
     labels: {}
     annotations: {}
-      # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
     hosts:
       - host: api.chart-example.local
@@ -117,10 +117,10 @@ dashboard:
   podLabels: {}
 
   ingress:
+    ingressClassName: nginx
     enabled: true
     labels: {}
     annotations: {}
-      # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
     hosts:
       - host: dashboard.chart-example.local
@@ -198,9 +198,9 @@ director:
 
   ingress:
     enabled: true
+    ingressClassName: nginx
     labels: {}
     annotations: {}
-      # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
     hosts:
       - host: director.chart-example.local
@@ -259,9 +259,9 @@ s3:
   ingress:
     # When enabling ingress, an ExternalName service will be also created to expose the bucket.
     enabled: false
+    ingressClassName: nginx
     labels: {}
     annotations: {}
-      # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
       # nginx.ingress.kubernetes.io/upstream-vhost: <bucket>.s3-website-<region>.amazonaws.com
       # nginx.ingress.kubernetes.io/enable-cors: "true"

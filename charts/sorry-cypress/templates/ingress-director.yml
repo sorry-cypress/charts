@@ -1,14 +1,7 @@
 {{- if .Values.director.ingress.enabled -}}
-{{- $v1Networking := .Capabilities.APIVersions.Has "networking.k8s.io/v1/Ingress" -}}
 {{- $fullName := include "sorry-cypress-helm.fullname" . -}}
 {{- $servicePort := .Values.director.service.port -}}
-{{- if $v1Networking }}
 apiVersion: networking.k8s.io/v1
-{{- else if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
-apiVersion: networking.k8s.io/v1beta1
-{{- else -}}
-apiVersion: extensions/v1beta1
-{{- end }}
 kind: Ingress
 metadata:
   name: {{ $fullName }}-director
@@ -22,6 +15,7 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+  ingressClassName: {{ .Values.director.ingress.ingressClassName }}
   {{- if .Values.director.ingress.tls }}
   tls:
     {{- range .Values.director.ingress.tls }}
@@ -37,7 +31,6 @@ spec:
     - host: {{ .host | quote }}
       http:
         paths:
-          {{- if $v1Networking }}
           - path: {{ .path | default "/" }}
             pathType: Prefix
             backend:
@@ -45,11 +38,5 @@ spec:
                 name: {{ $fullName }}-director
                 port:
                   number: {{ $servicePort }}
-          {{- else }}
-          - path: {{ .path | default "/" }}
-            backend:
-              serviceName: {{ $fullName }}-director
-              servicePort: {{ $servicePort }}
-          {{- end }}
     {{- end }}
   {{- end }}

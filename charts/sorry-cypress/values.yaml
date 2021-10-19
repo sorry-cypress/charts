@@ -117,8 +117,8 @@ dashboard:
   podLabels: {}
 
   ingress:
-    ingressClassName: nginx
     enabled: true
+    ingressClassName: nginx
     labels: {}
     annotations: {}
       # kubernetes.io/tls-acme: "true"

@@ -2,6 +2,7 @@
 ## Update
 Only Kubernetes 1.19+ is supported.
 This means we only support `networking.k8s.io/v1`.
+Latest stable Sorry Cypress version (1.1.1)
 
 # 1.0.9
 ## Fix

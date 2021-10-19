@@ -92,7 +92,15 @@ spec:
           value: {{ .Values.minio.endpoint }}
         - name: MINIO_URL
           value: {{ .Values.minio.url }}
+        - name: MINIO_PORT
+          value: {{ .Values.minio.service.port | quote }}
+        {{- if eq .Values.minio.service.port "443" }}
+        - name: MINIO_USESSL
+          value: "true"
         {{- end }}
+        {{- end }}
+        - name: INACTIVITY_TIMEOUT_SECONDS
+          value: {{ .Values.director.environmentVariables.inactivityTimeoutSeconds | quote }}
         image: "{{ .Values.director.image.repository }}:{{ .Values.director.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.director.image.pullPolicy }}
         name: {{ include "sorry-cypress-helm.fullname" . }}-director

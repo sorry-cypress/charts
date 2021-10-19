@@ -1,4 +1,4 @@
-# 1.0.10
+# 1.1.0
 ## Update
 Only Kubernetes 1.19+ is supported.
 This means we only support `networking.k8s.io/v1`.

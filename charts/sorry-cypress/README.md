@@ -122,6 +122,7 @@ https://sorry-cypress.dev/director/configuration
 
 | Parameter                                         | Description                                                                                                                                                                  | Default                          |
 |---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|
+| `director.serviceAccountName`                     | Service account to be assumed by the director                                                  
 | `director.image.repository`                       | Image repository                                                                                                                                                             | `agoldis/sorry-cypress-director` |
 | `director.image.tag`                              | Image tag                                                                                                                                                                    | ``                               |
 | `director.image.pullPolicy`                       | Image pull policy                                                                                                                                                            | `Always`                         |

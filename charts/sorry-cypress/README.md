@@ -81,6 +81,7 @@ https://sorry-cypress.dev/api#configuration
 | `api.readinessProbe.timeoutSeconds`   | Number of seconds after which the probe times out.                                           | `3`                         |
 | `api.readinessProbe.successThreshold` | Minimum consecutive successes for the probe to be considered successful after having failed. | `2`                         |
 | `api.readinessProbe.failureThreshold` | When a probe fails, Kubernetes will try `failureThreshold` times before giving up.           | `5`                         |
+| `api.ingress.ingressClassName`        | The IngressClass that should be used to implement this Ingress                               | `nginx`                     |
 | `api.ingress.labels`                  | Ingress labels                                                                               | `{}`                        |
 | `api.ingress.annotations`             | Ingress annotations                                                                          | `{}`                        |
 | `api.ingress.hosts[0].host`           | Hostname to the service installation                                                         | `api.chart-example.local`   |
@@ -109,6 +110,7 @@ https://sorry-cypress.dev/dashboard#configuration
 | `dashboard.tolerations`                                   | Set tolerations for pods                                                                                   | `[]`                              |
 | `dashboard.service.port`                                  | Kubernetes service port                                                                                    | `4000`                            |
 | `dashboard.ingress.enabled`                               | Flag to define if the dashboard service ingress is enabled                                                 | `true`                            |
+| `dashboard.ingress.ingressClassName`                      | The IngressClass that should be used to implement this Ingress                                             | `nginx`                           |
 | `dashboard.ingress.labels`                                | Ingress labels                                                                                             | `{}`                              |
 | `dashboard.ingress.annotations`                           | Ingress annotations                                                                                        | `{}`                              |
 | `dashboard.ingress.hosts[0].host`                         | Hostname to the service installation                                                                       | `dashboard.chart-example.local`   |
@@ -139,6 +141,7 @@ https://sorry-cypress.dev/director/configuration
 | `director.tolerations`                            | Set tolerations for pods                                                                                                                                                     | `[]`                             |
 | `director.service.port`                           | Kubernetes service port                                                                                                                                                      | `4000`                           |
 | `director.ingress.enabled`                        | Flag to define if the director service ingress is enabled                                                                                                                    | `true`                           |
+| `director.ingress.ingressClassName`               | The IngressClass that should be used to implement this Ingress                                                                                                               | `nginx`                           |
 | `director.ingress.labels`                         | Ingress labels                                                                                                                                                               | `{}`                             |
 | `director.ingress.annotations`                    | Ingress annotations                                                                                                                                                          | `{}`                             |
 | `director.ingress.hosts[0].host`                  | Hostname to the service installation                                                                                                                                         | `director.chart-example.local`   |
@@ -168,20 +171,21 @@ https://sorry-cypress.dev/director/storage
 
 ## S3
 
-| Parameter                  | Description                                                                                                       | Default                      |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `s3.bucketName`            | Set the screenshots storage bucket name                                                                           | `example-bucket`             |
-| `s3.region`                | Set the screenshots storage bucket region                                                                         | `us-east-1`                  |
-| `s3.acl`                   | The uploaded video/screenshot object ACL                                                                          | `"public-read"`              |
-| `s3.readUrlPrefix`         | The host to load the video/screenshot in the dashboard (defaults to the bucket URL)                               | `""`                         |
-| `s3.accessKey`             | The `AWS_ACCESS_KEY_ID` environment variable to configure AWS credentials                                         | `""`                         |
-| `s3.secretAccessKey`       | The `AWS_SECRET_ACCESS_KEY` environment variable to configure AWS credentials                                     | `""`                         |
-| `s3.ingress.enabled`       | Flag to define if the S3 ingress is enabled. **It will also enable an ExternalName service to expose the bucket** | `true`                       |
-| `s3.ingress.labels`        | Ingress labels                                                                                                    | `{}`                         |
-| `s3.ingress.annotations`   | Ingress annotations                                                                                               | `{}`                         |
-| `s3.ingress.hosts[0].host` | Hostname to the service installation                                                                              | `static.chart-example.local` |
-| `s3.ingress.hosts[0].path` | Root path to the service installation                                                                             | `/`                          |
-| `s3.ingress.tls`           | Ingress secrets for TLS certificates                                                                              | `[]`                         |
+| Parameter                     | Description                                                                                                       | Default                      |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `s3.bucketName`               | Set the screenshots storage bucket name                                                                           | `example-bucket`             |
+| `s3.region`                   | Set the screenshots storage bucket region                                                                         | `us-east-1`                  |
+| `s3.acl`                      | The uploaded video/screenshot object ACL                                                                          | `"public-read"`              |
+| `s3.readUrlPrefix`            | The host to load the video/screenshot in the dashboard (defaults to the bucket URL)                               | `""`                         |
+| `s3.accessKey`                | The `AWS_ACCESS_KEY_ID` environment variable to configure AWS credentials                                         | `""`                         |
+| `s3.secretAccessKey`          | The `AWS_SECRET_ACCESS_KEY` environment variable to configure AWS credentials                                     | `""`                         |
+| `s3.ingress.enabled`          | Flag to define if the S3 ingress is enabled. **It will also enable an ExternalName service to expose the bucket** | `true`                       |
+| `s3.ingress.ingressClassName` | The IngressClass that should be used to implement this Ingress                                                    | `nginx`                      |
+| `s3.ingress.labels`           | Ingress labels                                                                                                    | `{}`                         |
+| `s3.ingress.annotations`      | Ingress annotations                                                                                               | `{}`                         |
+| `s3.ingress.hosts[0].host`    | Hostname to the service installation                                                                              | `static.chart-example.local` |
+| `s3.ingress.hosts[0].path`    | Root path to the service installation                                                                             | `/`                          |
+| `s3.ingress.tls`              | Ingress secrets for TLS certificates                                                                              | `[]`                         |
 
 ### MinIO
 

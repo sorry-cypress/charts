@@ -1,14 +1,7 @@
 {{- if .Values.dashboard.ingress.enabled -}}
-{{- $v1Networking := .Capabilities.APIVersions.Has "networking.k8s.io/v1/Ingress" -}}
 {{- $fullName := include "sorry-cypress-helm.fullname" . -}}
 {{- $servicePort := .Values.dashboard.service.port -}}
-{{- if $v1Networking }}
 apiVersion: networking.k8s.io/v1
-{{- else if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
-apiVersion: networking.k8s.io/v1beta1
-{{- else -}}
-apiVersion: extensions/v1beta1
-{{- end }}
 kind: Ingress
 metadata:
   name: {{ $fullName }}-dashboard
@@ -22,6 +15,7 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+  ingressClassName: {{ .Values.dashboard.ingress.ingressClassName }}
   {{- if .Values.dashboard.ingress.tls }}
   tls:
     {{- range .Values.dashboard.ingress.tls }}
@@ -37,7 +31,6 @@ spec:
     - host: {{ .host | quote }}
       http:
         paths:
-          {{- if $v1Networking }}
           - path: {{ .path | default "/" }}
             pathType: Prefix
             backend:
@@ -45,11 +38,5 @@ spec:
                 name: {{ $fullName }}-dashboard
                 port:
                   number: {{ $servicePort }}
-          {{- else }}
-          - path: {{ .path | default "/" }}
-            backend:
-              serviceName: {{ $fullName }}-dashboard
-              servicePort: {{ $servicePort }}
-          {{- end }}
     {{- end }}
   {{- end }}

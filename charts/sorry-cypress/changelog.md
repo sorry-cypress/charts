@@ -1,3 +1,7 @@
+# 1.1.1
+## Update
+Director serviceaccount name is now user-editable (via values)
+
 # 1.1.0
 ## Update
 Only Kubernetes 1.19+ is supported.

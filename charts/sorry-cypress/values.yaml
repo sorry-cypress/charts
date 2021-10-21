@@ -131,6 +131,7 @@ dashboard:
     #      - chart-example.local
 
 director:
+  serviceAccountName: ""
   image:
     repository: agoldis/sorry-cypress-director
     pullPolicy: Always

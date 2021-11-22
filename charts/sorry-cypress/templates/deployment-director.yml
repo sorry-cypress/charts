@@ -115,5 +115,5 @@ spec:
       volumes: null
       {{- if .Values.director.initContainers }}
       initContainers:
-      {{- include "common.tplvalues.render" (dict "value" .Values.api.initContainers "context" $) | nindent 8 }}
+      {{- include "common.tplvalues.render" (dict "value" .Values.director.initContainers "context" $) | nindent 8 }}
       {{- end  }}

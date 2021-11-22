@@ -24,14 +24,14 @@ spec:
       {{- end }}
     spec:
       nodeSelector:
-        {{ toYaml .Values.dashboard.nodeSelector | indent 8 }}
+        {{ toYaml .Values.dashboard.nodeSelector | nindent 8 }}
       {{- with .Values.dashboard.tolerations }}
       tolerations:
-        {{ toYaml . | indent 8 }}
+        {{ toYaml . | nindent 8 }}
       {{- end }}
       {{- with .Values.dashboard.affinity }}
       affinity:
-        {{ toYaml . | indent 8 }}
+        {{ toYaml . | nindent 8 }}
       {{- end }}
       containers:
       - env:

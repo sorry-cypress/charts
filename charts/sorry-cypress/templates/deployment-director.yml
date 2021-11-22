@@ -21,14 +21,14 @@ spec:
       {{- end }}
     spec:
       nodeSelector:
-        {{ toYaml .Values.director.nodeSelector | indent 8 }}
+        {{ toYaml .Values.director.nodeSelector | nindent 8 }}
       {{- with .Values.director.tolerations }}
       tolerations:
-        {{ toYaml . | indent 8 }}
+        {{ toYaml . | nindent 8 }}
       {{- end }}
       {{- with .Values.director.affinity }}
       affinity:
-        {{ toYaml . | indent 8 }}
+        {{ toYaml . | nindent 8 }}
       {{- end }}
       containers:
       - env:
@@ -109,7 +109,9 @@ spec:
         resources:
           {{- toYaml .Values.director.resources | nindent 10 }}
       restartPolicy: Always
-      serviceAccountName: ""
+      {{- with .Values.director.serviceAccountName }}
+      serviceAccountName: {{ . | quote }}
+      {{- end }}
       volumes: null
       {{- if .Values.director.initContainers }}
       initContainers:

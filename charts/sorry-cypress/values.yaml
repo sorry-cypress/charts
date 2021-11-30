@@ -131,7 +131,14 @@ dashboard:
     #      - chart-example.local
 
 director:
-  serviceAccountName: "default"
+  serviceAccount:
+    name: ~
+    create: false
+    annotations: []
+    # Alternative aws-sdk authentication via IAM Roles for AWS EKS Service Accounts
+    # https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html
+    #  eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/<IAM_ROLE_NAME>
+
   image:
     repository: agoldis/sorry-cypress-director
     pullPolicy: Always

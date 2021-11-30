@@ -204,7 +204,7 @@ director:
       eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/<IAM_ROLE_NAME>
 ```
 
-See https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts-technical-overview.html for further information on the IAM Role and associating the EKS Identity Provider to IAM.
+See https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html for further information on the IAM Role and associating the EKS Identity Provider to IAM.
 
 ### MinIO
 

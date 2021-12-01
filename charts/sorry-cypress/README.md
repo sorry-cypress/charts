@@ -124,7 +124,9 @@ https://sorry-cypress.dev/director/configuration
 
 | Parameter                                         | Description                                                                                                                                                                  | Default                          |
 |---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|
-| `director.serviceAccountName`                     | Service account to be assumed by the director                                                  
+| `director.serviceAccount.name`                    | Service account to be assumed by the director                                                                                                                                | `~`                              |
+| `director.serviceAccount.create`                  | Set to create the service account for the director                                                                                                                           | `false`                          |
+| `director.serviceAccount.annotations`             | Annotations to set on the service account if created                                                                                                                         | `[]`                             |
 | `director.image.repository`                       | Image repository                                                                                                                                                             | `agoldis/sorry-cypress-director` |
 | `director.image.tag`                              | Image tag                                                                                                                                                                    | ``                               |
 | `director.image.pullPolicy`                       | Image pull policy                                                                                                                                                            | `Always`                         |
@@ -186,6 +188,23 @@ https://sorry-cypress.dev/director/storage
 | `s3.ingress.hosts[0].host`    | Hostname to the service installation                                                                              | `static.chart-example.local` |
 | `s3.ingress.hosts[0].path`    | Root path to the service installation                                                                             | `/`                          |
 | `s3.ingress.tls`              | Ingress secrets for TLS certificates                                                                              | `[]`                         |
+
+### IAM roles for AWS EKS Service Accounts
+
+Rather than specifying a static IAM Access Key, on EKS it's possible for a pod to assume an IAM Role instead, which means no sensitive credentials are needed.
+
+Using `director.serviceAccount` properties a service account can be created for the director, assigning the IAM Role ARN:
+
+```yaml
+director:
+  serviceAccount:
+    name: sorry-cypress-director
+    create: true
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/<IAM_ROLE_NAME>
+```
+
+See https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html for further information on the IAM Role and associating the EKS Identity Provider to IAM.
 
 ### MinIO
 

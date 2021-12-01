@@ -1,3 +1,9 @@
+# 1.2.0
+## Update
+Add support for authentication using IAM role for ServiceAccounts on EKS
+
+`director.serviceAccountName` changed to `director.serviceAccount.name` with backwards compatibility for the former
+
 # 1.1.1
 ## Update
 Director serviceaccount name is now user-editable (via values)

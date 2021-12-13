@@ -1,3 +1,7 @@
+# 1.3.0
+## Update
+Sorry Cypress 2.0.0.
+
 # 1.2.0
 ## Update
 Add support for authentication using IAM role for ServiceAccounts on EKS

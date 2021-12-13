@@ -109,7 +109,7 @@ spec:
         resources:
           {{- toYaml .Values.director.resources | nindent 10 }}
       restartPolicy: Always
-      {{- with .Values.director.serviceAccountName }}
+      {{- with (.Values.director.serviceAccount.name | default .Values.director.serviceAccountName) }}
       serviceAccountName: {{ . | quote }}
       {{- end }}
       volumes: null

@@ -1,3 +1,9 @@
+# 1.4.1
+## Update
+Allows you to install the sorry-cypress-run-cleaner cronjob to delete old runs from the database.
+Disabled by default.
+https://github.com/sendible-labs/sorry-cypress-run-cleaner
+
 # 1.4.0
 ## Update
 Sorry Cypress 2.1.0

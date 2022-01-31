@@ -1,0 +1,36 @@
+{{- if .Values.runCleaner.enabled }}
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  labels:
+    app: sorry-cypress-run-cleaner
+  name: sorry-cypress-run-cleaner
+spec:
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 3
+      template:
+        metadata:
+          labels:
+            app: sorry-cypress-run-cleaner
+        spec:
+          containers:
+            - name: sorry-cypress-run-cleaner
+              image: ghcr.io/sendible-labs/sorry-cypress-run-cleaner:stable
+              imagePullPolicy: Always
+              env:
+                - name: run_days_to_keep
+                  value: {{ .Values.runCleaner.daysToKeep | quote }}
+                - name: sorry_cypress_api_url
+                  value: "http://{{ include "sorry-cypress-helm.fullname" . }}-api"
+              resources:
+                requests:
+                  cpu: 50m
+                  memory: 60Mi
+          restartPolicy: Never
+  suspend: false
+  schedule: {{ .Values.runCleaner.schedule }}
+{{- end }}

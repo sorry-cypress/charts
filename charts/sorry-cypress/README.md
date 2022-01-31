@@ -219,3 +219,14 @@ https://sorry-cypress.dev/director/storage
 | `minio.defaultBucket.enabled` | Creates bucket when MinIO installed                                                                                                                                                            | `true`                          |
 | `minio.defaultBucket.name`    | The name of the bucket in MinIO that Sorry Cypress should use                                                                                                                                  | `sorry-cypress`                 |
 | `minio.persistence.size`      | Size of persistent volume claim of MinIO	                                                                                                                                                     | `10Gi`                          |
+
+### Sorry Cypress Run Cleaner
+
+If you wish to have older runs regularly removed from the database, you can enable this.
+For more information, refer to https://github.com/sendible-labs/sorry-cypress-run-cleaner
+
+| Parameter                     | Description                                                                                                                                                                                    | Default                         |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `runCleaner.enabled`               | If enabled, it will deploy the sorry-cypress run cleaner cronjob                                                                                                                                        | `false`                         |
+| `runCleaner.daysToKeep`              | How many days worth of run data to keep in the database. Anything older is deleted. If omitted and `runCleaner.enabled` is true, it will default to 100d.                                                                                       | `200`        |
+| `runCleaner.schedule`                   | The cron schedule to run the runCleaner task | `'0 1 * * *'` |

@@ -1,3 +1,5 @@
+# 1.4.2
+Fixes run-cleaner path to the sorry-cypress API service
 # 1.4.1
 ## Update
 Allows you to install the sorry-cypress-run-cleaner cronjob to delete old runs from the database.

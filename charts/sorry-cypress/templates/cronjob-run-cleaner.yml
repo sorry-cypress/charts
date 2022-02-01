@@ -25,7 +25,7 @@ spec:
                 - name: run_days_to_keep
                   value: {{ .Values.runCleaner.daysToKeep | quote }}
                 - name: sorry_cypress_api_url
-                  value: "http://{{ include "sorry-cypress-helm.fullname" . }}-api"
+                  value: "http://{{ include "sorry-cypress-helm.fullname" . }}-api.{{ .Release.Namespace }}.svc.cluster.local:4000"
               resources:
                 requests:
                   cpu: 50m

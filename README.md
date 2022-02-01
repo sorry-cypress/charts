@@ -1,7 +1,11 @@
 # Sorry Cypress (Helm Chart)
 
 <div align="center">
-<div>:octocat: An open-source, on-premise, self-hosted alternative to Cypress dashboard :evergreen_tree:</div>
+<p align="center">
+  <img width="830" alt="banner dark" src="https://user-images.githubusercontent.com/1637928/147379205-2fe4fb9d-49e6-4a2b-917b-2a28973d2a3a.png">
+</p>
+
+<div>An open-source cypress dashboard</div>
 </div>
 
 <br />

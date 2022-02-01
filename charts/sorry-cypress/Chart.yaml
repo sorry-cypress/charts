@@ -7,7 +7,7 @@ appVersion: 2.1.0
 home: https://sorry-cypress.dev/
 sources:
   - https://github.com/sorry-cypress/sorry-cypress
-icon: https://sorry-cypress.dev/__assets__/icon.png
+icon: https://s3.amazonaws.com/sorry-cypress.dev/static/logo.png
 maintainers:
   - name: tico24
     url: https://crumbhole.com

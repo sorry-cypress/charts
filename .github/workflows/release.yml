@@ -33,7 +33,7 @@ jobs:
           helm repo add mongodb https://charts.bitnami.com/bitnami --force-update
         
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.1.0
+        uses: helm/chart-releaser-action@v1.3.0
         with:
           charts_dir: charts
         env:

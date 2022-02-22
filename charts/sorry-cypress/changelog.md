@@ -1,3 +1,7 @@
+# 1.4.5
+
+## Bugfix
+Fixes an issue that prevented the configuration of the director service port from being applied.
 # 1.4.4
 ## Update
 Sorry Cypress 2.1.1

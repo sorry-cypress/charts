@@ -12,7 +12,8 @@ api:
     # Overrides the image tag whose default is the chart appVersion.
     # tag: "latest"
 
-  # If you have no need for the API service, you can set this to false to exclude it
+  # If you have no need for the API service, you can set this to false to exclude it.
+  # Note, you must set up mongodb in order to use the API.
   enabled: true
 
   resources: {}
@@ -222,6 +223,8 @@ mongodb:
   # You need to ensure that director.environmentVariables.executionDriver is set to "../execution/mongo/driver" if you want the director to use mongodb.
   mongoConnectionString: ""
 
+
+  # One of the following two options must be enabled in order for the Sorry Cypress API to work.
   # Set this to "true" if you wish to use your own external mongodb.
   external_db:
     enabled: false

@@ -105,7 +105,7 @@ spec:
         imagePullPolicy: {{ .Values.director.image.pullPolicy }}
         name: {{ include "sorry-cypress-helm.fullname" . }}-director
         ports:
-        - containerPort: 1234
+        - containerPort: {{ .Values.director.service.port }}
         resources:
           {{- toYaml .Values.director.resources | nindent 10 }}
       restartPolicy: Always

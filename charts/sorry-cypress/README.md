@@ -59,6 +59,7 @@ https://sorry-cypress.dev/api#configuration
 | Parameter                             | Description                                                                                  | Default                     |
 |---------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------|
 | `.fullnameOverride`                   | Allows you to override the name of the chart.                                                | ``                          |
+| `imagePullSecrets`                    | An array of imagePullSecrets used to download images from a private registry.                | `[]`                        |
 ### API service
 
 https://sorry-cypress.dev/api#configuration
@@ -135,7 +136,7 @@ https://sorry-cypress.dev/director/configuration
 | `director.environmentVariables.dashboardUrl`      | The "Run URL" in the Cypress client                                                                                                                                          | `""`                             |
 | `director.environmentVariables.executionDriver`   | Set the execution driver. Valid options are `"../execution/in-memory"` and `"../execution/mongo/driver"`                                                                     | `"../execution/in-memory"`       |
 | `director.environmentVariables.screenshotsDriver` | Set the screenshots driver. Valid options are `"../screenshots/dummy.driver"` and `"../screenshots/s3.driver"`                                                               | `"../screenshots/dummy.driver"`  |
-| `director.environmentVariables.inactivityTimeoutSeconds`       | Set the timeout of all test runs under your projects. |  `180s` | 
+| `director.environmentVariables.inactivityTimeoutSeconds`       | Set the timeout of all test runs under your projects. |  `180s` |
 | `director.podAnnotations`                         | Set annotations for pods                                                                                                                                                     | `{}`                             |
 | `director.podLabels`                              | Set additional labels for pods                                                                                                                                               | `{}`                             |
 | `director.affinity`                               | Set affinity for pods                                                                                                                                                        | `{}`                             |

@@ -313,6 +313,6 @@ runCleaner:
   schedule: '0 1 * * *'
 
 imagePullSecrets: []
-# An optional array of imagePullSecrets that are used to download images froma  private registry
+# An optional array of imagePullSecrets that are used to download images from a private registry
 # https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 # - name: <secret-name>

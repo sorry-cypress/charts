@@ -23,6 +23,9 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
     spec:
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets: {{ toYaml .Values.imagePullSecrets | nindent 8 }}
+      {{- end }}
       nodeSelector:
         {{ toYaml .Values.dashboard.nodeSelector | nindent 8 }}
       {{- with .Values.dashboard.tolerations }}

@@ -1,3 +1,8 @@
+# 1.4.6
+
+## Update
+Adds the standard `imagePullSecrets` section to the `api`, `dashboard` and `director` templates, which allow downloading images from a private registry.
+
 # 1.4.5
 
 ## Bugfix

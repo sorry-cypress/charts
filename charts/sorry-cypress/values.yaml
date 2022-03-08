@@ -311,3 +311,8 @@ runCleaner:
   daysToKeep: 200
   # Run every morning at 1am by default.
   schedule: '0 1 * * *'
+
+imagePullSecrets: []
+# An optional array of imagePullSecrets that are used to download images from a private registry
+# https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+# - name: <secret-name>

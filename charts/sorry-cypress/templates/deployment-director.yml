@@ -39,6 +39,8 @@ spec:
           value: {{ .Values.director.environmentVariables.dashboardUrl | quote }}
         - name: ALLOWED_KEYS
           value: {{ .Values.director.environmentVariables.allowedKeys }}
+        - name: PORT
+          value: {{ .Values.director.service.port | quote }}
         - name: EXECUTION_DRIVER
           value: {{ .Values.director.environmentVariables.executionDriver }}
         {{- if eq .Values.director.environmentVariables.executionDriver "../execution/mongo/driver" }}

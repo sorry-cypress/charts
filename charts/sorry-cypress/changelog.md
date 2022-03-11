@@ -1,3 +1,8 @@
+# 1.4.7
+
+## Bugfix
+Fixes an issue that prevented the director service port being changed to anything other than `1234`.
+
 # 1.4.6
 
 ## Update

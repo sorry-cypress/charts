@@ -3,6 +3,32 @@ entries:
   sorry-cypress:
   - apiVersion: v2
     appVersion: 2.1.1
+    created: "2022-03-11T07:40:24.700275402Z"
+    dependencies:
+    - condition: minio.enabled
+      name: minio
+      repository: https://helm.min.io/
+      version: 8.0.9
+    - condition: mongodb.internal_db.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.19.0
+    description: A Helm chart for Sorry Cypress
+    digest: 515bc35a538209661b230334078ac4d03356782a02a0337a0319c44256ac02e8
+    home: https://sorry-cypress.dev/
+    icon: https://s3.amazonaws.com/sorry-cypress.dev/static/logo.png
+    maintainers:
+    - name: tico24
+      url: https://crumbhole.com
+    name: sorry-cypress
+    sources:
+    - https://github.com/sorry-cypress/sorry-cypress
+    type: application
+    urls:
+    - https://github.com/sorry-cypress/charts/releases/download/sorry-cypress-1.4.7/sorry-cypress-1.4.7.tgz
+    version: 1.4.7
+  - apiVersion: v2
+    appVersion: 2.1.1
     created: "2022-03-08T08:01:02.231750251Z"
     dependencies:
     - condition: minio.enabled
@@ -1329,4 +1355,4 @@ entries:
     urls:
     - https://github.com/sorry-cypress/charts/releases/download/sorry-cypress-0.1.2/sorry-cypress-0.1.2.tgz
     version: 0.1.2
-generated: "2022-03-08T08:01:02.233281489Z"
+generated: "2022-03-11T07:40:24.702807679Z"

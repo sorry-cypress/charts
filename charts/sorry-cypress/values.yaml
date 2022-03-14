@@ -311,6 +311,8 @@ runCleaner:
   daysToKeep: 200
   # Run every morning at 1am by default.
   schedule: '0 1 * * *'
+  # Cluster domain to resolve api host correctly
+  clusterDomain: 'cluster.local'
 
 imagePullSecrets: []
 # An optional array of imagePullSecrets that are used to download images from a private registry

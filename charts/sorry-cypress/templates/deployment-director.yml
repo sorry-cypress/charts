@@ -82,24 +82,24 @@ spec:
         {{- end }}
         {{- if and (.Values.minio.enabled) (eq .Values.director.environmentVariables.screenshotsDriver "../screenshots/minio.driver") }}
         - name: MINIO_BUCKET
-          value: {{ .Values.minio.defaultBucket.name }}
+          value: {{ .Values.minio.defaultBuckets }}
         - name: MINIO_ACCESS_KEY
           valueFrom:
             secretKeyRef:
               name: {{ default (include "sorry-cypress.minio.fullname" .) .Values.minio.existingSecret }}
-              key: "accesskey"
+              key: "root-user"
         - name: MINIO_SECRET_KEY
           valueFrom:
             secretKeyRef:
               name: {{ default (include "sorry-cypress.minio.fullname" .) .Values.minio.existingSecret }}
-              key: "secretkey"
+              key: "root-password"
         - name: MINIO_ENDPOINT
           value: {{ .Values.minio.endpoint }}
         - name: MINIO_URL
           value: {{ .Values.minio.url }}
         - name: MINIO_PORT
-          value: {{ .Values.minio.service.port | quote }}
-        {{- if eq (.Values.minio.service.port | quote) "443" }}
+          value: {{ .Values.minio.service.ports.api | quote }}
+        {{- if eq (.Values.minio.service.ports.api | quote) "443" }}
         - name: MINIO_USESSL
           value: "true"
         {{- end }}

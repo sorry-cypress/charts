@@ -295,9 +295,7 @@ minio:
   endpoint: storage.yourdomain.com
   url: http://storage.yourdomain.com
 
-  defaultBucket:
-    enabled: true
-    name: sorry-cypress
+  defaultBuckets: "sorry-cypress"
 
   persistence:
     size: 10Gi

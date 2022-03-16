@@ -13,8 +13,8 @@ maintainers:
     url: https://crumbhole.com
 dependencies:
   - name: minio
-    repository: https://helm.min.io/
-    version: 8.0.9
+    repository: https://charts.bitnami.com/bitnami
+    version: 11.1.2
     condition: minio.enabled
   - name: mongodb
     repository: https://charts.bitnami.com/bitnami

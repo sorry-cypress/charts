@@ -1,4 +1,7 @@
-# 1.4.8
+# 1.5.0
+
+## IMPORTANT
+This update will **remove data in existing minio** unless `minio.persistence.existingClaim` is configured with your existing PVC.
 
 ## Update
 Use Bitnami's Minio Helm Chart

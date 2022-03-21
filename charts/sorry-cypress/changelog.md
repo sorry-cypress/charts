@@ -1,3 +1,8 @@
+# 1.4.9
+
+## Bugfix
+Makes the cluster domain configurable for the clean up job to prevent failing jobs.
+
 # 1.4.8
 
 ## Bugfix

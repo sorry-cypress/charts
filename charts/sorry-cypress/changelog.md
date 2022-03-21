@@ -1,3 +1,8 @@
+# 1.4.8
+
+## Bugfix
+Fixes an issue that prevented the usage of the MiniO default port.
+
 # 1.4.7
 
 ## Bugfix

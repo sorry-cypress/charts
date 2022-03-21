@@ -289,7 +289,7 @@ s3:
 minio:
   enabled: false
 
-  # If enabled, you can include any values from the minio helm chart: https://github.com/minio/charts/blob/master/minio/values.yaml
+  # If enabled, you can include any values from the minio helm chart: https://github.com/bitnami/charts/blob/master/bitnami/minio/values.yaml
   # Below are the bare minimim to get you started.
 
   endpoint: storage.yourdomain.com

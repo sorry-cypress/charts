@@ -1,3 +1,8 @@
+# 1.4.8
+
+## Update
+Use Bitnami's Minio Helm Chart
+
 # 1.4.7
 
 ## Bugfix

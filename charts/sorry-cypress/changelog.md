@@ -1,3 +1,8 @@
+# 1.4.10
+
+## Update
+Makes Deployment replicas configurable. Anti-affinity configured to hard node and soft zone. Added PodDisruptionBudget
+
 # 1.4.9
 
 ## Bugfix

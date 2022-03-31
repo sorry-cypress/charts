@@ -12,6 +12,8 @@ api:
     # Overrides the image tag whose default is the chart appVersion.
     # tag: "latest"
 
+  replicas: 1
+
   # If you have no need for the API service, you can set this to false to exclude it.
   # Note, you must set up mongodb in order to use the API.
   enabled: true
@@ -32,7 +34,21 @@ api:
 
   tolerations: []
 
-  affinity: {}
+  # Hard node and soft zone anti-affinity
+  affinity: |
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchLabels:
+              app: {{ include "sorry-cypress-helm.fullname" . }}-api
+          topologyKey: kubernetes.io/hostname
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchLabels:
+                app: {{ include "sorry-cypress-helm.fullname" . }}-api
+            topologyKey: failure-domain.beta.kubernetes.io/zone
 
   # You can define any init container(s) here.
   # This example checks that mongodb is running before allowing the api pod to start.
@@ -79,6 +95,8 @@ dashboard:
     # Overrides the image tag whose default is the chart appVersion.
     # tag: "latest"
 
+  replicas: 1
+
   # If you have no need for the Dashboard service, you can set this to false to exclude it.
   enabled: true
 
@@ -98,7 +116,21 @@ dashboard:
 
   tolerations: []
 
-  affinity: {}
+  # Hard node and soft zone anti-affinity
+  affinity: |
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchLabels:
+              app: {{ include "sorry-cypress-helm.fullname" . }}-dashboard
+          topologyKey: kubernetes.io/hostname
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchLabels:
+                app: {{ include "sorry-cypress-helm.fullname" . }}-dashboard
+            topologyKey: failure-domain.beta.kubernetes.io/zone
 
   initContainers: []
 
@@ -146,6 +178,8 @@ director:
     # Overrides the image tag whose default is the chart appVersion.
     # tag: "latest"
 
+  replicas: 1
+
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
@@ -162,7 +196,21 @@ director:
 
   tolerations: []
 
-  affinity: {}
+  # Hard node and soft zone anti-affinity
+  affinity: |
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchLabels:
+              app: {{ include "sorry-cypress-helm.fullname" . }}-director
+          topologyKey: kubernetes.io/hostname
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchLabels:
+                app: {{ include "sorry-cypress-helm.fullname" . }}-director
+            topologyKey: failure-domain.beta.kubernetes.io/zone
 
   # You can define any init container(s) here.
   # This example checks that mongodb is running before allowing the api pod to start.

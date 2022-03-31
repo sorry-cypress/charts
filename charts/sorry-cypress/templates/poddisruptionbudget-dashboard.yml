@@ -1,0 +1,13 @@
+{{- if gt (int .Values.dashboard.replicas) 1 }}
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "sorry-cypress-helm.fullname" . }}-dashboard
+  labels:
+    app: {{ include "sorry-cypress-helm.fullname" . }}-dashboard
+spec:
+  selector:
+    matchLabels:
+      app: {{ include "sorry-cypress-helm.fullname" . }}-dashboard
+  minAvailable: 1
+{{- end }}

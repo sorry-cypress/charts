@@ -1,0 +1,10 @@
+# Tests multiple replicas
+
+api:
+  replicas: 2
+
+dashboard:
+  replicas: 2
+
+director:
+  replicas: 2

@@ -59,6 +59,7 @@ jobs:
         if: steps.list-changed.outputs.changed == 'true'
         with:
           node_image: ${{ matrix.kubernetes_version }}
+          config: kind-config.yaml
 
       - name: Run chart-testing (install)
         run: ct install --debug --config test.yaml

@@ -137,7 +137,7 @@ dashboard:
   # https://sorry-cypress.dev/dashboard#configuration
   environmentVariables:
     graphQlClientCredentials: ""
-    graphQlSchemaUrl: ""
+    graphQlSchemaUrl: "https://api-sc.integration.bewatec.com/"
     ciUrl: ""
 
   service:

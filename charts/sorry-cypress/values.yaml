@@ -230,7 +230,8 @@ director:
     # Valid options are:
     # "../execution/in-memory"
     # "../execution/mongo/driver"
-    executionDriver: "../execution/in-memory"
+    #executionDriver: "../execution/in-memory"
+    executionDriver: "../execution/mongo/driver"
 
     # Dummy or S3
     # Valid options are:

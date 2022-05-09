@@ -1,3 +1,8 @@
+# 1.4.11
+
+## Update
+Makes pathType configurable per ingress. `.Values.(api|dashboard|...).ingress.hosts.*.pathType`. Default retained at: `Prefix`
+
 # 1.4.10
 
 ## Update

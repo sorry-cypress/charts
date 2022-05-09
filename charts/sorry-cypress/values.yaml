@@ -134,7 +134,7 @@ dashboard:
 
   initContainers: []
 
-  # https://sorry-cypress.dev/dashboard#configuration
+  # https://docs.sorry-cypress.dev/configuration/dashboard-configuration/configuration
   environmentVariables:
     graphQlClientCredentials: ""
     graphQlSchemaUrl: ""

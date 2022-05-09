@@ -99,7 +99,7 @@ spec:
           value: {{ .Values.minio.url }}
         - name: MINIO_PORT
           value: {{ .Values.minio.service.port | quote }}
-        {{- if eq (.Values.minio.service.port | quote) "443" }}
+        {{- if eq (.Values.minio.service.port | quote) (443 | quote) }}
         - name: MINIO_USESSL
           value: "true"
         {{- end }}

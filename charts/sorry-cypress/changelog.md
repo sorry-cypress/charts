@@ -1,3 +1,8 @@
+# 1.4.12
+
+## Bugfix
+Fixes an issue that prevents MINIO_USESSL being always false
+
 # 1.4.11
 
 ## Update

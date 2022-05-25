@@ -14,7 +14,7 @@ maintainers:
 dependencies:
   - name: minio
     repository: https://helm.min.io/
-    version: 8.0.9
+    version: 8.0.10
     condition: minio.enabled
   - name: mongodb
     repository: https://charts.bitnami.com/bitnami

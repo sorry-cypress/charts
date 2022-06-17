@@ -3,7 +3,7 @@ remote: origin
 target-branch: main
 chart-repos:
   - minio=https://helm.min.io
-  - mongodb=https://charts.bitnami.com/bitnami
+  - mongodb=https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
 chart-dirs:
   - charts
 helm-extra-args: --timeout 300s

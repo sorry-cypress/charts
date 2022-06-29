@@ -269,7 +269,8 @@ director:
 
 mongodb:
   # You need to ensure that director.environmentVariables.executionDriver is set to "../execution/mongo/driver" if you want the director to use mongodb.
-  mongoConnectionString: ""
+  mongoConnectionString: 
+    value: ""
     enableSecret:
     enableCustomSecret:
 

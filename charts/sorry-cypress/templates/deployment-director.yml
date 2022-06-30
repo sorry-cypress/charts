@@ -48,7 +48,7 @@ spec:
           value: {{ .Values.mongodb.mongoDatabase }}
         - name: MONGODB_URI
         {{- if .Values.mongodb.mongoConnectionString.value }}
-        {{- if or (.Values.mongodb.mongoConnectionString.enableSecret) (.Values.mongodb.mongoConnectionString.enableCustomSecret)) }}
+        {{- if or (.Values.mongodb.mongoConnectionString.enableSecret) (.Values.mongodb.mongoConnectionString.enableCustomSecret) }}
           valueFrom:
             secretKeyRef:
               name: {{ include "sorry-cypress-helm.fullname" . }}-mongodbsecrets

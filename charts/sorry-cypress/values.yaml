@@ -271,8 +271,8 @@ mongodb:
   # You need to ensure that director.environmentVariables.executionDriver is set to "../execution/mongo/driver" if you want the director to use mongodb.
   mongoConnectionString: 
     value: ""
-    enableSecret:
-    enableCustomSecret:
+    enableSecret: false
+    enableCustomSecret: false
 
 
   # One of the following two options must be enabled in order for the Sorry Cypress API to work.

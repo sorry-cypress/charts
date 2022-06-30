@@ -47,14 +47,14 @@ spec:
         - name: MONGODB_DATABASE
           value: {{ .Values.mongodb.mongoDatabase }}
         - name: MONGODB_URI
-        {{- if .Values.mongodb.mongoConnectionString.value }}
-        {{- if or (.Values.mongodb.mongoConnectionString.enableSecret) (.Values.mongodb.mongoConnectionString.enableCustomSecret) }}
+        {{- if .Values.mongodb.mongoConnectionString }}
+        {{- if or (.Values.mongodb.mongoSecretConnectionString.enableSecret) (.Values.mongodb.mongoSecretConnectionString.enableCustomSecret) }}
           valueFrom:
             secretKeyRef:
               name: {{ include "sorry-cypress-helm.fullname" . }}-mongodbsecrets
               key: MONGODB_URI
         {{- else }}
-	  value: {{ .Values.mongodb.mongoConnectionString.value }}
+	  value: {{ .Values.mongodb.mongoConnectionString }}
 	{{- end }}
 	{{ else }}
           value:    "mongodb://{{ include "mongodb.hostname" . }}:{{ .Values.mongodb.service.port }}"

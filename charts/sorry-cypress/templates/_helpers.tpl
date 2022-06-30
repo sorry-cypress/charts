@@ -75,7 +75,7 @@ Create the mongoDB secret
 */}}
 {{- define "mongoSecretConnectionString" }}
 {{- with .Values.mongodb }}
-{{- printf .mongoConnectionString.value | b64enc -}}
+{{- printf .mongoConnectionString | b64enc -}}
 {{- end }}
 {{- end }}
 

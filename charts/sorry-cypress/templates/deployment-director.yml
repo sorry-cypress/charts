@@ -43,7 +43,7 @@ spec:
           value: {{ .Values.director.service.port | quote }}
         - name: EXECUTION_DRIVER
           value: {{ .Values.director.environmentVariables.executionDriver }}
-	{{- if eq .Values.director.environmentVariables.executionDriver "../execution/mongo/driver" }}
+        {{- if eq .Values.director.environmentVariables.executionDriver "../execution/mongo/driver" }}
         - name: MONGODB_DATABASE
           value: {{ .Values.mongodb.mongoDatabase }}
         - name: MONGODB_URI
@@ -54,9 +54,9 @@ spec:
               name: {{ include "sorry-cypress-helm.fullname" . }}-mongodbsecrets
               key: MONGODB_URI
         {{- else }}
-	  value: {{ .Values.mongodb.mongoConnectionString }}
-	{{- end }}
-	{{ else }}
+          value: {{ .Values.mongodb.mongoConnectionString }}
+        {{- end }}
+        {{ else }}
           value:    "mongodb://{{ include "mongodb.hostname" . }}:{{ .Values.mongodb.service.port }}"
         {{- end }}
         {{- end }}

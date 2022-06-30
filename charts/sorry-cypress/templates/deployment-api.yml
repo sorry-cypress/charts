@@ -41,9 +41,15 @@ spec:
         {{- if or (.Values.mongodb.internal_db.enabled) (.Values.mongodb.external_db.enabled) }}
         - name: MONGODB_DATABASE
           value: {{ .Values.mongodb.mongoDatabase }}
-        {{- if .Values.mongodb.mongoConnectionString }}
-        - name: MONGODB_URI
-          value: {{ .Values.mongodb.mongoConnectionString }}
+	{{- if .Values.mongodb.mongoConnectionString.value }}
+        {{- if or (.Values.mongodb.mongoConnectionString.enableSecret) (.Values.mongodb.mongoConnectionStr
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "sorry-cypress-helm.fullname" . }}-mongodbsecrets
+              key: MONGODB_URI
+        {{- else }}
+          value: {{ .Values.mongodb.mongoConnectionString.value }}
+        {{- end }}
         {{- else }}
         - name: MONGODB_URI
           value: "mongodb://{{ include "mongodb.hostname" . }}:{{ .Values.mongodb.service.port }}"

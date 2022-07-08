@@ -1,4 +1,4 @@
-# A very basic set of tests to query that the appropriate services work and connect to a pod as long as they are enabled in the Vales.yaml file
+# A very basic set of tests to query that the appropriate services work and connect to a pod as long as they are enabled in the Values.yaml file
 
 {{- if .Values.dashboard.enabled }}
 apiVersion: v1

@@ -163,6 +163,9 @@ If the execution driver is set to `"../execution/mongo/driver"`, you may enable 
 | `mongodb.external_db.mongoServer`| The mongo server when providing an external one. Use it with `mongodb.internal_db.enabled=false` | `""`            |
 | `mongodb.mongoDatabase`          | The mongo database                                                                 | `sorry-cypress` |
 | `mongodb.mongoConnectionString`  | Ignored if blank. Set a custom mongodb connection string.                          | `""` |
+| `mongodb.mongoSecretConnectionString.enableSecret`  |   If enabled, a Kubernetes secret is created from `mongodb.mongoConnectionString`. Use either enableSecret or enableCustomSecret, not both.    | `false` |
+| `mongodb.mongoSecretConnectionString.enableCustomSecret`  |   If enabled, an alternative secrets manager can be used by creating a custom Kubernetes secret. Use either enableSecret or enableCustomSecret, not both. `mongodb.mongoConnectionString` should be set to a dummy value.  | `false` |
+
 
 All other mongodb options are defined in [the Bitnami mongo db helm chart](https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml).
 

@@ -3,6 +3,26 @@
 ## Update
 Makes MongoDB connection string secrets configurable. Adds default Kubernetes secret for MongoDB connection string. Allows for alternative secret stores using custom Kubernetes secret.
 
+# 1.4.17
+
+## Update
+Sorry Cypress 2.1.6
+
+# 1.4.16
+
+## Update
+Sorry Cypress 2.1.5
+
+# 1.4.15
+
+## Update
+Sorry Cypress 2.1.4
+
+# 1.4.14
+
+## Update
+???
+
 # 1.4.13
 
 ## Update

@@ -1,0 +1,8 @@
+# Enables mongo for testing
+# Enables mongo for testing
+director:
+  environmentVariables:
+    executionDriver: "../execution/mongo/driver"
+
+mongodb:
+  mongoConnectionString: "mongodb://sorry-cypress-mongodb-headless:27017"

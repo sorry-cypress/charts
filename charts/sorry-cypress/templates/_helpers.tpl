@@ -71,6 +71,15 @@ Create the s3 secret
 {{- end }}
 
 {{/*
+Create the mongoDB secret
+*/}}
+{{- define "mongoSecretConnectionString" }}
+{{- with .Values.mongodb }}
+{{- printf .mongoConnectionString | b64enc -}}
+{{- end }}
+{{- end }}
+
+{{/*
   Determine the MongoDB hostname.
 */}}
 {{- define "mongodb.hostname" -}}

@@ -1,3 +1,8 @@
+# 1.5.0
+
+## Update
+Makes MongoDB connection string secrets configurable. Adds default Kubernetes secret for MongoDB connection string. Allows for alternative secret stores using custom Kubernetes secret.
+
 # 1.4.17
 
 ## Update

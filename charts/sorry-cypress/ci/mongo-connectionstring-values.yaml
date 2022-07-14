@@ -1,0 +1,13 @@
+# Ovverride the default chart name to align it with what tests expect endpoint names to be
+fullnameOverride: sorry-cypress-override
+
+# Enables mongo for testing
+director:
+  environmentVariables:
+    executionDriver: "../execution/mongo/driver"
+
+# Override the Mongodb service default name to a predetermined value. Test mongodb connection
+# strings by crafting a URI using the pretermined name.
+mongodb:
+  mongoConnectionString: "mongodb://sorry-cypress-override-mongodb-headless:27017/?replicaSet=rs0"
+  fullnameOverride: "sorry-cypress-override-mongodb"

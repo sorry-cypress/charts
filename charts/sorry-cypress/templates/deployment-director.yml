@@ -48,8 +48,15 @@ spec:
           value: {{ .Values.mongodb.mongoDatabase }}
         - name: MONGODB_URI
         {{- if .Values.mongodb.mongoConnectionString }}
-          value: {{ .Values.mongodb.mongoConnectionString }}
+        {{- if or (.Values.mongodb.mongoSecretConnectionString.enableSecret) (.Values.mongodb.mongoSecretConnectionString.enableCustomSecret) }}
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "sorry-cypress-helm.fullname" . }}-mongodbsecrets
+              key: MONGODB_URI
         {{- else }}
+          value: {{ .Values.mongodb.mongoConnectionString }}
+        {{- end }}
+        {{ else }}
           value:    "mongodb://{{ include "mongodb.hostname" . }}:{{ .Values.mongodb.service.port }}"
         {{- end }}
         {{- end }}

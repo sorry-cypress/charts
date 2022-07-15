@@ -160,16 +160,17 @@ https://sorry-cypress.dev/director/configuration
 
 If the execution driver is set to `"../execution/mongo/driver"`, you may enable the internal MongoDB service deploy or provide an external one. Ignore this configuration when using other execution drivers.
 
-| Parameter                      | Description                                                                        | Default         |
-|--------------------------------|------------------------------------------------------------------------------------|-----------------|
-| `mongodb.internal_db.enabled`    | If enabled, it will deploy the internal MongoDB service.                           | `true`          |
-| `mongodb.external_db.enabled`    | If enabled, it will allow you to use an external mongodb                           | `false`          |
-| `mongodb.external_db.mongoServer`| The mongo server when providing an external one. Use it with `mongodb.internal_db.enabled=false` | `""`            |
-| `mongodb.mongoDatabase`          | The mongo database                                                                 | `sorry-cypress` |
-| `mongodb.mongoConnectionString`  | Ignored if blank. Set a custom mongodb connection string.                          | `""` |
-| `mongodb.mongoSecretConnectionString.enableSecret`  |   If enabled, a Kubernetes secret is created from `mongodb.mongoConnectionString`. Use either enableSecret or enableCustomSecret, not both.    | `false` |
-| `mongodb.mongoSecretConnectionString.enableCustomSecret`  |   If enabled, an alternative secrets manager can be used by creating a custom Kubernetes secret. Use either enableSecret or enableCustomSecret, not both. `mongodb.mongoConnectionString` should be set to a dummy value.  | `false` |
-
+| Parameter                                                | Description                                                                                                                                             | Default         |
+|----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
+| `mongodb.internal_db.enabled`                            | If enabled, it will deploy the internal MongoDB service.                                                                                                | `true`          |
+| `mongodb.external_db.enabled`                            | If enabled, it will allow you to use an external mongodb                                                                                                | `false`         |
+| `mongodb.external_db.mongoServer`                        | The mongo server when providing an external one. Use it with `mongodb.internal_db.enabled=false`                                                        | `""`            |
+| `mongodb.mongoDatabase`                                  | The mongo database                                                                                                                                      | `sorry-cypress` |
+| `mongodb.mongoConnectionString`                          | Ignored if blank. Set a custom mongodb connection string.                                                                                               | `""`            |
+| `mongodb.mongoSecretConnectionString.enableSecret`       | If enabled, a Kubernetes secret is created from `mongodb.mongoConnectionString`. Use either enableSecret or enableCustomSecret, not both.               | `false`         |
+| `mongodb.mongoSecretConnectionString.enableCustomSecret` | If enabled, an alternative secrets manager can be used by creating a custom Kubernetes secret. Use either enableSecret or enableCustomSecret, not both. | `false`         |
+| `mongodb.mongoSecretConnectionString.secretName`         | A custom secret name for the mongodb connection secret. Requires `mongodb.mongoSecretConnectionString.enableCustomSecret` to be true                    |                 | 
+| `mongodb.mongoSecretConnectionString.secretKey`          | A custom secret key used for the mongodb connection string. Requires `mongodb.mongoSecretConnectionString.enableCustomSecret` to be true                |                 | 
 
 All other mongodb options are defined in [the Bitnami mongo db helm chart](https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml).
 

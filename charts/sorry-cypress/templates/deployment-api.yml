@@ -41,18 +41,22 @@ spec:
         {{- if or (.Values.mongodb.internal_db.enabled) (.Values.mongodb.external_db.enabled) }}
         - name: MONGODB_DATABASE
           value: {{ .Values.mongodb.mongoDatabase }}
-	{{- if .Values.mongodb.mongoConnectionString }}
         - name: MONGODB_URI
-        {{- if or (.Values.mongodb.mongoSecretConnectionString.enableSecret) (.Values.mongodb.mongoSecretConnectionString.enableCustomSecret) }}
+        {{-  $defaultConnectionSecretName := include "sorry-cypress-helm.fullname" . | printf "%s-mongodbsecrets" }}
+        {{-  $defaultConnectionSecretKey := "MONGODB_URI" }}
+        {{- if .Values.mongodb.mongoSecretConnectionString.enableCustomSecret }}
           valueFrom:
             secretKeyRef:
-              name: {{ include "sorry-cypress-helm.fullname" . }}-mongodbsecrets
-              key: MONGODB_URI
-        {{- else }}
+              name: {{ .Values.mongodb.mongoSecretConnectionString.secretName | default $defaultConnectionSecretName }}
+              key: {{ .Values.mongodb.mongoSecretConnectionString.secretKey | default $defaultConnectionSecretKey }}
+        {{- else if .Values.mongodb.mongoSecretConnectionString.enableSecret }}
+          valueFrom:
+            secretKeyRef:
+              name: {{ $defaultConnectionSecretName }}
+              key: {{ $defaultConnectionSecretKey }}
+        {{- else if .Values.mongodb.mongoConnectionString }}
           value: {{ .Values.mongodb.mongoConnectionString }}
-        {{- end }}
-        {{- else }}
-        - name: MONGODB_URI
+        {{ else }}
           value: "mongodb://{{ include "mongodb.hostname" . }}:{{ .Values.mongodb.service.port }}"
         {{- end }}
         {{- end }}

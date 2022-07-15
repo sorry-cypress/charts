@@ -192,6 +192,12 @@ director:
     #   cpu: 100m
     #   memory: 128Mi
 
+  readinessProbe:
+    periodSeconds: 5
+    timeoutSeconds: 3
+    successThreshold: 2
+    failureThreshold: 5
+
   nodeSelector: {}
 
   tolerations: []

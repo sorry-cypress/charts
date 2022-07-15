@@ -1,3 +1,8 @@
+# 1.5.1
+
+## Update
+Makes use of the /health-check-db endpoint on the director to provide a readiness probe.
+
 # 1.5.0
 
 ## Update

@@ -1,0 +1,34 @@
+# Number of days of inactivity before an issue becomes stale
+daysUntilStale: 60
+# Number of days of inactivity before a stale issue is closed
+daysUntilClose: 7
+# Issues with these labels will never be considered stale
+exemptLabels:
+  - pinned
+  - security
+# Label to use when marking an issue as stale
+staleLabel: stale
+# Comment to post when marking an issue as stale. Set to `false` to disable
+issues:
+  markComment: >
+    Thank you for taking the time to raise this issue. However, it has
+    not had any activity on it in the past 60 days and will be closed in
+    70 days if no updates occur.
+
+    Please check if the main branch has already resolved the issue
+    since it was raised. If you believe the issue is still valid and you
+    would like input from the maintainers then please comment to ask for
+    it to be reviewed.
+  
+pulls:
+  markComment: >
+    Thank you for your contribution! However, this pull request has not
+    had any activity in the past 60 days and will be closed in 7 days if
+    no updates occur.
+
+    If you believe the changes are still valid then please verify your
+    branch has no conflicts with main and rebase if needed. If you
+    are awaiting a (re-)review then please let us know.
+
+# Comment to post when closing a stale issue. Set to `false` to disable
+closeComment: false

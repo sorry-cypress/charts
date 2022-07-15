@@ -191,7 +191,7 @@ director:
     # requests:
     #   cpu: 100m
     #   memory: 128Mi
-    
+
   readinessProbe:
     periodSeconds: 5
     timeoutSeconds: 3

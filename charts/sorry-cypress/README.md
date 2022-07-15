@@ -151,6 +151,10 @@ https://sorry-cypress.dev/director/configuration
 | `director.ingress.hosts[0].path`                  | Root path to the service installation                                                                                                                                        | `/`                              |
 | `director.ingress.tls`                            | Ingress secrets for TLS certificates                                                                                                                                         | `[]`                             |
 | `director.initContainers`                         | Allows you to define init container(s) for the director pod                                                                                                                  | `[]`                             |
+| `director.readinessProbe.periodSeconds`    | How often (in seconds) to perform the probe.                                                 | `5`                         |
+| `director.readinessProbe.timeoutSeconds`   | Number of seconds after which the probe times out.                                           | `3`                         |
+| `director.readinessProbe.successThreshold` | Minimum consecutive successes for the probe to be considered successful after having failed. | `2`                         |
+| `director.readinessProbe.failureThreshold` | When a probe fails, Kubernetes will try `failureThreshold` times before giving up.           | `5`     
 
 ### Mongodb service
 

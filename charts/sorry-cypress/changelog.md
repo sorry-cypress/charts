@@ -1,3 +1,8 @@
+# 1.5.3
+Update
+Adds the possibility to specify a custom secret name and or secret key for the mongodb connection secret.
+Removes the necessity to set `mongodb.mongoConnectionString` to a dummy value when `mongodb.mongoSecretConnectionString.enableCustomSecret` is set to `true`.
+
 # 1.5.2
 Update
 Makes use of the /health-check-db endpoint on the director to provide a readiness probe.

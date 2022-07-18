@@ -1,3 +1,6 @@
+# 1.5.4
+Add `runCleaner.image.repository` and `runCleaner.image.tag` values to be able to specify `sorry-cypress-run-cleaner` cronjobs image to be used.
+
 # 1.5.3
 Update
 Adds the possibility to specify a custom secret name and or secret key for the mongodb connection secret.

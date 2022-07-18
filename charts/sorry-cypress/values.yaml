@@ -366,6 +366,9 @@ runCleaner:
 # You will need to set up your S3/Minio lifecycle management to delete objects from your bucket.
 # https://github.com/sendible-labs/sorry-cypress-run-cleaner
   enabled: false
+  image:
+    repository: "ghcr.io/sendible-labs/sorry-cypress-run-cleaner"
+    tag: "stable"
   # Keep the last 200 days worth of runs.
   daysToKeep: 200
   # Run every morning at 1am by default.

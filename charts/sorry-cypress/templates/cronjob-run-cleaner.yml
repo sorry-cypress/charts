@@ -19,7 +19,7 @@ spec:
         spec:
           containers:
             - name: sorry-cypress-run-cleaner
-              image: "{{ .Values.director.image.repository }}:{{ .Values.director.image.tag }}"
+              image: "{{ .Values.runCleaner.image.repository }}:{{ .Values.runCleaner.image.tag }}"
               imagePullPolicy: Always
               env:
                 - name: run_days_to_keep

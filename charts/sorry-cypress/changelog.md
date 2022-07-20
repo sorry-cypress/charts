@@ -1,3 +1,6 @@
+# 1.5.5
+Fix `sorry-cypress-run-cleaner` image by making use of `runCleaner.image.repository` and `runCleaner.image.tag` values.
+
 # 1.5.4
 Add `runCleaner.image.repository` and `runCleaner.image.tag` values to be able to specify `sorry-cypress-run-cleaner` cronjobs image to be used.
 

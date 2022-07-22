@@ -7,5 +7,9 @@ spec:
   - name: "8080"
     port: {{ .Values.dashboard.service.port }}
     targetPort: {{ .Values.dashboard.service.port }}
+    {{- if (eq .Values.dashboard.service.type "NodePort") }}
+    nodePort: {{ .Values.dashboard.service.nodePort }}
+    {{- end }}
   selector:
     app: {{ include "sorry-cypress-helm.fullname" . }}-dashboard
+  type: {{ .Values.dashboard.service.type | default "ClusterIP" }}

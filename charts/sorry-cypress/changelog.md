@@ -1,3 +1,7 @@
+# 1.6.0
+We no longer test against K8s 1.21 non longer tested against as it is no longer supported: https://kubernetes.io/releases/
+Added 1.24 to the CI.
+
 # 1.5.5
 Fix `sorry-cypress-run-cleaner` image by making use of `runCleaner.image.repository` and `runCleaner.image.tag` values.
 

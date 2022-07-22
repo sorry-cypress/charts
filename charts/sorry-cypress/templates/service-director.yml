@@ -7,7 +7,7 @@ spec:
   - name: "1234"
     port: {{ .Values.director.service.port }}
     targetPort: {{ .Values.director.service.port }}
-    {{- if (eq .Values.director.service.type "NodePort") }}
+    {{- if eq (default $.Values.director.service.type "null") "NodePort" }}
     nodePort: {{ .Values.director.service.nodePort }}
     {{- end }}
   selector:

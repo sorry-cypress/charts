@@ -7,7 +7,7 @@ spec:
   - name: "4000"
     port: {{ .Values.api.service.port }}
     targetPort: {{ .Values.api.service.port }}
-    {{- if (eq .Values.api.service.type "NodePort") }}
+    {{- if eq (default $.Values.api.service.type "null") "NodePort" }}
     nodePort: {{ .Values.api.service.nodePort }}
     {{- end }}
   selector:

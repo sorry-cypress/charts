@@ -1,3 +1,6 @@
+# 1.6.1
+Optionally allows for NodePort on the sorry-cypress services (third party services can be controlled via their own chart values).
+We still default to ClusterIP.
 # 1.6.0
 We no longer test against K8s 1.21 non longer tested against as it is no longer supported: https://kubernetes.io/releases/
 Added 1.24 to the CI.

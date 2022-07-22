@@ -63,6 +63,12 @@ api:
   service:
     port: 4000
 
+    # Defaults to "ClusterIP"
+    # type: NodePort
+
+    ## Only valid if service.type equals "NodePort"
+    # nodePort: 30700
+
   readinessProbe:
     periodSeconds: 5
     timeoutSeconds: 3
@@ -142,6 +148,12 @@ dashboard:
 
   service:
     port: 8080
+
+    # Defaults to "ClusterIP"
+    # type: NodePort
+
+    ## Only valid if service.type equals "NodePort"
+    # nodePort: 30710
 
   # Set annotations for pods
   podAnnotations: {}
@@ -258,6 +270,12 @@ director:
 
   service:
     port: 1234
+
+    # Defaults to "ClusterIP"
+    # type: NodePort
+
+    ## Only valid if service.type equals "NodePort"
+    # nodePort: 30720
 
   ingress:
     enabled: true

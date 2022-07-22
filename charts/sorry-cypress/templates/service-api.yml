@@ -7,5 +7,9 @@ spec:
   - name: "4000"
     port: {{ .Values.api.service.port }}
     targetPort: {{ .Values.api.service.port }}
+    {{- if eq (default $.Values.api.service.type "null") "NodePort" }}
+    nodePort: {{ .Values.api.service.nodePort }}
+    {{- end }}
   selector:
     app: {{ include "sorry-cypress-helm.fullname" . }}-api
+  type: {{ .Values.api.service.type | default "ClusterIP"  }}

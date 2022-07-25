@@ -1,3 +1,6 @@
+# 1.6.2
+(Sorry Cypress 2.1.7)[https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.1.7]
+
 # 1.6.1
 Optionally allows for NodePort on the sorry-cypress services (third party services can be controlled via their own chart values).
 We still default to ClusterIP.

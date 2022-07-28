@@ -294,7 +294,7 @@ director:
 mongodb:
   # You probably won't want to change this value. This tells the mongodb subchart what to deploy under.
   nameOverride: "sorry-cypress-mongodb"
-  
+
   # You need to ensure that director.environmentVariables.executionDriver is set to "../execution/mongo/driver" if you want the director to use mongodb.
   mongoConnectionString: ""
 

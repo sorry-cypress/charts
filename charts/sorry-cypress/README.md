@@ -162,6 +162,7 @@ If the execution driver is set to `"../execution/mongo/driver"`, you may enable 
 
 | Parameter                                                | Description                                                                                                                                             | Default         |
 |----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
+| `mongodb.nameOverride`                            | Used to tell the subchart what name to deploy under.                                                                                                | `sorry-cypress-mongodb`          |
 | `mongodb.internal_db.enabled`                            | If enabled, it will deploy the internal MongoDB service.                                                                                                | `true`          |
 | `mongodb.external_db.enabled`                            | If enabled, it will allow you to use an external mongodb                                                                                                | `false`         |
 | `mongodb.external_db.mongoServer`                        | The mongo server when providing an external one. Use it with `mongodb.internal_db.enabled=false`                                                        | `""`            |

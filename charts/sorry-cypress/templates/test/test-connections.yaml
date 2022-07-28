@@ -51,7 +51,7 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args:  ['{{ include "sorry-cypress-helm.fullname" . }}-mongodb-headless:{{ .Values.mongodb.service.port }}']
+      args:  ['{{ include "sorry-cypress-helm.fullname" . }}-sorry-cypress-mongodb-headless:{{ .Values.mongodb.service.port }}']
   restartPolicy: Never
 {{- end }}
 ---

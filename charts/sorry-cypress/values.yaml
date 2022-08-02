@@ -369,8 +369,10 @@ minio:
   # If enabled, you can include any values from the minio helm chart: https://github.com/minio/charts/blob/master/minio/values.yaml
   # Below are the bare minimim to get you started.
 
+  # Ref: https://docs.sorry-cypress.dev/configuration/director-configuration/minio-configuration
   endpoint: storage.yourdomain.com
   url: http://storage.yourdomain.com
+  readUrlPrefix: ''
 
   defaultBucket:
     enabled: true

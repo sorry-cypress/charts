@@ -115,6 +115,8 @@ spec:
         - name: MINIO_USESSL
           value: "true"
         {{- end }}
+        - name: MINIO_READ_URL_PREFIX
+          value: {{ .Values.minio.readUrlPrefix }}
         {{- end }}
         - name: INACTIVITY_TIMEOUT_SECONDS
           value: {{ .Values.director.environmentVariables.inactivityTimeoutSeconds | quote }}

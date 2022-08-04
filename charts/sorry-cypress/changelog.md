@@ -1,3 +1,6 @@
+# 1.6.5
+Add `minio.readUrlPrefix` value to be able to override the whole read URL to MinIO.
+
 # 1.6.4
 [Sorry Cypress 2.2.0](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.2.1)
 

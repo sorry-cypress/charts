@@ -254,7 +254,7 @@ director:
     # Valid options are:
     # "../screenshots/dummy.driver"
     # "../screenshots/s3.driver"
-    screenshotsDriver: "../screenshots/azure-blob-storage.driver"
+    screenshotsDriver: "../screenshots/dummy.driver"
 
     # https://docs.sorry-cypress.dev/configuration/director-configuration
     allowedKeys: ""

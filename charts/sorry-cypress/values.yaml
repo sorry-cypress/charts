@@ -254,7 +254,7 @@ director:
     # Valid options are:
     # "../screenshots/dummy.driver"
     # "../screenshots/s3.driver"
-    screenshotsDriver: "../screenshots/dummy.driver"
+    screenshotsDriver: "../screenshots/azure-blob-storage.driver"
 
     # https://docs.sorry-cypress.dev/configuration/director-configuration
     allowedKeys: ""
@@ -385,6 +385,7 @@ azureBlobStorage:
   containerName: sorry-cypress
   uploadUrlExpiryInHours: 24
   existingSecret: ''
+  fullnameOverride: ''
 
 runCleaner:
 # Optionally integrate the Sorry Cypress Run Cleaner to remove old runs from the database.

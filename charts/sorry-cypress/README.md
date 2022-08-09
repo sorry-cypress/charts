@@ -240,6 +240,7 @@ To use Azure Blob Storage you should use `"../screenshots/azure-blob-storage.dri
 | `azureBlobStorage.containerName`          | The name of the container in Azure Blob Storage that Sorry Cypress should use                                                                                                                  | `sorry-cypress`                 |
 | `azureBlobStorage.uploadUrlExpiryInHours` | How long the signed url used for upload will stay valid                                                                                                                                        | `24`                            |
 | `azureBlobStorage.existingSecret`         | Override the name of the secret which contain the azure connexion string                                                                                                                       | `""`                            |
+| `azureBlobStorage.fullNameOverride`       | Allows you to override the full name                                                                                                                                                           | `""`                            |
 
 ### Sorry Cypress Run Cleaner
 

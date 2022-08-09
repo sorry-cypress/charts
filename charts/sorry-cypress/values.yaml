@@ -384,6 +384,7 @@ minio:
 azureBlobStorage:
   containerName: sorry-cypress
   uploadUrlExpiryInHours: 24
+  existingSecret: ''
 
 runCleaner:
 # Optionally integrate the Sorry Cypress Run Cleaner to remove old runs from the database.

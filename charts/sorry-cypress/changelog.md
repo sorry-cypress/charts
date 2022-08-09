@@ -1,3 +1,6 @@
+# 1.7.0
+Add Azure Blob Storage support
+
 # 1.6.5
 Add `minio.readUrlPrefix` value to be able to override the whole read URL to MinIO.
 

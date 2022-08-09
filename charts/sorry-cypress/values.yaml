@@ -381,6 +381,12 @@ minio:
   persistence:
     size: 10Gi
 
+azureBlobStorage:
+  containerName: sorry-cypress
+  uploadUrlExpiryInHours: 24
+  existingSecret: ''
+  fullnameOverride: ''
+
 runCleaner:
 # Optionally integrate the Sorry Cypress Run Cleaner to remove old runs from the database.
 # You will need to set up your S3/Minio lifecycle management to delete objects from your bucket.

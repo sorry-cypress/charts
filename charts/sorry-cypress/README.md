@@ -135,7 +135,7 @@ https://sorry-cypress.dev/director/configuration
 | `director.environmentVariables.allowedKeys`       | Define the list of comma delimited record keys (provided to the Cypress Runner using `--key` option). Empty or not provided variable means that all record keys are allowed. | `""`                             |
 | `director.environmentVariables.dashboardUrl`      | The "Run URL" in the Cypress client                                                                                                                                          | `""`                             |
 | `director.environmentVariables.executionDriver`   | Set the execution driver. Valid options are `"../execution/in-memory"` and `"../execution/mongo/driver"`                                                                     | `"../execution/in-memory"`       |
-| `director.environmentVariables.screenshotsDriver` | Set the screenshots driver. Valid options are `"../screenshots/dummy.driver"` and `"../screenshots/s3.driver"`                                                               | `"../screenshots/dummy.driver"`  |
+| `director.environmentVariables.screenshotsDriver` | Set the screenshots driver. Valid options are `"../screenshots/dummy.driver"`, `"../screenshots/s3.driver"`, `"../screenshots/minio.driver"` or `"../screenshots/azure-blob-storage.driver"` | `"../screenshots/dummy.driver"`  |
 | `director.environmentVariables.inactivityTimeoutSeconds`       | Set the timeout of all test runs under your projects. |  `180s` |
 | `director.podAnnotations`                         | Set annotations for pods                                                                                                                                                     | `{}`                             |
 | `director.podLabels`                              | Set additional labels for pods                                                                                                                                               | `{}`                             |
@@ -177,10 +177,12 @@ All other mongodb options are defined in [the Bitnami mongo db helm chart](https
 ### Screenshots And Videos
 
 For saving screenshot you need to configure screenshots driver.
-Currently only S3 and MinIO supported and for s3 you should use `"../screenshots/s3.driver"`.
+Currently, only S3, MinIO and Azure Blob Storage are supported (See `director.environmentVariables.screenshotsDriver`)
 https://sorry-cypress.dev/director/storage
 
 ## S3
+To use S3 you should use `"../screenshots/minio.driver"` as your screenshot driver.
+https://docs.sorry-cypress.dev/configuration/director-configuration/aws-s3-configuration
 
 | Parameter                     | Description                                                                                                       | Default                      |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------- |
@@ -218,8 +220,8 @@ See https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accou
 ### MinIO
 
 We use MinIO As subchart, so you can also add other variables from [minio chart](https://github.com/minio/charts/tree/master/minio).
-Currently only S3 and MinIO supported and for MinIO you should use `"../screenshots/minio.driver"`.
-https://sorry-cypress.dev/director/storage
+To use MinIO you should use `"../screenshots/minio.driver"` as your screenshot driver.
+https://docs.sorry-cypress.dev/configuration/director-configuration/minio-configuration
 | Parameter                     | Description                                                                                                                                                                                    | Default                         |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | `minio.enabled`               | If enabled, it will deploy the internal MinIO service.                                                                                                                                         | `false`                         |
@@ -228,6 +230,17 @@ https://sorry-cypress.dev/director/storage
 | `minio.defaultBucket.enabled` | Creates bucket when MinIO installed                                                                                                                                                            | `true`                          |
 | `minio.defaultBucket.name`    | The name of the bucket in MinIO that Sorry Cypress should use                                                                                                                                  | `sorry-cypress`                 |
 | `minio.persistence.size`      | Size of persistent volume claim of MinIO	                                                                                                                                                     | `10Gi`                          |
+| `minio.readUrlPrefix`         | Override the URL whih will be used to read files from MinIO                                                                                                                                    | `""`                            |
+
+### Azure Blob Storage
+To use Azure Blob Storage you should use `"../screenshots/azure-blob-storage.driver"` as your screenshot driver.
+
+| Parameter                                 | Description                                                                                                                                                                                    | Default                         |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `azureBlobStorage.containerName`          | The name of the container in Azure Blob Storage that Sorry Cypress should use                                                                                                                  | `sorry-cypress`                 |
+| `azureBlobStorage.uploadUrlExpiryInHours` | How long the signed url used for upload will stay valid                                                                                                                                        | `24`                            |
+| `azureBlobStorage.existingSecret`         | Override the name of the secret which contain the azure connexion string                                                                                                                       | `""`                            |
+| `azureBlobStorage.fullNameOverride`       | Allows you to override the full name                                                                                                                                                           | `""`                            |
 
 ### Sorry Cypress Run Cleaner
 

@@ -92,6 +92,17 @@ spec:
               key: AWS_SECRET_ACCESS_KEY
         {{- end }}
         {{- end }}
+        {{- if and (not .Values.minio.enabled) (eq .Values.director.environmentVariables.screenshotsDriver "../screenshots/azure-blob-storage.driver") }}
+        - name: AZURE_CONTAINER_NAME
+          value: {{ .Values.azureBlobStorage.containerName }}
+        - name: AZURE_UPLOAD_URL_EXPIRY_IN_HOURS
+          value: {{ .Values.azureBlobStorage.uploadUrlExpiryInHours }}
+        - name: AZURE_CONNEXION_STRING
+          valueFrom:
+            secretKeyRef:
+              name: {{ default (include "sorry-cypress.azureBlobStorage.fullname" .) .Values.azureBlobStorage.existingSecret }}
+              key: "connexionstring"
+        {{- end }}
         {{- if and (.Values.minio.enabled) (eq .Values.director.environmentVariables.screenshotsDriver "../screenshots/minio.driver") }}
         - name: MINIO_BUCKET
           value: {{ .Values.minio.defaultBucket.name }}

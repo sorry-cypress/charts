@@ -96,7 +96,7 @@ spec:
         - name: AZURE_CONTAINER_NAME
           value: {{ .Values.azureBlobStorage.containerName }}
         - name: AZURE_UPLOAD_URL_EXPIRY_IN_HOURS
-          value: {{ .Values.azureBlobStorage.uploadUrlExpiryInHours }}
+          value: {{ .Values.azureBlobStorage.uploadUrlExpiryInHours | quote }}
         - name: AZURE_CONNEXION_STRING
           valueFrom:
             secretKeyRef:

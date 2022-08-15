@@ -89,6 +89,7 @@ https://sorry-cypress.dev/api#configuration
 | `api.ingress.hosts[0].path`           | Root path to the service installation                                                        | `/`                         |
 | `api.ingress.tls`                     | Ingress secrets for TLS certificates                                                         | `[]`                        |
 | `api.initContainers`                  | Allows you to define init container(s) for the api pod                                       | `[]`                        |
+| `api.environmentVariables.apolloPlayground`                  | Allows to enable or disable Apollo Playground landing page                                      | `false`                        |
 
 ### Dashboard service
 

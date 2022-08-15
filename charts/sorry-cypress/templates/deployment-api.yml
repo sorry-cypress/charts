@@ -45,6 +45,8 @@ spec:
         {{-  $defaultConnectionSecretName := include "sorry-cypress-helm.fullname" . | printf "%s-mongodbsecrets" }}
         {{-  $defaultConnectionSecretKey := "MONGODB_URI" }}
         {{- if .Values.mongodb.mongoSecretConnectionString.enableCustomSecret }}
+        - name: APOLLO_PLAYGROUND
+          value: {{ .Values.api.environmentVariables.apolloPlayground}}
           valueFrom:
             secretKeyRef:
               name: {{ .Values.mongodb.mongoSecretConnectionString.secretName | default $defaultConnectionSecretName }}

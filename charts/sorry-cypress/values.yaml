@@ -80,6 +80,10 @@ api:
 
   # Additional pod labels
   podLabels: {}
+  
+  # https://docs.sorry-cypress.dev/configuration/api-configuration
+  environmentVariables:
+    apolloPlayground: "false"
 
   ingress:
     ingressClassName: nginx

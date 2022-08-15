@@ -1,3 +1,6 @@
+# 1.8.0
+Add new variable to enable or disable the Apollo playground landing page on API root
+
 # 1.7.0
 Add Azure Blob Storage support
 

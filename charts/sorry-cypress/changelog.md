@@ -1,3 +1,6 @@
+# 1.7.1
+[Sorry Cypress 2.3.0](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.3.0)
+
 # 1.7.0
 Add Azure Blob Storage support
 
@@ -5,7 +8,7 @@ Add Azure Blob Storage support
 Add `minio.readUrlPrefix` value to be able to override the whole read URL to MinIO.
 
 # 1.6.4
-[Sorry Cypress 2.2.0](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.2.1)
+[Sorry Cypress 2.2.1](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.2.1)
 
 # 1.6.3
 [Sorry Cypress 2.2.0](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.2.0)

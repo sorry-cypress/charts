@@ -163,7 +163,7 @@ dashboard:
 
   ingress:
     enabled: true
-    ingressClassName: nginx
+    ingressClassName: 
     labels: {}
     annotations: {}
       # kubernetes.io/tls-acme: "true"

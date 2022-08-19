@@ -31,6 +31,13 @@ spec:
     - host: {{ .host | quote }}
       http:
         paths:
+          - path: "/graphql"
+            pathType: Exact
+            backend:
+              service:
+                name: {{ $fullName }}-api
+                port:
+                  number: 4000
           - path: {{ .path | default "/" }}
             pathType: {{ .pathType | default "Prefix" }}
             backend:

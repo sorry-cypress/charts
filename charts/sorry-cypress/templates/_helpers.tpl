@@ -85,9 +85,9 @@ Create the mongoDB secret
 {{- define "mongodb.hostname" -}}
 {{- if .Values.mongodb.internal_db.enabled }}
   {{- if eq .Values.mongodb.architecture "standalone" }}
-  {{- printf "%s-%s" (include "sorry-cypress-helm.fullname" .) "mongodb" -}}
+  {{- printf "%s-%s" .Release.Name "mongodb" -}}
   {{- else }}
-  {{- printf "%s-%s" (include "sorry-cypress-helm.fullname" .) "mongodb-0" -}}
+  {{- printf "%s-%s" .Release.Name "mongodb-0" -}}
   {{- end }}
 {{- else }}
 {{- printf "%s" .Values.mongodb.external_db.mongoServer -}}

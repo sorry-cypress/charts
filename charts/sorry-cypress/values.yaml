@@ -35,20 +35,21 @@ api:
   tolerations: []
 
   # Hard node and soft zone anti-affinity
-  affinity: |
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchLabels:
-              app: {{ include "sorry-cypress-helm.fullname" . }}-api
-          topologyKey: kubernetes.io/hostname
-      preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 100
-          podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app: {{ include "sorry-cypress-helm.fullname" . }}-api
-            topologyKey: failure-domain.beta.kubernetes.io/zone
+  affinity: 
+  # |
+  #   podAntiAffinity:
+  #     requiredDuringSchedulingIgnoredDuringExecution:
+  #       - labelSelector:
+  #           matchLabels:
+  #             app: {{ include "sorry-cypress-helm.fullname" . }}-api
+  #         topologyKey: kubernetes.io/hostname
+  #     preferredDuringSchedulingIgnoredDuringExecution:
+  #       - weight: 100
+  #         podAffinityTerm:
+  #           labelSelector:
+  #             matchLabels:
+  #               app: {{ include "sorry-cypress-helm.fullname" . }}-api
+  #           topologyKey: failure-domain.beta.kubernetes.io/zone
 
   # You can define any init container(s) here.
   # This example checks that mongodb is running before allowing the api pod to start.
@@ -82,7 +83,7 @@ api:
   podLabels: {}
 
   ingress:
-    ingressClassName: nginx
+    ingressClassName:
     labels: {}
     annotations: {}
       # kubernetes.io/tls-acme: "true"
@@ -123,20 +124,21 @@ dashboard:
   tolerations: []
 
   # Hard node and soft zone anti-affinity
-  affinity: |
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchLabels:
-              app: {{ include "sorry-cypress-helm.fullname" . }}-dashboard
-          topologyKey: kubernetes.io/hostname
-      preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 100
-          podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app: {{ include "sorry-cypress-helm.fullname" . }}-dashboard
-            topologyKey: failure-domain.beta.kubernetes.io/zone
+  affinity: 
+  # |
+  #   podAntiAffinity:
+  #     requiredDuringSchedulingIgnoredDuringExecution:
+  #       - labelSelector:
+  #           matchLabels:
+  #             app: {{ include "sorry-cypress-helm.fullname" . }}-dashboard
+  #         topologyKey: kubernetes.io/hostname
+  #     preferredDuringSchedulingIgnoredDuringExecution:
+  #       - weight: 100
+  #         podAffinityTerm:
+  #           labelSelector:
+  #             matchLabels:
+  #               app: {{ include "sorry-cypress-helm.fullname" . }}-dashboard
+  #           topologyKey: failure-domain.beta.kubernetes.io/zone
 
   initContainers: []
 
@@ -215,20 +217,20 @@ director:
   tolerations: []
 
   # Hard node and soft zone anti-affinity
-  affinity: |
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchLabels:
-              app: {{ include "sorry-cypress-helm.fullname" . }}-director
-          topologyKey: kubernetes.io/hostname
-      preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 100
-          podAffinityTerm:
-            labelSelector:
-              matchLabels:
-                app: {{ include "sorry-cypress-helm.fullname" . }}-director
-            topologyKey: failure-domain.beta.kubernetes.io/zone
+  affinity:
+    # podAntiAffinity:
+    #   requiredDuringSchedulingIgnoredDuringExecution:
+    #     - labelSelector:
+    #         matchLabels:
+    #           app: {{ include "sorry-cypress-helm.fullname" . }}-director
+    #       topologyKey: kubernetes.io/hostname
+    #   preferredDuringSchedulingIgnoredDuringExecution:
+    #     - weight: 100
+    #       podAffinityTerm:
+    #         labelSelector:
+    #           matchLabels:
+    #             app: {{ include "sorry-cypress-helm.fullname" . }}-director
+    #         topologyKey: failure-domain.beta.kubernetes.io/zone
 
   # You can define any init container(s) here.
   # This example checks that mongodb is running before allowing the api pod to start.
@@ -248,13 +250,13 @@ director:
     # Valid options are:
     # "../execution/in-memory"
     # "../execution/mongo/driver"
-    executionDriver: "../execution/in-memory"
+    executionDriver: "../execution/mongo/driver"
 
     # Dummy or S3
     # Valid options are:
     # "../screenshots/dummy.driver"
     # "../screenshots/s3.driver"
-    screenshotsDriver: "../screenshots/dummy.driver"
+    screenshotsDriver: "../screenshots/minio.driver"
 
     # https://docs.sorry-cypress.dev/configuration/director-configuration
     allowedKeys: ""
@@ -279,7 +281,7 @@ director:
 
   ingress:
     enabled: true
-    ingressClassName: nginx
+    ingressClassName:
     labels: {}
     annotations: {}
       # kubernetes.io/tls-acme: "true"
@@ -315,7 +317,7 @@ mongodb:
 
   # If enabled, you can use any values from the mongodb helm chart: https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml
   # Below are the bare minimim to get you started.
-  architecture: replicaset
+  architecture: standalone
   auth:
     enabled: false
 
@@ -337,7 +339,7 @@ mongodb:
       type: ClusterIP
 
 s3:
-  bucketName: example-bucket
+  bucketName: sorry-cypress
   region: us-east-1
   accessKeyId: ""
   secretAccessKey: ""
@@ -347,7 +349,7 @@ s3:
   ingress:
     # When enabling ingress, an ExternalName service will be also created to expose the bucket.
     enabled: false
-    ingressClassName: nginx
+    ingressClassName:
     labels: {}
     annotations: {}
       # kubernetes.io/tls-acme: "true"
@@ -364,14 +366,14 @@ s3:
     #      - chart-example.local
 
 minio:
-  enabled: false
+  enabled: true
 
   # If enabled, you can include any values from the minio helm chart: https://github.com/minio/charts/blob/master/minio/values.yaml
   # Below are the bare minimim to get you started.
 
   # Ref: https://docs.sorry-cypress.dev/configuration/director-configuration/minio-configuration
-  endpoint: storage.yourdomain.com
-  url: http://storage.yourdomain.com
+  endpoint: minio.chart-example.local
+  url: http://minio.chart-example.local
   readUrlPrefix: ''
 
   defaultBucket:

@@ -33,6 +33,9 @@ spec:
       affinity:
         {{- tpl . $ | nindent 8 }}
       {{- end }}
+      {{- if .Values.director.priorityClassName }}
+      priorityClassName: {{ .Values.director.priorityClassName }}
+      {{- end }}
       containers:
       - env:
         - name: DASHBOARD_URL

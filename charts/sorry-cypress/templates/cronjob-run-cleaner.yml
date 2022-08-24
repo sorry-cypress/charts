@@ -17,6 +17,9 @@ spec:
           labels:
             app: sorry-cypress-run-cleaner
         spec:
+          {{- if .Values.runCleaner.priorityClassName }}
+          priorityClassName: {{ .Values.runCleaner.priorityClassName }}
+          {{- end }}
           containers:
             - name: sorry-cypress-run-cleaner
               image: "{{ .Values.runCleaner.image.repository }}:{{ .Values.runCleaner.image.tag }}"

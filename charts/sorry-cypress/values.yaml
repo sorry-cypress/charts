@@ -78,7 +78,7 @@ api:
   # Set annotations for pods
   podAnnotations: {}
 
-  # Name of the existing priority class to be used by pod(s) 
+  # Name of the existing priority class to be used by pod(s)
   priorityClassName: ""
 
   # Additional pod labels
@@ -161,7 +161,7 @@ dashboard:
   # Set annotations for pods
   podAnnotations: {}
 
-  # Name of the existing priority class to be used by pod(s) 
+  # Name of the existing priority class to be used by pod(s)
   priorityClassName: ""
 
   # Additional pod labels
@@ -408,7 +408,7 @@ runCleaner:
   # Cluster domain to resolve api host correctly
   clusterDomain: 'cluster.local'
 
-  # Name of the existing priority class to be used by pod(s) 
+  # Name of the existing priority class to be used by pod(s)
   priorityClassName: ""
 
 imagePullSecrets: []

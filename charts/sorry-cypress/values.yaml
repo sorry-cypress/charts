@@ -78,6 +78,9 @@ api:
   # Set annotations for pods
   podAnnotations: {}
 
+  # Name of the existing priority class to be used by pod(s)
+  priorityClassName: ""
+
   # Additional pod labels
   podLabels: {}
 
@@ -157,6 +160,9 @@ dashboard:
 
   # Set annotations for pods
   podAnnotations: {}
+
+  # Name of the existing priority class to be used by pod(s)
+  priorityClassName: ""
 
   # Additional pod labels
   podLabels: {}
@@ -401,6 +407,9 @@ runCleaner:
   schedule: '0 1 * * *'
   # Cluster domain to resolve api host correctly
   clusterDomain: 'cluster.local'
+
+  # Name of the existing priority class to be used by pod(s)
+  priorityClassName: ""
 
 imagePullSecrets: []
 # An optional array of imagePullSecrets that are used to download images from a private registry

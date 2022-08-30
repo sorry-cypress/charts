@@ -1,6 +1,9 @@
 # 1.8.0
 Add new variable to enable or disable the Apollo playground landing page on API root
 
+# 1.7.3
+Allows to use  `priorityClassName` in all services.
+
 # 1.7.2
 [Sorry Cypress 2.3.1](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.3.1)
 

@@ -72,6 +72,7 @@ https://sorry-cypress.dev/api#configuration
 | `api.enabled`                         | Whether to deploy the API service                                                            | `true`                      |
 | `api.resources`                       | Resources to initialize the container                                                        | `{}`                        |
 | `api.podAnnotations`                  | Set annotations for pods                                                                     | `{}`                        |
+| `api.priorityClassName`               | Name of the existing priority class to be used by api pod(s)                                 | `""`                        |
 | `api.podLabels`                       | Set additional labels for pods                                                               | `{}`                        |
 | `api.affinity`                        | Set affinity for pods                                                                        | `{}`                        |
 | `api.nodeSelector`                    | Set node selector for pods                                                                   | `{}`                        |
@@ -106,6 +107,7 @@ https://sorry-cypress.dev/dashboard#configuration
 | `dashboard.environmentVariables.graphQlClientCredentials` | Set the `GRAPHQL_CLIENT_CREDENTIALS` environment variable to configure the API service client credentials. | `""`                              |
 | `dashboard.environmentVariables.graphQlSchemaUrl`         | Set the `GRAPHQL_SCHEMA_URL` environment variable to configure the URL of API service.                     | `""`                              |
 | `dashboard.podAnnotations`                                | Set annotations for pods                                                                                   | `{}`                              |
+| `dashboard.priorityClassName`                             | Name of the existing priority class to be used by dashboard pod(s)                                         | `""`                              |
 | `dashboard.podLabels`                                     | Set additional labels for pods                                                                             | `{}`                              |
 | `dashboard.affinity`                                      | Set affinity for pods                                                                                      | `{}`                              |
 | `dashboard.nodeSelector`                                  | Set node selector for pods                                                                                 | `{}`                              |
@@ -139,6 +141,7 @@ https://sorry-cypress.dev/director/configuration
 | `director.environmentVariables.screenshotsDriver` | Set the screenshots driver. Valid options are `"../screenshots/dummy.driver"`, `"../screenshots/s3.driver"`, `"../screenshots/minio.driver"` or `"../screenshots/azure-blob-storage.driver"` | `"../screenshots/dummy.driver"`  |
 | `director.environmentVariables.inactivityTimeoutSeconds`       | Set the timeout of all test runs under your projects. |  `180s` |
 | `director.podAnnotations`                         | Set annotations for pods                                                                                                                                                     | `{}`                             |
+| `director.priorityClassName`                      | Name of the existing priority class to be used by director pod(s)                                                                                                            | `""`                             |
 | `director.podLabels`                              | Set additional labels for pods                                                                                                                                               | `{}`                             |
 | `director.affinity`                               | Set affinity for pods                                                                                                                                                        | `{}`                             |
 | `director.nodeSelector`                           | Set node selector for pods                                                                                                                                                   | `{}`                             |
@@ -256,3 +259,4 @@ For more information, refer to https://github.com/sendible-labs/sorry-cypress-ru
 | `runCleaner.daysToKeep`       | How many days worth of run data to keep in the database. Anything older is deleted. If omitted and `runCleaner.enabled` is true, it will default to 100d. | `200`                                               |
 | `runCleaner.schedule`         | The cron schedule to run the runCleaner task                                                                                                              | `'0 1 * * *'`                                       |
 | `runCleaner.clusterDomain`    | Cluster domain, necessary to resolve api host                                                                                                             | `'cluster.local'`                                   |
+| `runCleaner.priorityClassName`| Name of the existing priority class to be used by runCleaner pod(s)                                                                                       | `""`                                                |

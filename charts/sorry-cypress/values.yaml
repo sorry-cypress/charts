@@ -190,6 +190,9 @@ director:
     # https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html
     #  eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/<IAM_ROLE_NAME>
 
+  # If you have no need for the director service, you can set this to false to exclude it.
+  enabled: true
+
   image:
     repository: agoldis/sorry-cypress-director
     pullPolicy: Always

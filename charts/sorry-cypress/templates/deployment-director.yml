@@ -1,3 +1,4 @@
+{{- if .Values.director.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -158,3 +159,4 @@ spec:
       initContainers:
       {{- include "common.tplvalues.render" (dict "value" .Values.director.initContainers "context" $) | nindent 8 }}
       {{- end  }}
+  {{- end }}

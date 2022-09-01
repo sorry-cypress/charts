@@ -1,3 +1,5 @@
+# 1.7.4
+Add option to disable director service if not needed.
 
 # 1.7.3
 Allows to use  `priorityClassName` in all services.

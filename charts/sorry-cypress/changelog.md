@@ -1,6 +1,15 @@
 # 1.8.0
 Add new variable to enable or disable the Apollo playground landing page on API root
 
+# 1.7.6
+[Sorry Cypress 2.3.3](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.3.3)
+
+# 1.7.5
+[Sorry Cypress 2.3.2](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.3.2)
+
+# 1.7.4
+Update apiVersion for Cronjob template to `batch/v1` and PodDisruptionBudget to `policy/v1` since `v1beta1` is deprecated in v1.21+.
+
 # 1.7.3
 Allows to use  `priorityClassName` in all services.
 

@@ -1,4 +1,7 @@
 
+# 1.7.4
+Update apiVersion for Cronjob template to `batch/v1` and PodDisruptionBudget to `policy/v1` since `v1beta1` is deprecated in v1.21+.
+
 # 1.7.3
 Allows to use  `priorityClassName` in all services.
 # 1.7.2

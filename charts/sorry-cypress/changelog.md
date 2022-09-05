@@ -1,4 +1,7 @@
 
+# 1.7.5
+[Sorry Cypress 2.3.2](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.3.2)
+
 # 1.7.4
 Update apiVersion for Cronjob template to `batch/v1` and PodDisruptionBudget to `policy/v1` since `v1beta1` is deprecated in v1.21+.
 

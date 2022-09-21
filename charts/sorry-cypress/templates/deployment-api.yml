@@ -48,8 +48,6 @@ spec:
         {{-  $defaultConnectionSecretName := include "sorry-cypress-helm.fullname" . | printf "%s-mongodbsecrets" }}
         {{-  $defaultConnectionSecretKey := "MONGODB_URI" }}
         {{- if .Values.mongodb.mongoSecretConnectionString.enableCustomSecret }}
-        - name: APOLLO_PLAYGROUND
-          value: {{ .Values.api.environmentVariables.apolloPlayground}}
           valueFrom:
             secretKeyRef:
               name: {{ .Values.mongodb.mongoSecretConnectionString.secretName | default $defaultConnectionSecretName }}
@@ -65,6 +63,8 @@ spec:
           value: "mongodb://{{ include "mongodb.hostname" . }}:{{ .Values.mongodb.service.port }}"
         {{- end }}
         {{- end }}
+        - name: APOLLO_PLAYGROUND
+          value: {{ .Values.api.environmentVariables.apolloPlayground }}
         image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.api.image.pullPolicy }}
         name: {{ include "sorry-cypress-helm.fullname" . }}-api

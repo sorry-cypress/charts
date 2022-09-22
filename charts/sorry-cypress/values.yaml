@@ -434,7 +434,7 @@ cleanmongofailedjob:
     port: 27017
 
 cleanmongosuccessfuljob:
-  enabled: false
+  enabled: true
   dryRun: true
   retention_days: 7
   alert_severity: low

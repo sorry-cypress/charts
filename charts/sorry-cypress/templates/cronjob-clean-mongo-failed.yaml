@@ -62,11 +62,11 @@ spec:
                 {{- end }}
               env:
                 - name: MONGODB_DATABASE
-                  value: sorry-cypress
+                  value: "sorry-cypress"
                 - name: MONGODB_URI
                   value: "mongodb://{{ include "sorry-cypress-helm.fullname" . }}-mongo:{{ .Values.cleanmongofailedjob.service.port }}"
                 - name: RETENTION_DAYS
-                  value: {{ .Values.cleanmongofailedjob.retention_days }}
+                  value: "{{ .Values.cleanmongofailedjob.retention_days }}"
               resources:
                 limits:
                   memory: {{ .Values.cleanmongofailedjob.limit_memory | quote }}

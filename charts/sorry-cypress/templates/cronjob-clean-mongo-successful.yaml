@@ -4,7 +4,7 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: clean-mongo-job
-  labels:  {{- include "sorrycypress.labels" . | nindent 4 }}
+  labels:  {{- include "sorry-cypress-helm.labels" . | nindent 4 }}
     component: backend-recurrent-task
     padoa.fr/alert-severity: {{ .Values.cleanmongosuccessfuljob.alert_severity | default "low" }}
 spec:
@@ -12,14 +12,14 @@ spec:
   schedule: "{{ .Values.cleanmongosuccessfuljob.schedule }}"
   jobTemplate:
     metadata:
-      labels: {{- include "sorrycypress.labels" . | nindent 8 }}
+      labels: {{- include "sorry-cypress-helm.labels" . | nindent 8 }}
         component: backend-recurrent-task
         padoa.fr/alert-severity: {{ .Values.cleanmongosuccessfuljob.alert_severity | default "low" }}
     spec:
       backoffLimit: {{ .Values.cleanmongosuccessfuljob.backoff_limit | default 1 }}
       template:
         metadata:
-          labels: {{- include "sorrycypress.labels" . | nindent 12 }}
+          labels: {{- include "sorry-cypress-helm.labels" . | nindent 12 }}
             component: backend-recurrent-task
             padoa.fr/alert-severity: {{ .Values.cleanmongosuccessfuljob.alert_severity | default "low" }}
         spec:
@@ -35,7 +35,7 @@ spec:
           imagePullSecrets:
           {{- toYaml . | nindent 12 }}
           {{- end }}
-          serviceAccountName: {{ include "sorrycypress.serviceAccountName" . }}
+          serviceAccountName: {{ include "sorry-cypress-helm.serviceAccountName" . }}
           securityContext:
           {{- toYaml .Values.podSecurityContext | nindent 12 }}
           containers:
@@ -64,7 +64,7 @@ spec:
                 - name: MONGODB_DATABASE
                   value: sorry-cypress
                 - name: MONGODB_URI
-                  value: "mongodb://{{ include "sorrycypress.fullname" . }}-mongo:{{ .Values.mongo.service.port }}"
+                  value: "mongodb://{{ include "sorry-cypress-helm.fullname" . }}-mongo:{{ .Values.mongo.service.port }}"
                 - name: RETENTION_DAYS
                   value: {{ .Values.cleanmongosuccessfuljob.retention_days }}
               resources:

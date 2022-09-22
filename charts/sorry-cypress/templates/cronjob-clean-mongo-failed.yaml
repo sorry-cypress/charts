@@ -1,0 +1,82 @@
+{{- if .Values.cleanmongosuccessfuljob.enabled }}
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: clean-mongo-job
+  labels:  {{- include "sorrycypress.labels" . | nindent 4 }}
+    component: backend-recurrent-task
+    padoa.fr/alert-severity: {{ .Values.cleanmongosuccessfuljob.alert_severity | default "low" }}
+spec:
+  concurrencyPolicy: Forbid
+  schedule: "{{ .Values.cleanmongosuccessfuljob.schedule }}"
+  jobTemplate:
+    metadata:
+      labels: {{- include "sorrycypress.labels" . | nindent 8 }}
+        component: backend-recurrent-task
+        padoa.fr/alert-severity: {{ .Values.cleanmongosuccessfuljob.alert_severity | default "low" }}
+    spec:
+      backoffLimit: {{ .Values.cleanmongosuccessfuljob.backoff_limit | default 1 }}
+      template:
+        metadata:
+          labels: {{- include "sorrycypress.labels" . | nindent 12 }}
+            component: backend-recurrent-task
+            padoa.fr/alert-severity: {{ .Values.cleanmongosuccessfuljob.alert_severity | default "low" }}
+        spec:
+          {{- if .Values.nodeSelector }}
+          nodeSelector:
+          {{- toYaml .Values.nodeSelector | nindent 12 }}
+          {{- end }}
+          {{- if .Values.tolerations }}
+          tolerations:
+          {{- toYaml .Values.tolerations| nindent 12 }}
+          {{- end }}
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+          {{- toYaml . | nindent 12 }}
+          {{- end }}
+          serviceAccountName: {{ include "sorrycypress.serviceAccountName" . }}
+          securityContext:
+          {{- toYaml .Values.podSecurityContext | nindent 12 }}
+          containers:
+            - name: {{ .Chart.Name }}-clean-mongo-job
+              command: 
+              - /bin/sh
+              - -c
+              - |
+                {{- if eq .Values.cleanmongosuccessfuljob.dryRun }}
+                echo "[INFO] Mode : Dry run"
+
+                mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.runs.count({"progress.groups.instances.failures" : { $gt : 1 }, "createdAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * $RETENTION_DAYS).toISOString()}})';
+                mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.instances.count({ "results.stats.failures": { $gt: 1 }, "results.stats.wallClockStartedAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * $RETENTION_DAYS).toISOString()} })';
+                echo "[INFO] Fin du dry run"
+                {{- end }}
+
+                {{- if not eq .Values.cleanmongosuccessfuljob.dryRun }}
+
+                mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.runs.deleteMany({"progress.groups.instances.failures" : { $gt : 1 }, "createdAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * $RETENTION_DAYS).toISOString()}})';
+                mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.instances.deleteMany({ "results.stats.failures": { $gt: 1 }, "results.stats.wallClockStartedAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * $RETENTION_DAYS).toISOString()} })';
+                
+
+                echo "[INFO] Fin de la suppression des runs failed datant de plus d'un mois"
+                {{- end }}
+              env:
+                - name: MONGODB_DATABASE
+                  value: sorry-cypress
+                - name: MONGODB_URI
+                  value: "mongodb://{{ include "sorrycypress.fullname" . }}-mongo:{{ .Values.mongo.service.port }}"
+                - name: RETENTION_DAYS
+                  value: {{ .Values.cleanmongosuccessfuljob.retention_days }}
+              resources:
+                limits:
+                  memory: {{ .Values.cleanmongosuccessfuljob.limit_memory | quote }}
+                  cpu: {{ .Values.cleanmongosuccessfuljob.limit_cpu | quote }}
+                requests:
+                  memory: {{ .Values.cleanmongosuccessfuljob.request_memory | quote }}
+                  cpu: {{ .Values.cleanmongosuccessfuljob.request_cpu | quote }}
+              securityContext:
+              {{- toYaml .Values.securityContext | nindent 16 }}
+              image: "{{ .Values.mongo.image.repository }}:{{ tpl .Values.mongo.image.tag . }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+          restartPolicy: OnFailure
+{{end}}

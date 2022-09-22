@@ -414,6 +414,31 @@ runCleaner:
   # Name of the existing priority class to be used by pod(s)
   priorityClassName: ""
 
+
+cleanmongofailedjob:
+  enabled: true
+  dryRun: true
+  retention_days: 3
+  alert_severity: low
+  schedule: "0 0 * * *"
+  limit_cpu: "200m"
+  limit_memory: "300Mi"
+  request_cpu: "50m"
+  request_memory: "200Mi"
+  backoff_limit: 20
+
+cleanmongosuccessfuljob:
+  enabled: false
+  dryRun: true
+  retention_days: 7
+  alert_severity: low
+  schedule: "0 0 * * *"
+  limit_cpu: "200m"
+  limit_memory: "300Mi"
+  request_cpu: "50m"
+  request_memory: "200Mi"
+  backoff_limit: 20
+
 imagePullSecrets: []
 # An optional array of imagePullSecrets that are used to download images from a private registry
 # https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/

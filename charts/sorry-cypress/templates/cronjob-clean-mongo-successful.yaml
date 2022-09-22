@@ -44,7 +44,7 @@ spec:
               - /bin/sh
               - -c
               - |
-                {{- if eq .Values.cleanmongosuccessfuljob.dryRun "true" }}
+                {{- if .Values.cleanmongosuccessfuljob.dryRun }}
                 echo "[INFO] Mode : Dry run"
 
                 mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.runs.count({"progress.groups.instances.failures" : 0, "createdAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * 7).toISOString()}})';
@@ -52,7 +52,7 @@ spec:
                 echo "[INFO] Fin du dry run"
                 {{- end }}
 
-                {{- if eq .Values.cleanmongosuccessfuljob.dryRun "false" }}
+                {{- if not .Values.cleanmongosuccessfuljob.dryRun }}
 
                 mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.runs.deleteMany({"progress.groups.instances.failures" : 0, "createdAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * 7).toISOString()}})';
                 mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.instances.deleteMany({ "results.stats.failures": 0, "results.stats.wallClockStartedAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * 7).toISOString()} })';
@@ -67,14 +67,14 @@ spec:
                   value: "{{ .Values.mongodb.mongoConnectionString }}"
               resources:
                 limits:
-                  memory: {{ .Values.cleanmongofailedjob.limit_memory | quote }}
-                  cpu: {{ .Values.cleanmongofailedjob.limit_cpu | quote }}
+                  memory: {{ .Values.cleanmongosuccessfuljob.limit_memory | quote }}
+                  cpu: {{ .Values.cleanmongosuccessfuljob.limit_cpu | quote }}
                 requests:
-                  memory: {{ .Values.cleanmongofailedjob.request_memory | quote }}
-                  cpu: {{ .Values.cleanmongofailedjob.request_cpu | quote }}
+                  memory: {{ .Values.cleanmongosuccessfuljob.request_memory | quote }}
+                  cpu: {{ .Values.cleanmongosuccessfuljob.request_cpu | quote }}
               securityContext:
               {{- toYaml .Values.securityContext | nindent 16 }}
-              image: "{{ .Values.cleanmongofailedjob.image.repository }}:{{ tpl .Values.cleanmongofailedjob.image.tag . }}"
-              imagePullPolicy: {{ .Values.cleanmongofailedjob.image.pullPolicy }}
+              image: "{{ .Values.cleanmongosuccessfuljob.image.repository }}:{{ tpl .Values.cleanmongosuccessfuljob.image.tag . }}"
+              imagePullPolicy: {{ .Values.cleanmongosuccessfuljob.image.pullPolicy }}
           restartPolicy: OnFailure
 {{end}}

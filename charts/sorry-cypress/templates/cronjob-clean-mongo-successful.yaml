@@ -47,26 +47,24 @@ spec:
                 {{- if eq .Values.cleanmongosuccessfuljob.dryRun "true" }}
                 echo "[INFO] Mode : Dry run"
 
-                mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.runs.count({"progress.groups.instances.failures" : 0, "createdAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * $RETENTION_DAYS).toISOString()}})';
-                mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.instances.count({ "results.stats.failures": 0, "results.stats.wallClockStartedAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * $RETENTION_DAYS).toISOString()} })';
+                mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.runs.count({"progress.groups.instances.failures" : 0, "createdAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * 7).toISOString()}})';
+                mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.instances.count({ "results.stats.failures": 0, "results.stats.wallClockStartedAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * 7).toISOString()} })';
                 echo "[INFO] Fin du dry run"
                 {{- end }}
 
                 {{- if eq .Values.cleanmongosuccessfuljob.dryRun "false" }}
 
-                mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.runs.deleteMany({"progress.groups.instances.failures" : 0, "createdAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * $RETENTION_DAYS).toISOString()}})';
-                mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.instances.deleteMany({ "results.stats.failures": 0, "results.stats.wallClockStartedAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * $RETENTION_DAYS).toISOString()} })';
+                mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.runs.deleteMany({"progress.groups.instances.failures" : 0, "createdAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * 7).toISOString()}})';
+                mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.instances.deleteMany({ "results.stats.failures": 0, "results.stats.wallClockStartedAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * 7).toISOString()} })';
                 
 
                 echo "[INFO] Fin de la suppression des runs failed datant de plus d'un mois"
                 {{- end }}
               env:
                 - name: MONGODB_DATABASE
-                  value: sorry-cypress
+                  value: "sorry-cypress"
                 - name: MONGODB_URI
-                  value: "mongodb://{{ include "sorry-cypress-helm.fullname" . }}-mongo:{{ .Values.cleanmongofailedjob.service.port }}"
-                - name: RETENTION_DAYS
-                  value: {{ .Values.cleanmongofailedjob.retention_days }}
+                  value: "{{ .Values.mongodb.mongoConnectionString }}"
               resources:
                 limits:
                   memory: {{ .Values.cleanmongofailedjob.limit_memory | quote }}

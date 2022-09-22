@@ -1,6 +1,6 @@
 {{- if .Values.cleanmongofailedjob.enabled }}
 ---
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: clean-failed-mongo-job

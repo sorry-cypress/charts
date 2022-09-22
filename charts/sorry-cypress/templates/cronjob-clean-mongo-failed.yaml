@@ -35,7 +35,7 @@ spec:
           imagePullSecrets:
           {{- toYaml . | nindent 12 }}
           {{- end }}
-          serviceAccountName: "{{ include "sorry-cypress-helm.serviceAccountName" . }}"
+          serviceAccountName: {{ include "sorry-cypress-helm.serviceAccountName" . }}
           securityContext:
           {{- toYaml .Values.podSecurityContext | nindent 12 }}
           containers:

@@ -302,7 +302,7 @@ director:
 
 mongodb:
   # You need to ensure that director.environmentVariables.executionDriver is set to "../execution/mongo/driver" if you want the director to use mongodb.
-  mongoConnectionString: ""
+  mongoConnectionString: "mongodb://sorry-cypress-mongo.back.padoa"
 
   # One of the following two options must be enabled in order to securely use connection strings
   # that may contain sensitive information. Use either enableSecret or enableCustomSecret, not both.

@@ -64,7 +64,7 @@ spec:
                 - name: MONGODB_DATABASE
                   value: "sorry-cypress"
                 - name: MONGODB_URI
-                  value: "mongodb://{{ .Values.mongodb.hostname }}-mongo:{{ .Values.cleanmongofailedjob.service.port }}"
+                  value: "mongodb://{{ .Values.mongodb.mongoConnectionString }}"
                 - name: RETENTION_DAYS
                   value: "{{ .Values.cleanmongofailedjob.retention_days }}"
               resources:

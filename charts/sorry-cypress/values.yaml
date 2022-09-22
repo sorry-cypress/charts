@@ -5,10 +5,6 @@
 # If you don't want to use the default release name, change it here.
 # fullnameOverride: "sorry-cypress"
 
-serviceAccount:
-    name: "sorry-cypress"
-    create: true
-
 api:
   image:
     repository: agoldis/sorry-cypress-api

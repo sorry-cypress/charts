@@ -3,7 +3,7 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: clean-mongo-job
+  name: clean-successful-mongo-job
   labels:  {{- include "sorry-cypress-helm.labels" . | nindent 4 }}
     component: backend-recurrent-task
     padoa.fr/alert-severity: {{ .Values.cleanmongosuccessfuljob.alert_severity | default "low" }}

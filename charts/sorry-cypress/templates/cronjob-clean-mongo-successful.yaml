@@ -64,19 +64,19 @@ spec:
                 - name: MONGODB_DATABASE
                   value: sorry-cypress
                 - name: MONGODB_URI
-                  value: "mongodb://{{ include "sorry-cypress-helm.fullname" . }}-mongo:{{ .Values.mongo.service.port }}"
+                  value: "mongodb://{{ include "sorry-cypress-helm.fullname" . }}-mongo:{{ .Values.cleanmongofailedjob.service.port }}"
                 - name: RETENTION_DAYS
-                  value: {{ .Values.cleanmongosuccessfuljob.retention_days }}
+                  value: {{ .Values.cleanmongofailedjob.retention_days }}
               resources:
                 limits:
-                  memory: {{ .Values.cleanmongosuccessfuljob.limit_memory | quote }}
-                  cpu: {{ .Values.cleanmongosuccessfuljob.limit_cpu | quote }}
+                  memory: {{ .Values.cleanmongofailedjob.limit_memory | quote }}
+                  cpu: {{ .Values.cleanmongofailedjob.limit_cpu | quote }}
                 requests:
-                  memory: {{ .Values.cleanmongosuccessfuljob.request_memory | quote }}
-                  cpu: {{ .Values.cleanmongosuccessfuljob.request_cpu | quote }}
+                  memory: {{ .Values.cleanmongofailedjob.request_memory | quote }}
+                  cpu: {{ .Values.cleanmongofailedjob.request_cpu | quote }}
               securityContext:
               {{- toYaml .Values.securityContext | nindent 16 }}
-              image: "{{ .Values.mongo.image.repository }}:{{ tpl .Values.mongo.image.tag . }}"
-              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              image: "{{ .Values.cleanmongofailedjob.image.repository }}:{{ tpl .Values.cleanmongofailedjob.image.tag . }}"
+              imagePullPolicy: {{ .Values.cleanmongofailedjob.image.pullPolicy }}
           restartPolicy: OnFailure
 {{end}}

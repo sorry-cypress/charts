@@ -5,6 +5,10 @@
 # If you don't want to use the default release name, change it here.
 # fullnameOverride: "sorry-cypress"
 
+serviceAccount:
+    name: "ian"
+    create: true
+
 api:
   image:
     repository: agoldis/sorry-cypress-api
@@ -418,7 +422,7 @@ runCleaner:
 cleanmongofailedjob:
   enabled: true
   dryRun: true
-  retention_days: 3
+  retention_days: 30
   alert_severity: low
   schedule: "0 0 * * *"
   limit_cpu: "200m"
@@ -426,6 +430,12 @@ cleanmongofailedjob:
   request_cpu: "50m"
   request_memory: "200Mi"
   backoff_limit: 20
+  image:
+    repository: mongo
+    tag: '4.0'
+    pullPolicy: IfNotPresent
+  service:
+    port: 27017
 
 cleanmongosuccessfuljob:
   enabled: false
@@ -438,6 +448,13 @@ cleanmongosuccessfuljob:
   request_cpu: "50m"
   request_memory: "200Mi"
   backoff_limit: 20
+  image:
+    repository: mongo
+    tag: '4.0'
+    pullPolicy: IfNotPresent
+  service:
+    port: 27017
+  
 
 imagePullSecrets: []
 # An optional array of imagePullSecrets that are used to download images from a private registry

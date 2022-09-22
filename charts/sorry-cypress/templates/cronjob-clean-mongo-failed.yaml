@@ -35,7 +35,7 @@ spec:
           imagePullSecrets:
           {{- toYaml . | nindent 12 }}
           {{- end }}
-          serviceAccountName: {{ include "sorry-cypress-helm.serviceAccountName" . }}
+          serviceAccountName: "{{ include "sorry-cypress-helm.serviceAccountName" . }}"
           securityContext:
           {{- toYaml .Values.podSecurityContext | nindent 12 }}
           containers:
@@ -44,7 +44,7 @@ spec:
               - /bin/sh
               - -c
               - |
-                {{- if eq .Values.cleanmongofailedjob.dryRun }}
+                {{- if .Values.cleanmongofailedjob.dryRun }}
                 echo "[INFO] Mode : Dry run"
 
                 mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.runs.count({"progress.groups.instances.failures" : { $gt : 1 }, "createdAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * $RETENTION_DAYS).toISOString()}})';
@@ -52,7 +52,7 @@ spec:
                 echo "[INFO] Fin du dry run"
                 {{- end }}
 
-                {{- if not eq .Values.cleanmongofailedjob.dryRun }}
+                {{- if not .Values.cleanmongofailedjob.dryRun }}
 
                 mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.runs.deleteMany({"progress.groups.instances.failures" : { $gt : 1 }, "createdAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * $RETENTION_DAYS).toISOString()}})';
                 mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.instances.deleteMany({ "results.stats.failures": { $gt: 1 }, "results.stats.wallClockStartedAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * $RETENTION_DAYS).toISOString()} })';
@@ -64,7 +64,7 @@ spec:
                 - name: MONGODB_DATABASE
                   value: sorry-cypress
                 - name: MONGODB_URI
-                  value: "mongodb://{{ include "sorry-cypress-helm.fullname" . }}-mongo:{{ .Values.mongo.service.port }}"
+                  value: "mongodb://{{ include "sorry-cypress-helm.fullname" . }}-mongo:{{ .Values.cleanmongofailedjob.service.port }}"
                 - name: RETENTION_DAYS
                   value: {{ .Values.cleanmongofailedjob.retention_days }}
               resources:
@@ -76,7 +76,7 @@ spec:
                   cpu: {{ .Values.cleanmongofailedjob.request_cpu | quote }}
               securityContext:
               {{- toYaml .Values.securityContext | nindent 16 }}
-              image: "{{ .Values.mongo.image.repository }}:{{ tpl .Values.mongo.image.tag . }}"
-              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              image: "{{ .Values.cleanmongofailedjob.image.repository }}:{{ tpl .Values.cleanmongofailedjob.image.tag . }}"
+              imagePullPolicy: {{ .Values.cleanmongofailedjob.image.pullPolicy }}
           restartPolicy: OnFailure
 {{end}}

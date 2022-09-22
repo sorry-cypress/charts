@@ -6,7 +6,7 @@
 # fullnameOverride: "sorry-cypress"
 
 serviceAccount:
-    name: "ian"
+    name: "sorry-cypress"
     create: true
 
 api:

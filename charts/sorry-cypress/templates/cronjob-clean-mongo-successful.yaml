@@ -66,7 +66,7 @@ spec:
                 - name: MONGODB_URI
                   value: "{{ .Values.mongodb.mongoConnectionString }}"
                 - name: RETENTION_DAYS
-                  value: "{{ .Values.cleanmongofailedjob.retention_days }}"
+                  value: "{{ .Values.cleanerSuccessfulRuns.retention_days }}"
               resources:
                 limits:
                   memory: {{ .Values.cleanerSuccessfulRuns.limit_memory | quote }}

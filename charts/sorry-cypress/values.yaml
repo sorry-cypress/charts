@@ -415,7 +415,7 @@ runCleaner:
   priorityClassName: ""
 
 
-cleanmongofailedjob:
+cleanerFailedRuns:
   enabled: true
   dryRun: true
   retention_days: 30
@@ -428,12 +428,12 @@ cleanmongofailedjob:
   backoff_limit: 20
   image:
     repository: mongo
-    tag: '4.0'
+    tag: '4.4.6'
     pullPolicy: IfNotPresent
   service:
     port: 27017
 
-cleanmongosuccessfuljob:
+cleanerSuccessfulRuns:
   enabled: true
   dryRun: true
   retention_days: 7
@@ -446,7 +446,7 @@ cleanmongosuccessfuljob:
   backoff_limit: 20
   image:
     repository: mongo
-    tag: '4.0'
+    tag: '4.4.6'
     pullPolicy: IfNotPresent
   service:
     port: 27017

@@ -106,7 +106,7 @@ spec:
               name: {{ default (include "sorry-cypress.azureBlobStorage.fullname" .) .Values.azureBlobStorage.existingSecret }}
               key: "connexionstring"
         {{- end }}
-        {{- if and (.Values.minio.enabled) (eq .Values.director.environmentVariables.screenshotsDriver "../screenshots/minio.driver") }}
+        {{- (eq .Values.director.environmentVariables.screenshotsDriver "../screenshots/minio.driver") }}
         - name: MINIO_BUCKET
           value: {{ .Values.minio.defaultBucket.name }}
         - name: MINIO_ACCESS_KEY

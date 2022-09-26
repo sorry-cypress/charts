@@ -1,3 +1,6 @@
+# 1.7.7
+Add Possiblity to use an external minio server
+
 # 1.7.6
 [Sorry Cypress 2.3.3](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.3.3)
 

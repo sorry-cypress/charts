@@ -1,3 +1,7 @@
+# 1.7.7
+
+- [Sorry Cypress 2.4.1](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.4.1)
+
 # 1.7.6
 [Sorry Cypress 2.3.3](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.3.3)
 

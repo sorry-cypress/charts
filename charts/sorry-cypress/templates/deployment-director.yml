@@ -134,6 +134,8 @@ spec:
         {{- end }}
         - name: INACTIVITY_TIMEOUT_SECONDS
           value: {{ .Values.director.environmentVariables.inactivityTimeoutSeconds | quote }}
+        - name: GITLAB_JOB_RETRIES
+          value: {{ .Values.director.environmentVariables.gitlabJobRetries | quote }}
         image: "{{ .Values.director.image.repository }}:{{ .Values.director.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.director.image.pullPolicy }}
         name: {{ include "sorry-cypress-helm.fullname" . }}-director

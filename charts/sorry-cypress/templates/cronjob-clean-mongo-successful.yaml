@@ -58,7 +58,7 @@ spec:
                 mongo "$MONGODB_URI"/"$MONGODB_DATABASE" --eval 'db.instances.deleteMany({ "results.stats.failures": 0, "results.stats.wallClockStartedAt": { $lte: new Date(ISODate().getTime() - 1000 * 3600 * 24 * "'$RETENTION_DAYS'").toISOString()} })';
                 
 
-                echo "[INFO] Fin de la suppression des runs failed datant de plus d'un mois"
+                echo "[INFO] Fin de la suppression des runs successful datant de plus de 7 jours"
                 {{- end }}
               env:
                 - name: MONGODB_DATABASE

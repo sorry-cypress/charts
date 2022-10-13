@@ -1,3 +1,7 @@
+# 1.7.8
+- [Sorry Cypress 2.4.2](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.4.2)
+- Add `director.environmentVariables.gitlabJobRetries` to enable Gitlab job retries feature.
+
 # 1.7.7
 
 - [Sorry Cypress 2.4.1](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.4.1)

@@ -84,6 +84,13 @@ api:
   # Additional pod labels
   podLabels: {}
 
+  # https://docs.sorry-cypress.dev/configuration/api-configuration
+  # Enable/Disable apollo playground landing page
+  enableApolloPlayground: false
+
+  # set PAGE_ITEMS_LIMIT
+  pageItemsLimit: 10
+
   ingress:
     ingressClassName: nginx
     labels: {}

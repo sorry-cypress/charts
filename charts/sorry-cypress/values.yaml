@@ -359,6 +359,8 @@ s3:
   secretAccessKey: ""
   acl: "public-read"
   readUrlPrefix: ""
+  videoKeyPrefix: ""
+  imageKeyPrefix: ""
 
   ingress:
     # When enabling ingress, an ExternalName service will be also created to expose the bucket.

@@ -1,3 +1,7 @@
+# 1.7.10
+- Add S3_VIDEO_KEY_PREFIX env var to director.
+- Add S3_IMAGE_KEY_PREFIX env var to director.
+
 # 1.7.9
 - Add new variable to enable or disable the Apollo playground landing page on API root.
 - Allow user configuration of API PAGE_ITEMS_LIMIT

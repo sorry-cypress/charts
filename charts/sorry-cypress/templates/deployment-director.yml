@@ -79,6 +79,14 @@ spec:
         - name: S3_ACL
           value: {{ . }}
         {{- end }}
+        {{- with .Values.s3.videoKeyPrefix }}
+        - name: S3_VIDEO_KEY_PREFIX
+          value: {{ . | quote }}
+        {{- end }}
+        {{- with .Values.s3.imageKeyPrefix }}
+        - name: S3_IMAGE_KEY_PREFIX
+          value: {{ . | quote }}
+        {{- end }}
         {{- with .Values.s3.readUrlPrefix }}
         - name: S3_READ_URL_PREFIX
           value: {{ . | quote }}

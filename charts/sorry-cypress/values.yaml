@@ -407,7 +407,7 @@ s3-proxy:
           bucket:
             name: example-bucket
             prefix:
-            region: us-east-1 
+            region: us-east-1
             disableSSL: false
 
 minio:

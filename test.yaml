@@ -1,5 +1,5 @@
 # See https://github.com/helm/chart-testing#configuration
-remote: "https://github.com/sorry-cypress/charts.git"
+remote: origin
 target-branch: main
 chart-repos:
   - minio=https://helm.min.io

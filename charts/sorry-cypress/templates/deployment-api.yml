@@ -42,9 +42,9 @@ spec:
       containers:
       - env:
         - name: APOLLO_PLAYGROUND
-          value: {{ .Values.api.enableApolloPlayground }}
+          value: {{ .Values.api.enableApolloPlayground | quote }}
         - name: PAGE_ITEMS_LIMIT
-          value: {{ .Values.api.pageItemsLimit }}
+          value: {{ .Values.api.pageItemsLimit | quote }}
         {{- if or (.Values.mongodb.internal_db.enabled) (.Values.mongodb.external_db.enabled) }}
         - name: MONGODB_DATABASE
           value: {{ .Values.mongodb.mongoDatabase }}

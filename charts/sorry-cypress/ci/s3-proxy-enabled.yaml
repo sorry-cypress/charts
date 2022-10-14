@@ -1,0 +1,4 @@
+# Enables the runCleaner cronjob
+
+s3-proxy:
+  enabled: true

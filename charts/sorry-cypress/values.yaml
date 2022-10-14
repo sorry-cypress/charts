@@ -380,6 +380,35 @@ s3:
     #  - secretName: chart-example-tls
     #    hosts:
     #      - chart-example.local
+s3-proxy:
+  enabled: false
+
+  # If enabled, you can include any values from the s3-proxy helm chart: https://github.com/oxyno-zeta/helm-charts-v2/blob/master/charts/s3-proxy/values.yaml
+  # Below are the bare minimim to get you started.
+  serviceAccount:
+    # Specifies whether a service account should be created
+    create: true
+    # The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    name:
+    annotations:
+      {}
+      # add annotations
+  configFiles:
+    config.yaml: |-
+      log:
+        level: info
+        format: text
+      targets:
+        first-bucket:
+          mount:
+            path:
+              - /
+          bucket:
+            name: example-bucket
+            prefix:
+            region: us-east-1 
+            disableSSL: false
 
 minio:
   enabled: false

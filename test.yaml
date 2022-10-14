@@ -4,6 +4,7 @@ target-branch: main
 chart-repos:
   - minio=https://helm.min.io
   - mongodb=https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
+  - s3-proxy=https://oxyno-zeta.github.io/helm-charts-v2/
 chart-dirs:
   - charts
 helm-extra-args: --timeout 300s

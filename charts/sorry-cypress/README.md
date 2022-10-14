@@ -208,6 +208,55 @@ https://docs.sorry-cypress.dev/configuration/director-configuration/aws-s3-confi
 | `s3.videoKeyPrefix`           | The prefix to use when uploading videos.                                                                          | `""`                         |
 | `s3.imageKeyPrefix`           | The prefix to use when uploading screenshots.                                                                     | `""`                         |
 
+## S3-Proxy
+We use s3-proxy subchart, so you can also add other variables from [s3-proxy chart](https://github.com/oxyno-zeta/helm-charts-v2/tree/master/charts/s3-proxy).
+| Parameter                     | Description                                                                                                                                                                                    | Default                         |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `s3-proxy.enabled`               | If enabled, it will deploy the s3-proxy service.                                                                                                                                         | `false`                         |
+| `s3-proxy.configFiles`                                 | [S3 proxy configuration](https://oxyno-zeta.github.io/s3-proxy/#configuration) files                                                                      | Example of configuration |
+| `s3-proxy.serviceAccount.create`                       | Specifies whether a service account should be created                                                                                                      | `true`                   |
+| `s3-proxy.serviceAccount.name`                         | Service account name created if create is true or service account name to be linked. If empty and create at true, this will be generated.                  | `""`                     |
+| `s3-proxy.serviceAccount.annotations`                  | Additional annotations to apply to the pod.                                                                                                                | `{}`      
+
+To be able to use private S3 bucket you can use [s3-proxy](https://github.com/oxyno-zeta/s3-proxy)
+
+Settings needed are:
+```yaml
+s3:
+  readUrlPrefix: 'https://addres-of-s3-proxy-ingress'
+  bucketName: example-bucket
+  region: us-east-1
+  acl: "private" # create private objects
+s3-proxy:
+  enabled: true
+  serviceAccount:
+    name: sorry-cypress ##name of director service account
+    create: false
+  configFiles:
+    config.yaml: |-
+      log:
+        level: info
+        format: text
+      targets:
+        first-bucket:
+          mount:
+            path:
+              - /
+          bucket:
+            name: example-bucket
+            prefix:
+            region: us-east-1
+            disableSSL: false
+  ingress:
+    enabled: true
+    hosts:
+      - host: addres-of-s3-proxy-ingress
+        paths:
+        - path: /
+          pathType: ImplementationSpecific
+
+
+```
 ### IAM roles for AWS EKS Service Accounts
 
 Rather than specifying a static IAM Access Key, on EKS it's possible for a pod to assume an IAM Role instead, which means no sensitive credentials are needed.

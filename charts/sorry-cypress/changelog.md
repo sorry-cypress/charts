@@ -1,4 +1,6 @@
 
+# 1.7.12
+- Add s3-proxy subchart
 # 1.7.11
 - Fix type of director.serviceAccount.annotations
 # 1.7.10

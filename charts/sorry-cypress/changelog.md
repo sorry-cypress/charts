@@ -1,3 +1,6 @@
+
+# 1.7.11
+- Fix type of director.serviceAccount.annotations
 # 1.7.10
 - Add S3_VIDEO_KEY_PREFIX env var to director.
 - Add S3_IMAGE_KEY_PREFIX env var to director.

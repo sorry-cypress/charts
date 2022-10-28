@@ -277,6 +277,9 @@ director:
 
     # Enable gitlab job retries
     gitlabJobRetries: false
+    
+    # Disables logs for probes 
+    probeLogger: false
 
   # Set annotations for pods
   podAnnotations: {}

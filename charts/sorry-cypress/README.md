@@ -177,6 +177,9 @@ If the execution driver is set to `"../execution/mongo/driver"`, you may enable 
 | `mongodb.mongoSecretConnectionString.enableCustomSecret` | If enabled, an alternative secrets manager can be used by creating a custom Kubernetes secret. Use either enableSecret or enableCustomSecret, not both. | `false`         |
 | `mongodb.mongoSecretConnectionString.secretName`         | A custom secret name for the mongodb connection secret. Requires `mongodb.mongoSecretConnectionString.enableCustomSecret` to be true                    |                 | 
 | `mongodb.mongoSecretConnectionString.secretKey`          | A custom secret key used for the mongodb connection string. Requires `mongodb.mongoSecretConnectionString.enableCustomSecret` to be true                |                 | 
+| `mongodb.mongoSecretConnectionString.secretKey`          | A custom secret key used for the mongodb connection string. Requires `mongodb.mongoSecretConnectionString.enableCustomSecret` to be true                |                 | 
+| `mongodb.certificate.enable`                              | Enable the use of CA certificate bundle for mongo db connection.                                                                                         | `false`         |
+| `mongodb.certificate.db-certs`                            | A custom name for the config map of the CA certificate bundle.                                                                                            | `false`         |
 
 All other mongodb options are defined in [the Bitnami mongo db helm chart](https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml).
 

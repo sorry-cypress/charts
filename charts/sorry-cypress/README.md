@@ -90,6 +90,8 @@ https://sorry-cypress.dev/api#configuration
 | `api.ingress.hosts[0].path`           | Root path to the service installation                                                        | `/`                         |
 | `api.ingress.tls`                     | Ingress secrets for TLS certificates                                                         | `[]`                        |
 | `api.initContainers`                  | Allows you to define init container(s) for the api pod                                       | `[]`                        |
+| `api.enableApolloPlayground`          | Allows you to enable or disable Apollo Playground landing page                               | `false`                     |
+| `api.pageItemsLimit`                  | Allows you to set the API PAGE_ITEMS_LIMIT variable                                          | `10`                        |
 
 ### Dashboard service
 
@@ -139,6 +141,7 @@ https://sorry-cypress.dev/director/configuration
 | `director.environmentVariables.executionDriver`   | Set the execution driver. Valid options are `"../execution/in-memory"` and `"../execution/mongo/driver"`                                                                     | `"../execution/in-memory"`       |
 | `director.environmentVariables.screenshotsDriver` | Set the screenshots driver. Valid options are `"../screenshots/dummy.driver"`, `"../screenshots/s3.driver"`, `"../screenshots/minio.driver"` or `"../screenshots/azure-blob-storage.driver"` | `"../screenshots/dummy.driver"`  |
 | `director.environmentVariables.inactivityTimeoutSeconds`       | Set the timeout of all test runs under your projects. |  `180s` |
+| `director.environmentVariables.gitlabJobRetries`               | Enable job retries from Gitlab.                       |  `false` |
 | `director.podAnnotations`                         | Set annotations for pods                                                                                                                                                     | `{}`                             |
 | `director.priorityClassName`                      | Name of the existing priority class to be used by director pod(s)                                                                                                            | `""`                             |
 | `director.podLabels`                              | Set additional labels for pods                                                                                                                                               | `{}`                             |
@@ -195,13 +198,15 @@ https://docs.sorry-cypress.dev/configuration/director-configuration/aws-s3-confi
 | `s3.readUrlPrefix`            | The host to load the video/screenshot in the dashboard (defaults to the bucket URL)                               | `""`                         |
 | `s3.accessKey`                | The `AWS_ACCESS_KEY_ID` environment variable to configure AWS credentials                                         | `""`                         |
 | `s3.secretAccessKey`          | The `AWS_SECRET_ACCESS_KEY` environment variable to configure AWS credentials                                     | `""`                         |
-| `s3.ingress.enabled`          | Flag to define if the S3 ingress is enabled. **It will also enable an ExternalName service to expose the bucket** | `false`                       |
+| `s3.ingress.enabled`          | Flag to define if the S3 ingress is enabled. **It will also enable an ExternalName service to expose the bucket** | `false`                      |
 | `s3.ingress.ingressClassName` | The IngressClass that should be used to implement this Ingress                                                    | `nginx`                      |
 | `s3.ingress.labels`           | Ingress labels                                                                                                    | `{}`                         |
 | `s3.ingress.annotations`      | Ingress annotations                                                                                               | `{}`                         |
 | `s3.ingress.hosts[0].host`    | Hostname to the service installation                                                                              | `static.chart-example.local` |
 | `s3.ingress.hosts[0].path`    | Root path to the service installation                                                                             | `/`                          |
 | `s3.ingress.tls`              | Ingress secrets for TLS certificates                                                                              | `[]`                         |
+| `s3.videoKeyPrefix`           | The prefix to use when uploading videos.                                                                          | `""`                         |
+| `s3.imageKeyPrefix`           | The prefix to use when uploading screenshots.                                                                     | `""`                         |
 
 ### IAM roles for AWS EKS Service Accounts
 

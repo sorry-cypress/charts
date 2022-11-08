@@ -1,5 +1,20 @@
+# 1.7.10
+- Add S3_VIDEO_KEY_PREFIX env var to director.
+- Add S3_IMAGE_KEY_PREFIX env var to director.
+
+# 1.7.9
+- Add new variable to enable or disable the Apollo playground landing page on API root.
+- Allow user configuration of API PAGE_ITEMS_LIMIT
+
+https://docs.sorry-cypress.dev/configuration/api-configuration
+
+# 1.7.8
+- [Sorry Cypress 2.4.2](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.4.2)
+- Add `director.environmentVariables.gitlabJobRetries` to enable Gitlab job retries feature.
+
 # 1.7.7
-Add Possiblity to use an external minio server
+
+- [Sorry Cypress 2.4.1](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.4.1)
 
 # 1.7.6
 [Sorry Cypress 2.3.3](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.3.3)
@@ -12,6 +27,7 @@ Update apiVersion for Cronjob template to `batch/v1` and PodDisruptionBudget to 
 
 # 1.7.3
 Allows to use  `priorityClassName` in all services.
+
 # 1.7.2
 [Sorry Cypress 2.3.1](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.3.1)
 

@@ -163,7 +163,14 @@ spec:
       {{- with (.Values.director.serviceAccount.name | default .Values.director.serviceAccountName) }}
       serviceAccountName: {{ . | quote }}
       {{- end }}
+      {{ - if .Values.mongodb.certificate.enabled}}
+      volumes:
+        - name: {{ include "sorry-cypress-helm.fullname" . }}-mongodb-ca
+          configMap:
+            name: {{ include "sorry-cypress-helm.fullname" . }}-mongodb-ca
+      {{ - else }}
       volumes: null
+      {{ - end }}
       {{- if .Values.director.initContainers }}
       initContainers:
       {{- include "common.tplvalues.render" (dict "value" .Values.director.initContainers "context" $) | nindent 8 }}

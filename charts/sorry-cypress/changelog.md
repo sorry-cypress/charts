@@ -1,3 +1,6 @@
+# 1.8.0
+Add option to connect to mongodb using a ca bundle.
+
 # 1.7.10
 - Add S3_VIDEO_KEY_PREFIX env var to director.
 - Add S3_IMAGE_KEY_PREFIX env var to director.
@@ -45,9 +48,6 @@ Add `minio.readUrlPrefix` value to be able to override the whole read URL to Min
 
 # 1.6.3
 [Sorry Cypress 2.2.0](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.2.0)
-
-# 1.8.0
-Add option to connect to mongodb using a ca bundle.
 # 1.6.2
 [Sorry Cypress 2.1.7](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.1.7)
 

@@ -1,3 +1,6 @@
+# 1.7.11
+- [Sorry Cypress 2.5.1](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.5.1)
+
 # 1.7.10
 - Add S3_VIDEO_KEY_PREFIX env var to director.
 - Add S3_IMAGE_KEY_PREFIX env var to director.

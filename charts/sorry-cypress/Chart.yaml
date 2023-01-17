@@ -3,7 +3,7 @@ name: sorry-cypress
 description: A Helm chart for Sorry Cypress
 type: application
 version: 1.7.10
-appVersion: 2.4.2
+appVersion: 2.5.1
 home: https://sorry-cypress.dev/
 sources:
   - https://github.com/sorry-cypress/sorry-cypress

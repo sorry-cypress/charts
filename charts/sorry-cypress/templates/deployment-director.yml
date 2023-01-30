@@ -159,9 +159,9 @@ spec:
           timeoutSeconds: {{ .Values.director.readinessProbe.timeoutSeconds }}
           successThreshold: {{ .Values.director.readinessProbe.successThreshold }}
           failureThreshold: {{ .Values.director.readinessProbe.failureThreshold }}
-        {{- if .Values.mongodb.certificates.enabled }}
+        {{- if .Values.mongodb.certificate.enabled }}
         volumeMounts:
-          - name: {{ .Values.mongodb.certificates.name }}}
+          - name: {{ .Values.mongodb.certificate.name }}}
             mountPath: /etc/certs
         {{- end}}
       restartPolicy: Always
@@ -170,9 +170,9 @@ spec:
       {{- end }}
       {{- if .Values.mongodb.certificate.enabled}}
       volumes:
-        - name: {{ .Values.mongodb.certificates.name }}}
+        - name: {{ .Values.mongodb.certificate.name }}}
           configMap:
-            name:  {{ .Values.mongodb.certificates.name }}}
+            name:  {{ .Values.mongodb.certificate.name }}}
       {{- else }}
       volumes: null
       {{- end }}

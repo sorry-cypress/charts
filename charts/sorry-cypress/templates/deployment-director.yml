@@ -159,15 +159,20 @@ spec:
           timeoutSeconds: {{ .Values.director.readinessProbe.timeoutSeconds }}
           successThreshold: {{ .Values.director.readinessProbe.successThreshold }}
           failureThreshold: {{ .Values.director.readinessProbe.failureThreshold }}
+        {{- if .Values.mongodb.certificates.enabled }}
+        volumeMounts:
+          - name: {{ .Values.mongodb.certificates.name }}}
+            mountPath: /etc/certs
+        {{- end}}
       restartPolicy: Always
       {{- with (.Values.director.serviceAccount.name | default .Values.director.serviceAccountName) }}
       serviceAccountName: {{ . | quote }}
       {{- end }}
       {{- if .Values.mongodb.certificate.enabled}}
       volumes:
-        - name: {{ include "sorry-cypress-helm.fullname" . }}-mongodb-ca
+        - name: {{ .Values.mongodb.certificates.name }}}
           configMap:
-            name: {{ include "sorry-cypress-helm.fullname" . }}-mongodb-ca
+            name:  {{ .Values.mongodb.certificates.name }}}
       {{- else }}
       volumes: null
       {{- end }}

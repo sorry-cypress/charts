@@ -82,9 +82,21 @@ spec:
           timeoutSeconds: {{ .Values.api.readinessProbe.timeoutSeconds }}
           successThreshold: {{ .Values.api.readinessProbe.successThreshold }}
           failureThreshold: {{ .Values.api.readinessProbe.failureThreshold }}
+        {{- if .Values.mongodb.certificates.enabled }}
+        volumeMounts:
+          - name: {{ .Values.mongodb.certificates.name }}}
+            mountPath: /etc/certs
+        {{- end}}
       restartPolicy: Always
       serviceAccountName: ""
+      {{- if .Values.mongodb.certificate.enabled}}
+      volumes:
+        - name: {{ .Values.mongodb.certificates.name }}}
+          configMap:
+            name:  {{ .Values.mongodb.certificates.name }}}
+      {{- else }}
       volumes: null
+      {{- end }}
       {{- if .Values.api.initContainers }}
       initContainers:
       {{- include "common.tplvalues.render" (dict "value" .Values.api.initContainers "context" $) | nindent 8 }}

@@ -178,7 +178,8 @@ If the execution driver is set to `"../execution/mongo/driver"`, you may enable 
 | `mongodb.mongoSecretConnectionString.secretName`         | A custom secret name for the mongodb connection secret. Requires `mongodb.mongoSecretConnectionString.enableCustomSecret` to be true                    |                 | 
 | `mongodb.mongoSecretConnectionString.secretKey`          | A custom secret key used for the mongodb connection string. Requires `mongodb.mongoSecretConnectionString.enableCustomSecret` to be true                |                 | 
 | `mongodb.certificate.enable`                              | Enable the use of CA certificate bundle for mongo db connection.                                                                                         | `false`         |
-| `mongodb.certificate.db-certs`                            | A custom name for the config map of the CA certificate bundle.                                                                                            | `false`         |
+| `mongodb.certificate.name`                            | A custom name for secret holding your config map                                                                                                             | `false`         |
+| `mongodb.certificate.configMapName`                            | A custom name for the config map name of the CA certifacate bundle                                                                                   | `sorry-cypress-db-cert` |
 
 All other mongodb options are defined in [the Bitnami mongo db helm chart](https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml).
 

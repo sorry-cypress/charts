@@ -1,3 +1,5 @@
+# 1.9.0
+- Add option to specify name of config map used for the certificate bundle to the mongodb connection.
 # 1.8.1
 - [Sorry Cypress 2.5.1](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.5.1)
 

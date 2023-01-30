@@ -2,7 +2,7 @@ apiVersion: v2
 name: sorry-cypress
 description: A Helm chart for Sorry Cypress
 type: application
-version: 1.9.0
+version: 1.10.0
 appVersion: 2.5.1
 home: https://sorry-cypress.dev/
 sources:
@@ -13,10 +13,10 @@ maintainers:
     url: https://crumbhole.com
 dependencies:
   - name: minio
-    repository: https://helm.min.io/
-    version: 8.0.9
+    repository: https://charts.min.io/
+    version: 5.0.4
     condition: minio.enabled
   - name: mongodb
     repository: https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
-    version: 10.19.0
+    version: 12.1.15
     condition: mongodb.internal_db.enabled

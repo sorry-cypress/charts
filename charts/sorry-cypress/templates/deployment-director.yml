@@ -48,7 +48,21 @@ spec:
           value: {{ .Values.director.environmentVariables.executionDriver }}
         {{- if eq .Values.director.environmentVariables.executionDriver "../execution/mongo/driver" }}
         - name: MONGODB_DATABASE
+        {{-  $defaultDatabaseNameSecretName := include "sorry-cypress-helm.fullname" . | printf "%s-mongodbsecrets" }}
+        {{-  $defaultDatabaseNameSecretKey := "MONGODB_DATABASE" }}
+        {{- if .Values.mongodb.mongoSecretConnectionString.enableCustomSecret }}
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.mongodb.mongoSecretConnectionString.secretName | default $defaultDatabaseNameSecretName }}
+              key: {{ .Values.mongodb.mongoSecretConnectionString.secretDatabaseName | default $defaultDatabaseNameSecretKey }}
+        {{- else if .Values.mongodb.mongoSecretConnectionString.enableSecret }}
+          valueFrom:
+            secretKeyRef:
+              name: {{ $defaultDatabaseNameSecretName }}
+              key: {{ $defaultDatabaseNameSecretKey }}
+        {{ else }}
           value: {{ .Values.mongodb.mongoDatabase }}
+        {{- end }}
         - name: MONGODB_URI
         {{-  $defaultConnectionSecretName := include "sorry-cypress-helm.fullname" . | printf "%s-mongodbsecrets" }}
         {{-  $defaultConnectionSecretKey := "MONGODB_URI" }}
@@ -161,7 +175,7 @@ spec:
           failureThreshold: {{ .Values.director.readinessProbe.failureThreshold }}
         {{- if .Values.mongodb.certificate.enabled }}
         volumeMounts:
-          - name: {{ .Values.mongodb.certificate.name }}}
+          - name: {{ .Values.mongodb.certificate.name }}
             mountPath: /etc/certs
         {{- end}}
       restartPolicy: Always
@@ -170,9 +184,9 @@ spec:
       {{- end }}
       {{- if .Values.mongodb.certificate.enabled}}
       volumes:
-        - name: {{ .Values.mongodb.certificate.name }}}
+        - name: {{ .Values.mongodb.certificate.name }}
           configMap:
-            name:  {{ .Values.mongodb.certificate.name }}}
+            name:  {{ .Values.mongodb.certificate.configMapName }}
       {{- else }}
       volumes: null
       {{- end }}

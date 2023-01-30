@@ -13,7 +13,7 @@ maintainers:
     url: https://crumbhole.com
 dependencies:
   - name: minio
-    repository: https://charts.min.io/
+    repository: https://helm.min.io/
     version: 8.0.9
     condition: minio.enabled
   - name: mongodb

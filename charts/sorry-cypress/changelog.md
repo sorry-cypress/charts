@@ -1,6 +1,4 @@
 # 1.10.0
-- Updated minio chart to new repo `charts.min.io`
-- Update mongodb chart to `12.1.15`
 - Allow MongoDB name to be defined by a secret
 - Mount certificate in the containers
 

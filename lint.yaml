@@ -2,7 +2,7 @@
 remote: origin
 target-branch: main
 chart-repos:
-  - minio=https://helm.min.io
+  - minio=https://charts.min.io
   - mongodb=https://raw.githubusercontent.com/bitnami/charts/pre-2022/bitnami
 chart-dirs:
   - charts

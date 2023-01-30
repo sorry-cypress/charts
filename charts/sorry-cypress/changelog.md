@@ -1,3 +1,5 @@
+# 1.8.0
+- Add option to connect to mongodb using a certificate bundle.
 # 1.7.10
 - Add S3_VIDEO_KEY_PREFIX env var to director.
 - Add S3_IMAGE_KEY_PREFIX env var to director.

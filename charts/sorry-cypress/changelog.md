@@ -1,3 +1,6 @@
+# 1.8.1
+- [Sorry Cypress 2.5.1](https://github.com/sorry-cypress/sorry-cypress/releases/tag/v2.5.1)
+
 # 1.8.0
 - Add option to connect to mongodb using a certificate bundle.
 # 1.7.10

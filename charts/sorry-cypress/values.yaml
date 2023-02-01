@@ -332,6 +332,11 @@ mongodb:
 
   mongoDatabase: "sorry-cypress"
 
+  certificate:
+    enabled: false
+    name: "db-cert"
+    configMapName: "sorry-cypress-db-cert"
+
   # If enabled, you can use any values from the mongodb helm chart: https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml
   # Below are the bare minimim to get you started.
   architecture: replicaset

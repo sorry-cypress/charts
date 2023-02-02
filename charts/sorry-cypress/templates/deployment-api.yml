@@ -49,16 +49,11 @@ spec:
         - name: MONGODB_DATABASE
         {{-  $defaultDatabaseNameSecretName := include "sorry-cypress-helm.fullname" . | printf "%s-mongodbsecrets" }}
         {{-  $defaultDatabaseNameSecretKey := "MONGODB_DATABASE" }}
-        {{- if .Values.mongodb.mongoSecretConnectionString.enableCustomSecret }}
+        {{- if .Values.mongodb.mongoSecretConnectionString.secretDatabaseName}}
           valueFrom:
             secretKeyRef:
               name: {{ .Values.mongodb.mongoSecretConnectionString.secretName | default $defaultDatabaseNameSecretName }}
               key: {{ .Values.mongodb.mongoSecretConnectionString.secretDatabaseName | default $defaultDatabaseNameSecretKey }}
-        {{- else if .Values.mongodb.mongoSecretConnectionString.enableSecret }}
-          valueFrom:
-            secretKeyRef:
-              name: {{ $defaultDatabaseNameSecretName }}
-              key: {{ $defaultDatabaseNameSecretKey }}
         {{ else }}
           value: {{ .Values.mongodb.mongoDatabase }}
         {{- end }}

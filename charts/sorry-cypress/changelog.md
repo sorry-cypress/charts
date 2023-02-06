@@ -1,3 +1,5 @@
+# 1.10.0
+- Add option to provide director record keys through a custom Kubernetes secret.
 # 1.9.0
 - Add option to specify name of config map used for the certificate bundle to the mongodb connection.
 # 1.8.1

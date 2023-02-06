@@ -253,6 +253,10 @@ director:
   #     - "pod"
   #     - "-lapp.kubernetes.io/name=mongodb"
 
+  # Enable setting record keys from an already existing secret
+  allowedKeysEnableCustomSecret: false
+  # allowedKeysSecretName: allowed-keys-secret
+
   environmentVariables:
     # The "Run URL" in the Cypress client
     dashboardUrl: ""
@@ -271,10 +275,6 @@ director:
 
     # https://docs.sorry-cypress.dev/configuration/director-configuration
     allowedKeys: ""
-
-    # The following can be enabled in order to securely use record keys
-    # that may contain sensitive information.
-    allowedKeysEnableCustomSecret: false
 
     # Test runs timeouts
     inactivityTimeoutSeconds: ""

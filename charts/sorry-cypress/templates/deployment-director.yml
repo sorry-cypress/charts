@@ -41,13 +41,12 @@ spec:
         - name: DASHBOARD_URL
           value: {{ .Values.director.environmentVariables.dashboardUrl | quote }}
         - name: ALLOWED_KEYS
-        {{-  $defaultAllowedKeysSecretName := include "sorry-cypress-helm.fullname" . | printf "%s-recordkeyssecret" }}
         {{-  $defaultAllowedKeysSecretKey := "ALLOWED_KEYS" }}
-        {{- if .Values.director.environmentVariables.allowedKeysEnableCustomSecret }}
+        {{- if .Values.director.allowedKeysEnableCustomSecret }}
           valueFrom:
             secretKeyRef:
-              name: {{ .Values.director.environmentVariables.allowedKeysSecretName | default $defaultAllowedKeysSecretName }}
-              key: {{ .Values.director.environmentVariables.allowedKeysSecretKey | default $defaultAllowedKeysSecretKey }}
+              name: {{ .Values.director.allowedKeysSecretName }}
+              key: {{ .Values.director.allowedKeysSecretKey | default $defaultAllowedKeysSecretKey }}
         {{ else }}
           value: {{ .Values.director.environmentVariables.allowedKeys }}
         {{- end }}

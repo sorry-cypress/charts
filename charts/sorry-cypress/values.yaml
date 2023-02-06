@@ -253,7 +253,7 @@ director:
   #     - "pod"
   #     - "-lapp.kubernetes.io/name=mongodb"
 
-  # Enable setting record keys from an already existing secret
+  # Optionally provide record keys from an already existing Kubernetes secret
   allowedKeysEnableCustomSecret: false
   # allowedKeysSecretName: allowed-keys-secret
 

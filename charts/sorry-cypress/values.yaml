@@ -403,7 +403,6 @@ minio:
 
   persistence:
     size: 10Gi
-
 azureBlobStorage:
   containerName: sorry-cypress
   uploadUrlExpiryInHours: 24

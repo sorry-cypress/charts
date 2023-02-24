@@ -160,6 +160,8 @@ spec:
         - containerPort: {{ .Values.director.service.port }}
         resources:
           {{- toYaml .Values.director.resources | nindent 10 }}
+        securityContext:
+          {{- toYaml .Values.director.securityContext | nindent 10 }}
         readinessProbe:
           httpGet:
             path: /health-check-db

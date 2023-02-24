@@ -1,3 +1,6 @@
+# 1.11.0
+- Add custom security context in sorry-cypress deployments
+
 # 1.10.0
 - Allow MongoDB name to be defined by a secret
 - Mount certificate in the containers

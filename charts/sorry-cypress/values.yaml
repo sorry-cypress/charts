@@ -30,6 +30,8 @@ api:
     #   cpu: 100m
     #   memory: 128Mi
 
+  securityContext: {}
+
   nodeSelector: {}
 
   tolerations: []
@@ -128,6 +130,8 @@ dashboard:
     #   cpu: 100m
     #   memory: 128Mi
 
+  securityContext: {}
+
   nodeSelector: {}
 
   tolerations: []
@@ -216,6 +220,8 @@ director:
     # requests:
     #   cpu: 100m
     #   memory: 128Mi
+
+  securityContext: {}
 
   readinessProbe:
     periodSeconds: 5

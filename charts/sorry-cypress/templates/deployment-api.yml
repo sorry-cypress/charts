@@ -83,6 +83,8 @@ spec:
         - containerPort: 4000
         resources:
           {{- toYaml .Values.api.resources | nindent 10 }}
+        securityContext:
+          {{- toYaml .Values.api.securityContext | nindent 10 }}
         readinessProbe:
           httpGet:
             path: /.well-known/apollo/server-health

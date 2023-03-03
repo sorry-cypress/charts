@@ -71,6 +71,7 @@ https://sorry-cypress.dev/api#configuration
 | `api.image.pullPolicy`                | Image pull policy                                                                            | `Always`                    |
 | `api.enabled`                         | Whether to deploy the API service                                                            | `true`                      |
 | `api.resources`                       | Resources to initialize the container                                                        | `{}`                        |
+| `api.securityContext`                 | Privilege and access control for the container                                               | `{}`                        |
 | `api.podAnnotations`                  | Set annotations for pods                                                                     | `{}`                        |
 | `api.priorityClassName`               | Name of the existing priority class to be used by api pod(s)                                 | `""`                        |
 | `api.podLabels`                       | Set additional labels for pods                                                               | `{}`                        |
@@ -104,6 +105,7 @@ https://sorry-cypress.dev/dashboard#configuration
 | `dashboard.image.pullPolicy`                              | Image pull policy                                                                                          | `Always`                          |
 | `dashboard.enabled`                                       | Whether to deploy the Dashboard service                                                                    | `true`                            |
 | `dashboard.resources`                                     | Resources to initialize the container                                                                      | `{}`                              |
+| `dashboard.securityContext`                               | Privilege and access control for the container                                                             | `{}`                              |
 | `dashboard.environmentVariables.ciUrl`                    | Set the `CI_URL` optional environment variable to add a link to your CI tool                               | `""`                              |
 | `dashboard.environmentVariables.graphQlClientCredentials` | Set the `GRAPHQL_CLIENT_CREDENTIALS` environment variable to configure the API service client credentials. | `""`                              |
 | `dashboard.environmentVariables.graphQlSchemaUrl`         | Set the `GRAPHQL_SCHEMA_URL` environment variable to configure the URL of API service.                     | `""`                              |
@@ -136,6 +138,7 @@ https://sorry-cypress.dev/director/configuration
 | `director.image.tag`                              | Image tag                                                                                                                                                                    | ``                               |
 | `director.image.pullPolicy`                       | Image pull policy                                                                                                                                                            | `Always`                         |
 | `director.resources`                              | Resources to initialize the container                                                                                                                                        | `{}`                             |
+| `director.securityContext`                        | Privilege and access control for the container                                                                                                                               | `{}`                             |
 | `director.environmentVariables.allowedKeys`       | Define the list of comma delimited record keys (provided to the Cypress Runner using `--key` option). Empty or not provided variable means that all record keys are allowed. | `""`                             |
 | `director.environmentVariables.dashboardUrl`      | The "Run URL" in the Cypress client                                                                                                                                          | `""`                             |
 | `director.environmentVariables.executionDriver`   | Set the execution driver. Valid options are `"../execution/in-memory"` and `"../execution/mongo/driver"`                                                                     | `"../execution/in-memory"`       |

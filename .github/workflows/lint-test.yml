@@ -15,7 +15,7 @@ jobs:
           - "kindest/node:v1.25.2"
           - "kindest/node:v1.24.6"
           - "kindest/node:v1.23.12"
-      fail-fast: false
+      fail-fast: true
 
     steps:
       - name: Checkout

@@ -1,3 +1,6 @@
+# 1.11.1
+- Set `runCleaner.resources` values
+
 # 1.11.0
 - Add custom security context in sorry-cypress deployments
 

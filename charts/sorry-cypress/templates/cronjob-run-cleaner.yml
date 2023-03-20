@@ -30,9 +30,7 @@ spec:
                 - name: sorry_cypress_api_url
                   value: "http://{{ include "sorry-cypress-helm.fullname" . }}-api.{{ .Release.Namespace }}.svc.{{ .Values.runCleaner.clusterDomain }}:4000"
               resources:
-                requests:
-                  cpu: 50m
-                  memory: 60Mi
+                {{- toYaml .Values.runCleaner.resources | nindent 16 }}
           restartPolicy: Never
   suspend: false
   schedule: {{ .Values.runCleaner.schedule }}

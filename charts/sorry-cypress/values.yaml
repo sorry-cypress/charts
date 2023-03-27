@@ -259,6 +259,10 @@ director:
   #     - "pod"
   #     - "-lapp.kubernetes.io/name=mongodb"
 
+  # Optionally provide record keys from an already existing Kubernetes secret
+  allowedKeysEnableCustomSecret: false
+  # allowedKeysSecretName: allowed-keys-secret
+
   environmentVariables:
     # The "Run URL" in the Cypress client
     dashboardUrl: ""

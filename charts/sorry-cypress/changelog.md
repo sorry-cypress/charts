@@ -1,3 +1,5 @@
+# 1.12.0
+- Update sorry-cypress version to 2.5.2
 # 1.11.0
 - Add custom security context in sorry-cypress deployments
 

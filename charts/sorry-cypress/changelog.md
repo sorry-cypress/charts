@@ -1,5 +1,11 @@
-# 1.12.0
+# 1.13.0
 - Update sorry-cypress version to 2.5.2
+# 1.12.0
+- Add option to provide director record keys through a custom Kubernetes secret.
+
+# 1.11.1
+- Set `runCleaner.resources` values
+
 # 1.11.0
 - Add custom security context in sorry-cypress deployments
 

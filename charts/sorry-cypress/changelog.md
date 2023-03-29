@@ -1,3 +1,5 @@
+# 1.13.0
+- Update sorry-cypress version to 2.5.2
 # 1.12.0
 - Add option to provide director record keys through a custom Kubernetes secret.
 

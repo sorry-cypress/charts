@@ -449,6 +449,12 @@ runCleaner:
     #   cpu: 100m
     #   memory: 128Mi
 
+  podAnnotations: {}
+
+  podLabels: {}
+
+  securityContext: {}
+
 imagePullSecrets: []
 # An optional array of imagePullSecrets that are used to download images from a private registry
 # https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/

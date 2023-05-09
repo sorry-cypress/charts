@@ -1,5 +1,10 @@
+# 1.13.1
+- Add option to add annotations and labels to the runCleaner cronjob pods
+- Allow to specify the container security context to the runCleaner cronjob pods
+
 # 1.13.0
 - Update sorry-cypress version to 2.5.2
+
 # 1.12.0
 - Add option to provide director record keys through a custom Kubernetes secret.
 

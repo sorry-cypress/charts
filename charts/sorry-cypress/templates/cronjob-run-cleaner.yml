@@ -16,6 +16,13 @@ spec:
         metadata:
           labels:
             app: sorry-cypress-run-cleaner
+          {{- with .Values.runCleaner.podLabels }}
+            {{- toYaml . | nindent 12 }}
+          {{- end}}
+          {{- with .Values.runCleaner.podAnnotations }}
+          annotations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
         spec:
           {{- if .Values.runCleaner.priorityClassName }}
           priorityClassName: {{ .Values.runCleaner.priorityClassName }}
@@ -31,6 +38,9 @@ spec:
                   value: "http://{{ include "sorry-cypress-helm.fullname" . }}-api.{{ .Release.Namespace }}.svc.{{ .Values.runCleaner.clusterDomain }}:4000"
               resources:
                 {{- toYaml .Values.runCleaner.resources | nindent 16 }}
+              securityContext:
+                {{- toYaml .Values.runCleaner.securityContext | nindent 16 }}
+
           restartPolicy: Never
   suspend: false
   schedule: {{ .Values.runCleaner.schedule }}

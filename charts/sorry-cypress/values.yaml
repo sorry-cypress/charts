@@ -105,6 +105,10 @@ api:
     #  - secretName: chart-example-tls
     #    hosts:
     #      - chart-example.local
+  
+  extraEnv: []
+    # - name: ENV_NAME
+    #   value: ENV_VALUE
 
 dashboard:
   image:
@@ -191,6 +195,9 @@ dashboard:
     #  - secretName: chart-example-tls
     #    hosts:
     #      - chart-example.local
+  extraEnv: []
+    # - name: ENV_NAME
+    #   value: ENV_VALUE
 
 director:
   serviceAccount:
@@ -316,6 +323,10 @@ director:
     #  - secretName: chart-example-tls
     #    hosts:
     #      - chart-example.local
+  
+  extraEnv: []
+    # - name: ENV_NAME
+    #   value: ENV_VALUE
 
 mongodb:
   # You need to ensure that director.environmentVariables.executionDriver is set to "../execution/mongo/driver" if you want the director to use mongodb.

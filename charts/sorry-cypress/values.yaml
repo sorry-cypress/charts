@@ -18,7 +18,8 @@ api:
   # Note, you must set up mongodb in order to use the API.
   enabled: true
 
-  resources: {}
+  resources:
+    {}
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -96,7 +97,8 @@ api:
   ingress:
     ingressClassName: nginx
     labels: {}
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/tls-acme: "true"
     hosts:
       - host: api.chart-example.local
@@ -122,7 +124,8 @@ dashboard:
   # If you have no need for the Dashboard service, you can set this to false to exclude it.
   enabled: true
 
-  resources: {}
+  resources:
+    {}
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -186,7 +189,8 @@ dashboard:
     enabled: true
     ingressClassName: nginx
     labels: {}
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/tls-acme: "true"
     hosts:
       - host: dashboard.chart-example.local
@@ -216,7 +220,8 @@ director:
 
   replicas: 1
 
-  resources: {}
+  resources:
+    {}
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -314,7 +319,8 @@ director:
     enabled: true
     ingressClassName: nginx
     labels: {}
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/tls-acme: "true"
     hosts:
       - host: director.chart-example.local
@@ -393,7 +399,8 @@ s3:
     enabled: false
     ingressClassName: nginx
     labels: {}
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/tls-acme: "true"
       # nginx.ingress.kubernetes.io/upstream-vhost: <bucket>.s3-website-<region>.amazonaws.com
       # nginx.ingress.kubernetes.io/enable-cors: "true"
@@ -416,24 +423,28 @@ minio:
   # Ref: https://docs.sorry-cypress.dev/configuration/director-configuration/minio-configuration
   endpoint: storage.yourdomain.com
   url: http://storage.yourdomain.com
-  readUrlPrefix: ''
+  readUrlPrefix: ""
 
   defaultBucket:
     enabled: true
     name: sorry-cypress
 
+    ## Can be one of none|download|upload|public
+    policy: public
+
   persistence:
     size: 10Gi
+
 azureBlobStorage:
   containerName: sorry-cypress
   uploadUrlExpiryInHours: 24
-  existingSecret: ''
-  fullnameOverride: ''
+  existingSecret: ""
+  fullnameOverride: ""
 
 runCleaner:
-# Optionally integrate the Sorry Cypress Run Cleaner to remove old runs from the database.
-# You will need to set up your S3/Minio lifecycle management to delete objects from your bucket.
-# https://github.com/sendible-labs/sorry-cypress-run-cleaner
+  # Optionally integrate the Sorry Cypress Run Cleaner to remove old runs from the database.
+  # You will need to set up your S3/Minio lifecycle management to delete objects from your bucket.
+  # https://github.com/sendible-labs/sorry-cypress-run-cleaner
   enabled: false
   image:
     repository: "ghcr.io/sendible-labs/sorry-cypress-run-cleaner"
@@ -441,14 +452,15 @@ runCleaner:
   # Keep the last 200 days worth of runs.
   daysToKeep: 200
   # Run every morning at 1am by default.
-  schedule: '0 1 * * *'
+  schedule: "0 1 * * *"
   # Cluster domain to resolve api host correctly
-  clusterDomain: 'cluster.local'
+  clusterDomain: "cluster.local"
 
   # Name of the existing priority class to be used by pod(s)
   priorityClassName: ""
 
-  resources: {}
+  resources:
+    {}
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
     # resources, such as Minikube. If you do want to specify resources, uncomment the following

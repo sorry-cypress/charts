@@ -105,7 +105,7 @@ api:
     #  - secretName: chart-example-tls
     #    hosts:
     #      - chart-example.local
-  
+
   extraEnv: []
     # - name: ENV_NAME
     #   value: ENV_VALUE
@@ -323,7 +323,7 @@ director:
     #  - secretName: chart-example-tls
     #    hosts:
     #      - chart-example.local
-  
+
   extraEnv: []
     # - name: ENV_NAME
     #   value: ENV_VALUE

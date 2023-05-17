@@ -206,7 +206,7 @@ https://docs.sorry-cypress.dev/configuration/director-configuration/aws-s3-confi
 | `s3.region`                   | Set the screenshots storage bucket region                                                                         | `us-east-1`                  |
 | `s3.acl`                      | The uploaded video/screenshot object ACL                                                                          | `"public-read"`              |
 | `s3.readUrlPrefix`            | The host to load the video/screenshot in the dashboard (defaults to the bucket URL)                               | `""`                         |
-| `s3.accessKey`                | The `AWS_ACCESS_KEY_ID` environment variable to configure AWS credentials                                         | `""`                         |
+| `s3.accessKeyId`              | The `AWS_ACCESS_KEY_ID` environment variable to configure AWS credentials                                         | `""`                         |
 | `s3.secretAccessKey`          | The `AWS_SECRET_ACCESS_KEY` environment variable to configure AWS credentials                                     | `""`                         |
 | `s3.ingress.enabled`          | Flag to define if the S3 ingress is enabled. **It will also enable an ExternalName service to expose the bucket** | `false`                      |
 | `s3.ingress.ingressClassName` | The IngressClass that should be used to implement this Ingress                                                    | `nginx`                      |

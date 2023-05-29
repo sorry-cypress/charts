@@ -55,6 +55,9 @@ spec:
         {{- end }}
         - name: PORT
           value: "{{ .Values.dashboard.service.port }}"
+        {{- with .Values.api.extraEnv }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
         image: "{{ .Values.dashboard.image.repository }}:{{ .Values.dashboard.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.dashboard.image.pullPolicy }}
         name: {{ include "sorry-cypress-helm.fullname" . }}-dashboard

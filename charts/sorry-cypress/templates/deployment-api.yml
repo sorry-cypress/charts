@@ -76,6 +76,9 @@ spec:
           value: "mongodb://{{ include "mongodb.hostname" . }}:{{ .Values.mongodb.service.port }}"
         {{- end }}
         {{- end }}
+        {{- with .Values.api.extraEnv }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
         image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.api.image.pullPolicy }}
         name: {{ include "sorry-cypress-helm.fullname" . }}-api

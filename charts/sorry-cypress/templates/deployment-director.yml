@@ -161,6 +161,9 @@ spec:
           value: {{ .Values.director.environmentVariables.inactivityTimeoutSeconds | quote }}
         - name: GITLAB_JOB_RETRIES
           value: {{ .Values.director.environmentVariables.gitlabJobRetries | quote }}
+        {{- with .Values.api.extraEnv }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
         image: "{{ .Values.director.image.repository }}:{{ .Values.director.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.director.image.pullPolicy }}
         name: {{ include "sorry-cypress-helm.fullname" . }}-director

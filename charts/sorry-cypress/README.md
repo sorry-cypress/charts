@@ -93,6 +93,7 @@ https://sorry-cypress.dev/api#configuration
 | `api.initContainers`                  | Allows you to define init container(s) for the api pod                                       | `[]`                        |
 | `api.enableApolloPlayground`          | Allows you to enable or disable Apollo Playground landing page                               | `false`                     |
 | `api.pageItemsLimit`                  | Allows you to set the API PAGE_ITEMS_LIMIT variable                                          | `10`                        |
+| `api.extraEnv`                        | Additional environment variables for the API container                                          | `[]`                        |
 
 ### Dashboard service
 
@@ -124,6 +125,7 @@ https://sorry-cypress.dev/dashboard#configuration
 | `dashboard.ingress.hosts[0].path`                         | Root path to the service installation                                                                      | `/`                               |
 | `dashboard.ingress.tls`                                   | Ingress secrets for TLS certificates                                                                       | `[]`                              |
 | `dashboard.initContainers`                                | Allows you to define init container(s) for the dashboard pod                                               | `[]`                              |
+| `dashboard.extraEnv`                                      | Additional environment variables for the Dashboard container                                          | `[]`                        |
 
 ### Director service
 
@@ -166,7 +168,8 @@ https://sorry-cypress.dev/director/configuration
 | `director.readinessProbe.periodSeconds`    | How often (in seconds) to perform the probe.                                                 | `5`                         |
 | `director.readinessProbe.timeoutSeconds`   | Number of seconds after which the probe times out.                                           | `3`                         |
 | `director.readinessProbe.successThreshold` | Minimum consecutive successes for the probe to be considered successful after having failed. | `2`                         |
-| `director.readinessProbe.failureThreshold` | When a probe fails, Kubernetes will try `failureThreshold` times before giving up.           | `5`     
+| `director.readinessProbe.failureThreshold` | When a probe fails, Kubernetes will try `failureThreshold` times before giving up.           | `5`  
+| `director.extraEnv`                        | Additional environment variables for the Director container                                  | `[]`                        |   
 
 ### Mongodb service
 

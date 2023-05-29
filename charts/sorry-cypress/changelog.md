@@ -1,6 +1,9 @@
 # 1.14
 - Update app to version `2.5.3`
 
+# 1.13.2
+- Add option to include addional environment variables for the director, dashboard and api containers
+
 # 1.13.1
 - Add option to add annotations and labels to the runCleaner cronjob pods
 - Allow to specify the container security context to the runCleaner cronjob pods

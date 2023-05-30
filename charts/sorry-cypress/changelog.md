@@ -1,6 +1,9 @@
 # 1.14
 - Update app to version `2.5.3`
 
+# 1.13.3
+- Fixed extra environment variables for director and dashboard deployments
+
 # 1.13.2
 - Add option to include addional environment variables for the director, dashboard and api containers
 

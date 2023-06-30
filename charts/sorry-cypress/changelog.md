@@ -1,3 +1,6 @@
+# 1.15
+- Set `runCleaner.tolerations` values
+
 # 1.14
 - Update app to version `2.5.3`
 

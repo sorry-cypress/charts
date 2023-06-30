@@ -459,6 +459,8 @@ runCleaner:
   # Name of the existing priority class to be used by pod(s)
   priorityClassName: ""
 
+  tolerations: []
+
   resources:
     {}
     # We usually recommend not to specify default resources and to leave this as a conscious

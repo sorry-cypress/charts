@@ -157,7 +157,7 @@ dashboard:
             labelSelector:
               matchLabels:
                 app: {{ include "sorry-cypress-helm.fullname" . }}-dashboard
-            topologyKey: failure-domain.beta.kubernetes.io/zone
+            topologyKey: topology.kubernetes.io/zone
 
   initContainers: []
 
@@ -259,7 +259,7 @@ director:
             labelSelector:
               matchLabels:
                 app: {{ include "sorry-cypress-helm.fullname" . }}-director
-            topologyKey: failure-domain.beta.kubernetes.io/zone
+            topologyKey: topology.kubernetes.io/zone
 
   # You can define any init container(s) here.
   # This example checks that mongodb is running before allowing the api pod to start.

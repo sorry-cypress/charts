@@ -51,7 +51,7 @@ api:
             labelSelector:
               matchLabels:
                 app: {{ include "sorry-cypress-helm.fullname" . }}-api
-            topologyKey: failure-domain.beta.kubernetes.io/zone
+            topologyKey: topology.kubernetes.io/zone
 
   # You can define any init container(s) here.
   # This example checks that mongodb is running before allowing the api pod to start.

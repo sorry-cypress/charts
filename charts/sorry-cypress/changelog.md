@@ -1,3 +1,6 @@
+# 1.16
+- Update topologyKey to use `topology.kubernetes.io/zone`
+
 # 1.15
 - Set `runCleaner.tolerations` values
 

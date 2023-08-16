@@ -1,3 +1,6 @@
+# 1.17
+- Update app to version `2.5.8`
+- 
 # 1.16
 - Update topologyKey to use `topology.kubernetes.io/zone`
 

@@ -14,7 +14,7 @@
 - Fixed extra environment variables for director and dashboard deployments
 
 # 1.13.2
-- Add option to include addional environment variables for the director, dashboard and api containers
+- Add option to include additional environment variables for the director, dashboard and api containers
 
 # 1.13.1
 - Add option to add annotations and labels to the runCleaner cronjob pods

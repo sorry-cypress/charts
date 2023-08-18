@@ -1,3 +1,6 @@
+# 1.16.1
+- Remove tico24 as named maintainer
+
 # 1.16
 - Update topologyKey to use `topology.kubernetes.io/zone`
 

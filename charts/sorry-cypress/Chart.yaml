@@ -8,9 +8,6 @@ home: https://sorry-cypress.dev/
 sources:
   - https://github.com/sorry-cypress/sorry-cypress
 icon: https://s3.amazonaws.com/sorry-cypress.dev/static/logo.png
-maintainers:
-  - name: tico24
-    url: https://crumbhole.com
 dependencies:
   - name: minio
     repository: https://helm.min.io/

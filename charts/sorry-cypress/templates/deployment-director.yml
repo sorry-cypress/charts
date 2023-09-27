@@ -161,6 +161,8 @@ spec:
           value: {{ .Values.director.environmentVariables.inactivityTimeoutSeconds | quote }}
         - name: GITLAB_JOB_RETRIES
           value: {{ .Values.director.environmentVariables.gitlabJobRetries | quote }}
+        - name: BASE_PATH
+          value: {{ .Values.director.environmentVariables.basePath | quote }}
         {{- with .Values.director.extraEnv }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
@@ -175,7 +177,7 @@ spec:
           {{- toYaml .Values.director.securityContext | nindent 10 }}
         readinessProbe:
           httpGet:
-            path: /health-check-db
+            path: {{ .Values.director.environmentVariables.basePath }}/health-check-db
             port: 1234
           periodSeconds: {{ .Values.director.readinessProbe.periodSeconds }}
           timeoutSeconds: {{ .Values.director.readinessProbe.timeoutSeconds }}

@@ -300,6 +300,9 @@ director:
     # Enable gitlab job retries
     gitlabJobRetries: false
 
+    # BASE_PATH serving path, usefull when using reverse proxy ex: /cypress/dashboard
+    basePath: ""
+
   # Set annotations for pods
   podAnnotations: {}
 

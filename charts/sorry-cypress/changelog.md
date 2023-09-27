@@ -1,3 +1,6 @@
+# 1.19.1
+- Fixed director readiness probe failing when using BASE_PATH env
+
 # 1.19
 - Update app to version `2.5.10`
 

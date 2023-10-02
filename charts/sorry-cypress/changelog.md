@@ -1,3 +1,6 @@
+# 1.19
+- Update app to version `2.5.10`
+
 # 1.18
 - Update app to version `2.5.9`
 

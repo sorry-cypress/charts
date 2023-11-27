@@ -76,6 +76,8 @@ spec:
           value: "mongodb://{{ include "mongodb.hostname" . }}:{{ .Values.mongodb.service.port }}"
         {{- end }}
         {{- end }}
+        - name: BASE_PATH
+          value: {{ .Values.api.basePath | quote }}
         {{- with .Values.api.extraEnv }}
         {{- toYaml . | nindent 8 }}
         {{- end }}

@@ -94,6 +94,9 @@ api:
   # set PAGE_ITEMS_LIMIT
   pageItemsLimit: 10
 
+  # set BASE_PATH
+  basePath: 10
+
   ingress:
     ingressClassName: nginx
     labels: {}
@@ -166,6 +169,7 @@ dashboard:
     graphQlClientCredentials: ""
     graphQlSchemaUrl: ""
     ciUrl: ""
+    basePath: "/"
 
   service:
     port: 8080

@@ -93,7 +93,8 @@ https://sorry-cypress.dev/api#configuration
 | `api.initContainers`                  | Allows you to define init container(s) for the api pod                                       | `[]`                        |
 | `api.enableApolloPlayground`          | Allows you to enable or disable Apollo Playground landing page                               | `false`                     |
 | `api.pageItemsLimit`                  | Allows you to set the API PAGE_ITEMS_LIMIT variable                                          | `10`                        |
-| `api.extraEnv`                        | Additional environment variables for the API container                                          | `[]`                        |
+| `api.basePath`                        | Allows you to set the API BASE_PATH variable                                                 | `/`                         |
+| `api.extraEnv`                        | Additional environment variables for the API container                                       | `[]`                        |
 
 ### Dashboard service
 
@@ -110,6 +111,7 @@ https://sorry-cypress.dev/dashboard#configuration
 | `dashboard.environmentVariables.ciUrl`                    | Set the `CI_URL` optional environment variable to add a link to your CI tool                               | `""`                              |
 | `dashboard.environmentVariables.graphQlClientCredentials` | Set the `GRAPHQL_CLIENT_CREDENTIALS` environment variable to configure the API service client credentials. | `""`                              |
 | `dashboard.environmentVariables.graphQlSchemaUrl`         | Set the `GRAPHQL_SCHEMA_URL` environment variable to configure the URL of API service.                     | `""`                              |
+| `dashboard.environmentVariables.basePath`                 | Set the `BASE_PATH` environment variable                                                                   | `/`                               |
 | `dashboard.podAnnotations`                                | Set annotations for pods                                                                                   | `{}`                              |
 | `dashboard.priorityClassName`                             | Name of the existing priority class to be used by dashboard pod(s)                                         | `""`                              |
 | `dashboard.podLabels`                                     | Set additional labels for pods                                                                             | `{}`                              |
@@ -125,7 +127,7 @@ https://sorry-cypress.dev/dashboard#configuration
 | `dashboard.ingress.hosts[0].path`                         | Root path to the service installation                                                                      | `/`                               |
 | `dashboard.ingress.tls`                                   | Ingress secrets for TLS certificates                                                                       | `[]`                              |
 | `dashboard.initContainers`                                | Allows you to define init container(s) for the dashboard pod                                               | `[]`                              |
-| `dashboard.extraEnv`                                      | Additional environment variables for the Dashboard container                                          | `[]`                        |
+| `dashboard.extraEnv`                                      | Additional environment variables for the Dashboard container                                               | `[]`                              |
 
 ### Director service
 
@@ -150,6 +152,7 @@ https://sorry-cypress.dev/director/configuration
 | `director.environmentVariables.screenshotsDriver` | Set the screenshots driver. Valid options are `"../screenshots/dummy.driver"`, `"../screenshots/s3.driver"`, `"../screenshots/minio.driver"` or `"../screenshots/azure-blob-storage.driver"` | `"../screenshots/dummy.driver"`  |
 | `director.environmentVariables.inactivityTimeoutSeconds`       | Set the timeout of all test runs under your projects. |  `180s` |
 | `director.environmentVariables.gitlabJobRetries`               | Enable job retries from Gitlab.                       |  `false` |
+| `director.environmentVariables.basePath`                       | Set the `BASE_PATH` environment variable              |  `/`     |
 | `director.podAnnotations`                         | Set annotations for pods                                                                                                                                                     | `{}`                             |
 | `director.priorityClassName`                      | Name of the existing priority class to be used by director pod(s)                                                                                                            | `""`                             |
 | `director.podLabels`                              | Set additional labels for pods                                                                                                                                               | `{}`                             |

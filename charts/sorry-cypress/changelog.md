@@ -1,3 +1,6 @@
+# 1.20.1
+- Added BASE_PATH environment to values
+
 # 1.20
 - Update app to version `2.5.11`
 
